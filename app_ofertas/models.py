@@ -1,4 +1,5 @@
 
+from django.db import models
 from django.contrib.auth.models import User 
 # Create your models here.
 
@@ -73,7 +74,7 @@ class Publicacion(models.Model):
 	fecha_creacion = models.DateTimeField(auto_now_add=True, editable=False)
 	fecha_publi    = models.DateTimeField(auto_now_add=True)
 	activada 	   = models.BooleanField(default=False)
-	tiempo_publi   = models.IntegerField(,default=1440)
+	tiempo_publi   = models.IntegerField(default=1440)
 	cant_visitas   = models.IntegerField(default=0)
 
 

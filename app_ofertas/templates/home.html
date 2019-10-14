@@ -1,0 +1,21 @@
+{% extends "esquema.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<div class="row">
+	<h6>Ofertas Recientes</h6>
+</div>
+<div class="row">
+	{% for reciente in recientes %}
+		<div class="col s4 m3 caja-oferta-grid">
+			<img src="/media/{{ reciente.imagen }}">
+			<p>{{ reciente.titulo }} - {{ reciente.precio_regular }} - {{ reciente.precio_oferta }}</p>
+		</div>
+		
+	{% endfor %}
+</div>
+
+
+{% endblock %}

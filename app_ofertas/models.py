@@ -62,12 +62,14 @@ class Horario(models.Model):
 class Rubro(models.Model):
 	nombre = models.CharField(max_length = 25)
 
+	def __str__(self):
+		return self.nombre
 
 class Publicacion(models.Model):
 	local          = models.ForeignKey(Local, on_delete = models.CASCADE, related_name = 'publicaciones')
 	rubro   	   = models.ForeignKey(Rubro, on_delete = models.CASCADE, related_name = 'publicaciones')
 	titulo         = models.CharField(max_length = 30, null=False)
-	detalle        = models.CharField(max_length = 30)
+	detalle        = models.CharField(max_length = 300)
 	imagen         = models.ImageField(upload_to='fotos_publicaciones', null=True,blank=True)
 	precio_regular = models.DecimalField(max_digits=10, decimal_places=2)
 	precio_oferta  = models.DecimalField(max_digits=10, decimal_places=2,null=True,blank=True)

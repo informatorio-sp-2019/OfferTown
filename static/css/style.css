@@ -1,0 +1,21 @@
+.icon-top-bar-button {
+    height: 3em;
+}
+
+.icon-top-bar-button i{
+    line-height: 2em!important;
+}
+
+
+.txt-top-bar-button {
+    line-height: 1em;
+}
+
+.icon-top-bar-button,
+.txt-top-bar-button{
+	text-align: center;
+}
+
+.sidenav-trigger{
+	display: block!important;
+}

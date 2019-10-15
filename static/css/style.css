@@ -19,3 +19,9 @@
 .sidenav-trigger{
 	display: block!important;
 }
+
+/* inicio listado ofertas */
+.caja-oferta-grid{
+	padding: 4px;
+	border: solid 3px red;
+}

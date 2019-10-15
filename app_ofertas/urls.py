@@ -5,4 +5,5 @@ app_name = 'app_ofertas'
 
 urlpatterns = [
     path('home/',views.hometest),
+    path('', views.index, name = 'index'),
 ]

@@ -34,23 +34,8 @@ def generate_users():
     
 
 def generate_nickname(nombre, apellido):
-    if nombre == 'Juan' and apellido == 'Martínez':
-        nick = 'Mrat'
-    elif nombre == 'Agustín' and apellido == 'Harasiwka':
-        nick = 'Nvreformat'
-    elif nombre == 'Matías' and apellido == 'Polich':
-        nick = 'Saedin'
-    elif nombre == 'Nicolás' and apellido == 'Storani':
-        nick = 'suntrack'
-    elif nombre == 'Alfonso' and apellido == 'Godo':
-        nick = 'AlfonGer'
-    elif nombre == 'Francisco' and apellido == 'Adami':
-        nick = 'panchex07'
-    elif nombre == 'Matías' and apellido == 'Cejas':
-        nick = 'MALCS'
-    else:
-        nick = nombre+apellido + str(random.randint(243, 6383))
-        nick = nick.lower()
+    nick = nombre+apellido + str(random.randint(243, 6383))
+    nick = nick.lower()
     return nick
 
 def generate_places():

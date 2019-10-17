@@ -1,5 +1,12 @@
 #!/usr/bin/python3
+import os
 import random
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', '_OfferTown.settings')
+
+from django.core.wsgi import get_wsgi_application
+application = get_wsgi_application()
+
+from app_ofertas.models import *
 
 QUANTITY = 250
 
@@ -31,7 +38,6 @@ def generate_users():
             'Tipo': random.choice(['Oferente', 'Ofernauta'])}
         results.append(user)
     return results
-    
 
 def generate_nickname(nombre, apellido):
     nick = nombre+apellido + str(random.randint(243, 6383))
@@ -96,17 +102,21 @@ def generate_rubros(localidades):
             negocios.append(negocio)
     return negocios
                 
-    
+def popular_usuarios(user_list):
+    for user in user_list:
+        db_user = User(username=user['Nickname'], is_superuser=0, first_name=user['Nombre'],
+                last_name=user['Apellido'], email=user['Mail'])
+        print(db_user, user['Mail'])
+        db_user.save()
 
 
 def main():
     # Oferente
     # Ofernauta 
     usuarios = generate_users()
-    localidades = generate_places()
-    rubros = generate_rubros(localidades)
-    print(rubros)
-
+    #localidades = generate_places()
+    #rubros = generate_rubros(localidades)
+    popular_usuarios(usuarios)
 
 if __name__ == '__main__':
     main()

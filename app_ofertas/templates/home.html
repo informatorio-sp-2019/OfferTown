@@ -3,7 +3,14 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-
+<!-- busquedas -->
+<div class="row">
+	<!-- metodo get, al /search -->
+	<form action="/search" method="GET">
+		<input type="text" name="param_titulo" placeholder="busqueda">
+		<button type="submit">search</button>
+	</form>	
+</div>
 <div class="row">
 	<h6>Ofertas Recientes</h6>
 </div>

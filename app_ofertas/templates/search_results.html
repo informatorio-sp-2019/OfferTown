@@ -1,0 +1,26 @@
+{% extends "esquema.html" %}
+
+{% block title %}Resultados de busqueda{% endblock %}
+
+{% block content %}
+	
+	<!-- form para realizar nueva busqueda o filtrar -->
+	<form action="/search" method="GET">
+		<input type="text" name="param_titulo" placeholder="busqueda">
+		<!-- TO-DO: agregar mas input -->
+		<!-- rellenar los campos con los parametros con los que se hizo la busqueda anterior -->
+		<button type="submit">search</button>
+	</form>
+
+
+	<p>parametro: {{ param }}</p>
+	
+	<!-- resultados de busqueda -->
+	<h2>Resultados</h2>
+	{% for item in publicaciones %}
+			<p>{{ item.titulo }} - {{ item.precio_regular }} - {{ item.precio_oferta }}</p>				
+	{% endfor %}
+
+{% endblock %}
+
+	

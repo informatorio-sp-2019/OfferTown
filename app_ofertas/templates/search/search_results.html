@@ -4,14 +4,17 @@
 {% block content %}	
 	<!-- formulario busqueda mas filtros -->
 	<!-- form para realizar nueva busqueda o filtrar -->
-	{% include 'search/search_form.html' %}
-
+	<div class="row">
+		{% include 'search/search_form.html' %}
+	</div>
 	<!-- resultados de busqueda -->
-	<h2>Resultados</h2>
-	{% for item in publicaciones %}
-			<p>{{ item.titulo }} - {{ item.precio_regular }} - {{ item.precio_oferta }}</p>				
-	{% endfor %}
+	<div class="row">
+		<h6>Resultados</h6>
+	</div>
 
+	{# manda al template publicacion/publicaciones_listado #}
+	{% include "publicacion/publicaciones_listado.html" with publicaciones=publicaciones %}
+	
 {% endblock %}
 
 	

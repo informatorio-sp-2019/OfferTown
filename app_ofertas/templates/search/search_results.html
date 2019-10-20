@@ -1,20 +1,11 @@
 {% extends "esquema.html" %}
-
 {% block title %}Resultados de busqueda{% endblock %}
 
-{% block content %}
-	
+{% block content %}	
+	<!-- formulario busqueda mas filtros -->
 	<!-- form para realizar nueva busqueda o filtrar -->
-	<form action="/search" method="GET">
-		<input type="text" name="param_titulo" placeholder="busqueda">
-		<!-- TO-DO: agregar mas input -->
-		<!-- rellenar los campos con los parametros con los que se hizo la busqueda anterior -->
-		<button type="submit">search</button>
-	</form>
+	{% include 'search/search_form.html' %}
 
-
-	<p>parametro: {{ param }}</p>
-	
 	<!-- resultados de busqueda -->
 	<h2>Resultados</h2>
 	{% for item in publicaciones %}
@@ -24,3 +15,9 @@
 {% endblock %}
 
 	
+{% block script %}
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems);
+  });
+{% endblock %}

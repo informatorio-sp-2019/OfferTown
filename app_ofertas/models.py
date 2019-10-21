@@ -34,7 +34,7 @@ class Local(models.Model):
 	usuario    = models.ForeignKey(User, on_delete = models.CASCADE, related_name = 'locales')
 	localidad  = models.ForeignKey(Localidad, on_delete = models.CASCADE, related_name = 'locales', null=True)
 	delivery   = models.BooleanField(default=False)
-
+	telefono   = models.IntegerField(null=True,blank=True)
 
 	def get_horarios(self):
 		return self.horas.all()
@@ -56,6 +56,7 @@ class Sucursal(models.Model):
 	direccion = models.CharField(max_length = 50)
 	local     = models.ForeignKey(Local, on_delete = models.CASCADE, related_name='sucursales') 
 	localidad = models.ForeignKey(Localidad, on_delete = models.CASCADE, related_name='sucursales')
+	telefono  = models.IntegerField(null=True,blank=True)
 
 
 class Horario(models.Model):

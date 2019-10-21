@@ -93,3 +93,18 @@ def agregar_publicacion(request):
 	else:
 		form = PublicacionForm()
 		return render(request, 'agregar_publicacion.html',{'form':form})
+
+def ver_publicacion(request,id):
+	try:
+		pub=Publicacion.objects.get(pk=id)
+	except Publicacion.DoesNotExist:
+		raise Http404("Esta oferta no se encuentra actualmente disponible")
+	return render(request, 'publicacion.html',{'pub':pub})
+
+def ver_rubro(request,id):
+	try:
+		publicaciones=Publicacion.objects.filter(rubro=id)
+	except Rubro.DoesNotExist:
+		raise Http404("Este rubro no se encuentra actualmente disponible")
+	return render(request, 'rubro.html',{'publicaciones':publicaciones})
+

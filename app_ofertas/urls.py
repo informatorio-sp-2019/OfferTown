@@ -8,5 +8,7 @@ urlpatterns = [
     path('', views.index, name = 'index'),
     path('search', views.search),
     path('agregar_local/', views.agregar_local, name="agregar_local"),
-    path('agregar_publicacion/', views.agregar_publicacion, name='agregar_publicacion')
+    path('agregar_publicacion/', views.agregar_publicacion, name='agregar_publicacion'),
+    path('pub/<int:id>/',views.ver_publicacion,name='ver_publicacion'),
+    path('rubro/<int:id>/',views.ver_rubro,name='ver_rubro')
 ]

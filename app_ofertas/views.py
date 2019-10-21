@@ -11,7 +11,7 @@ def index(request):
 	#últimas 9
 	#recientes=Publicacion.objects.order_by('-id')[:9]
 	#Obtener las categorías
-	categorias = Rubro.objects.all()
+	categorias = Rubro.objects.all().order_by('nombre')
 
 	return render(request,'home.html',{'recientes':recientes, 'categorias':categorias})
 

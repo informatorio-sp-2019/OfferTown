@@ -20,6 +20,16 @@
 	display: block!important;
 }
 
+/* helpers */
+.sin-margen{
+	margin: 0!important;
+}
+
+.sin-padding{
+	padding: 0!important;
+}
+
+
 /* inicio listado ofertas */
 .caja-oferta-grid{
 	border: solid 1px lightgrey;
@@ -78,4 +88,31 @@
 .delivery .envio{
 	color: grey;
 	vertical-align: middle;
+}
+
+/* listado de rubros */
+.caja-rubro-grid{
+	border: solid 1px lightgrey;
+	overflow: hidden;
+	padding: 5%;
+}
+
+.caja-rubro-grid a{
+	line-height: 0;
+}
+
+.imagen-rubro img{
+	max-width: 30%;
+	display: block;
+	margin: auto;
+	padding-top: .6em;
+}
+
+.data-rubro{
+	padding: 3px;
+	text-align: center;
+}
+
+.titulo-rubro-grid{
+
 }

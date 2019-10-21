@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class Usuario(User):
 	TIPO_USUARIOS = (('ad','ADMINISTRADOR'),('of','OFERENTE'))
 
-	tipo_usuario = models.CharField(max_length = 5, null=False, choices = TIPO_USUARIOS) 
+	tipo_usuario = models.CharField(max_length = 2, null=False, choices = TIPO_USUARIOS) 
 	imagen       = models.ImageField(upload_to='fotos_usuarios', null=True,blank=True)
 
 	def get_locales(self):
@@ -16,6 +16,10 @@ class Usuario(User):
 
 class Localidad(models.Model):
 	nombre = models.CharField(max_length = 30)
+
+	def __str__(self):
+		return self.nombre
+
 
 	def get_locales(self):
 	 	return self.locales.all()
@@ -26,9 +30,11 @@ class Local(models.Model):
 
 	nombre     = models.CharField(max_length = 30)
 	direccion  = models.CharField(max_length = 50)
-	horario    = models.CharField(max_length = 7, choices = HORARIOS)
+	horario    = models.CharField(max_length = 4, choices = HORARIOS)
 	usuario    = models.ForeignKey(User, on_delete = models.CASCADE, related_name = 'locales')
 	localidad  = models.ForeignKey(Localidad, on_delete = models.CASCADE, related_name = 'locales', null=True)
+	delivery   = models.BooleanField(default=False)
+
 
 	def get_horarios(self):
 		return self.horas.all()
@@ -39,15 +45,17 @@ class Local(models.Model):
 	def get_publicaciones(self):
 		return self.publicaciones.all()
 
+	def get_medios_de_pago(self):
+		return self.medios_de_pago.all()
+
 	def __str__(self):
-		return 'Nombre: {}'.format(self.nombre)
+		return self.nombre
 
 
 class Sucursal(models.Model):
 	direccion = models.CharField(max_length = 50)
 	local     = models.ForeignKey(Local, on_delete = models.CASCADE, related_name='sucursales') 
 	localidad = models.ForeignKey(Localidad, on_delete = models.CASCADE, related_name='sucursales')
-
 
 
 class Horario(models.Model):
@@ -79,6 +87,13 @@ class Publicacion(models.Model):
 	tiempo_publi   = models.IntegerField(default=1440)
 	cant_visitas   = models.IntegerField(default=0)
 
+	def __str__(self):
+		return self.titulo
+
+	class Meta:
+		ordering = ['fecha_publi']
+
+
 
 class Favorito(models.Model):
 	usuario = models.ForeignKey(Usuario, on_delete = models.CASCADE, related_name = 'favoritos')	
@@ -88,3 +103,19 @@ class Favorito(models.Model):
 class Interes(models.Model):
 	usuario = models.ForeignKey(Usuario, on_delete = models.CASCADE, related_name = 'intereses')
 	rubro   = models.ForeignKey(Rubro, on_delete = models.CASCADE, related_name = 'intereses')
+
+
+class MedioDePago(models.Model):
+	nombre = models.CharField(max_length = 20, null=False,blank=False)
+
+	class Meta:
+		ordering = ['nombre']
+
+	def __str__(self):
+		return self.nombre
+
+class LocalMedioDePago(models.Model):
+	local = models.ForeignKey(Local, on_delete=models.CASCADE, related_name='medios_de_pago')
+	medio_de_pago = models.ForeignKey(MedioDePago, on_delete=models.CASCADE)
+
+

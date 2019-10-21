@@ -97,6 +97,11 @@
 	padding: 5%;
 }
 
+.caja-rubro-grid:hover{
+	background-color: #e1f5fe;
+}
+
+
 .caja-rubro-grid a{
 	line-height: 0;
 }

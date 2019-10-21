@@ -1,0 +1,14 @@
+{% extends "esquema.html" %}
+
+{% block title %} Alta Publicacion {% endblock %}
+
+{% block content %}
+<form action="/agregar_publicacion/" method="POST">
+    
+    {% csrf_token %}
+    {{ form.as_p}}
+    <input type="submit" value="Guardar"/>
+
+</form>
+
+{% endblock %}

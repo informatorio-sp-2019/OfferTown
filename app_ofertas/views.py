@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from app_ofertas.models import Publicacion,Rubro
+from app_ofertas.models import Publicacion,Rubro, Local
+from app_ofertas.forms import LocalForm, PublicacionForm
 
 # Create your views here.
 def hometest(request):
@@ -70,3 +71,25 @@ def search(request):
 
 	return render(request, "search/search_results.html", contexto)
 #fin Search()
+
+def agregar_local(request):
+	if request.method == 'POST':
+		form = LocalForm(request.POST)
+		if form.is_valid():
+			local = form.save()
+
+			return redirect('local')
+
+	else:
+		form = LocalForm()
+		return render(request, 'alta_local.html',{'form':form})
+
+def agregar_publicacion(request):
+	if request.method == 'POST':
+		form = PublicacionForm(request.POST)
+		if form.is_valid():
+			publicacion = form.save()
+
+	else:
+		form = PublicacionForm()
+		return render(request, 'agregar_publicacion.html',{'form':form})

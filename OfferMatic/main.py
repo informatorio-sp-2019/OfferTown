@@ -109,14 +109,35 @@ def popular_usuarios(user_list):
         print(db_user, user['Mail'])
         db_user.save()
 
+def popular_rubros():
+    rubros = Rubro.objects.all()
+    for i in rubros:
+        print(i.id, i)
+        # 1 Tecnología
+        # 2 Indumentaria
+        # 3 Gastronomía
+        # 4 Automotor
+        # 5 Electrodomésticos
+        # 6 Deportes
+        # 7 Muebles
+        # 8 Juguetes
+        # 9 Juegos
+        # 10 Relojes
+        # 11 Herramientas
+        # 12 Construcción
+        # 13 Oficina
+        # 14 Intrumentos
+        # 15 Medicamentos
+        # 16 Cotillón
+
+
 
 def main():
-    # Oferente
-    # Ofernauta 
     usuarios = generate_users()
     #localidades = generate_places()
     #rubros = generate_rubros(localidades)
-    popular_usuarios(usuarios)
+    #popular_usuarios(usuarios)
+    popular_rubros()
 
 if __name__ == '__main__':
     main()

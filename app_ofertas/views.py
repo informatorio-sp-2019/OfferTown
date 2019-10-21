@@ -93,3 +93,25 @@ def agregar_publicacion(request):
 	else:
 		form = PublicacionForm()
 		return render(request, 'agregar_publicacion.html',{'form':form})
+
+
+def favoritos(request):
+	#lugares favoritos
+	contexto = {
+
+	}
+	return render(request, "favoritos.html", contexto)
+
+def tendencia(request):
+	#obtener 12 publicaciones mas populares
+	contexto = {
+
+	}
+	return render(request, "tendencia.html", contexto)
+
+def intereses(request):
+	#publicaciones rubros favoritos
+	contexto = {
+
+	}
+	return render(request, "intereses.html", contexto)

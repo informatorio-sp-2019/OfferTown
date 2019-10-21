@@ -3,36 +3,18 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
+	<!-- busquedas -->
+	<div class="row">
+		<!-- metodo get, al /search -->
+		{% include 'search/search_form.html' %}
 
-<div class="row">
-	<h6>Ofertas Recientes</h6>
-</div>
-<div class="row">
-	{% for reciente in recientes %}
-		<div class="col s4 m3">
-			<div class="caja-oferta-grid z-depth-2">
-				<a href="#">
-					<div class="imagen-oferta">
-						<img class="responsive-img" src="{{ reciente.imagen.url }}">
-						
-						<div class="delivery z-depth 1">
-							<span class="envio"><i class="tiny material-icons">motorcycle</i></span>
-						</div>
-					</div>
-					<!-- <div class="divider"></div> -->
-					<div class="data-oferta">
-						<p class="titulo-oferta-grid" >{{ reciente.titulo }} </p>
-						<p class="precio-regular-grid">{{ reciente.precio_regular }}</p>
-						<p class="precio-oferta-grid"> {{ reciente.precio_oferta }}</p>
-						<p class="detalle-oferta-grid"> {{ reciente.detalle|truncatechars:37 }}</p>
-					</div>
-				</a>
+	</div>
+	<div class="row">
+		<h6>Ofertas Recientes</h6>
+	</div>
 
-			</div>
-		</div>
-		
-	{% endfor %}
-</div>
+	{# manda al template publicacion/publicaciones_listado #}
+	{% include "publicacion/publicaciones_listado.html" with publicaciones=recientes %}
 
 
 {% endblock %}

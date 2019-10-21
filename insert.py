@@ -1,3 +1,5 @@
+# -*- encoding: utf-8 -*-
+
 """
 
 	CORRER DESDE CONSOLA: manage.py shell < insert.py 
@@ -10,6 +12,7 @@
 		3) No se registran datos en las siguientes entidades: Publicaciones, Favoritos, Intereses.
 
 """
+
 from app_ofertas.models import *
 
 if __name__=='__main__':
@@ -69,6 +72,7 @@ if __name__=='__main__':
 		l.usuario   = u
 		l.localidad = lo
 		l.delivery  = True
+		l.telefono  = "3644321221"
 		l.save()
 
 		s = Sucursal()
@@ -102,6 +106,7 @@ if __name__=='__main__':
 		l2.usuario   = u
 		l2.localidad = lo
 		l2.delivery  = True
+		l2.telefono  = "3644321555"
 		l2.save()
 
 		s4 = Sucursal()
@@ -129,6 +134,7 @@ if __name__=='__main__':
 		l3.horario   = '24hs'
 		l3.usuario   = u2
 		l3.localidad = lo
+		l3.telefono  = "3644221221"
 		l3.save()
 
 		s5 = Sucursal()

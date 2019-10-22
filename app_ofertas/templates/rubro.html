@@ -4,30 +4,10 @@
 
 {% block content %}
 
-	<div class="row">
-		{% for item in publicaciones %}
-			<div class="col s4 m3">
-				<div class="caja-oferta-grid z-depth-2">
-					<a href="#">
-						<div class="imagen-oferta">
-							<img class="responsive-img" src="{{ item.imagen.url }}">
-							
-							<div class="delivery z-depth 1">
-								<span class="envio"><i class="tiny material-icons">motorcycle</i></span>
-							</div>
-						</div>
-						<!-- <div class="divider"></div> -->
-						<div class="data-oferta">
-							<p class="titulo-oferta-grid" >{{ item.titulo }} </p>
-							<p class="precio-regular-grid">{{ item.precio_regular }}</p>
-							<p class="precio-oferta-grid"> {{ item.precio_oferta }}</p>
-							<p class="detalle-oferta-grid"> {{ item.detalle|truncatechars:37 }}</p>
-						</div>
-					</a>
+	
+	{# manda al template publicacion/publicaciones_listado #}
+	{% include "publicacion/publicaciones_grid.html" with publicaciones=publicaciones %}
+	
 
-				</div>
-			</div>
-			
-		{% endfor %}
-	</div>
+
 {%endblock%}

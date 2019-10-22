@@ -50,6 +50,14 @@
         <span>Efectivo</span>
       </label>
       <label>
+      	{% if param_payment == "PAY_CREDIT" %}
+      		<input type="radio" class="with-gap" name="param_payment" value="PAY_CREDIT" id="pay_credit" checked>
+      	{% else %}
+					<input type="radio" class="with-gap" name="param_payment" value="PAY_CREDIT" id="pay_credit">
+      	{% endif %}
+        <span>Crédito</span>
+      </label>      
+      <label>
       	{% if param_payment == "PAY_DEBIT" %}
       		<input type="radio" class="with-gap" name="param_payment" value="PAY_DEBIT" id="pay_debit" checked>
       	{% else %}

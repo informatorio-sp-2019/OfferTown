@@ -15,6 +15,8 @@ urlpatterns = [
     path('intereses', views.intereses),
 
     path('pub/<int:id>/',views.ver_publicacion,name='ver_publicacion'),
-    path('rubro/<int:id>/',views.ver_rubro,name='ver_rubro')
+    path('rubro/<int:id>/',views.ver_rubro,name='ver_rubro'),
+
+    path('vistas_test', views.vistas_test),
 
 ]

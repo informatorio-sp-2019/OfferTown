@@ -132,3 +132,14 @@ def ver_rubro(request,id):
 	return render(request, 'rubro/rubro.html',{'publicaciones':publicaciones})
 
 
+
+
+def vistas_test(request):
+	#Obtener 9 ofertas recientes (mando todas mientras CORREGIR )
+	recientes=Publicacion.objects.all()
+	#últimas 9
+	#recientes=Publicacion.objects.order_by('-id')[:9]
+	#Obtener las categorías
+	categorias = Rubro.objects.all().order_by('nombre')
+
+	return render(request,'vistas_test.html',{'publicaciones':recientes, 'rubros':categorias})

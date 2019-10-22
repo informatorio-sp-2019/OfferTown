@@ -29,8 +29,13 @@
 	padding: 0!important;
 }
 
+.titulo-lista{
+	margin: 5px auto 0;
+}
 
-/* inicio listado ofertas */
+
+/* inicio grid ofertas */
+.caja-oferta-list,
 .caja-oferta-grid{
 	border: solid 1px lightgrey;
 	border-radius: 3px;
@@ -41,6 +46,7 @@
 	position: relative;
 }
 
+.data-oferta-list,
 .data-oferta{
 	padding: 3px;
 }
@@ -85,9 +91,64 @@
 	right: 5px;
 }
 
+.delivery-list .envio,
 .delivery .envio{
 	color: grey;
 	vertical-align: middle;
+}
+
+
+
+/* ofertas listado una columna */
+.caja-oferta-list1col{
+
+}
+
+.titulo-oferta-list{
+	font-size: 1.4em;
+	line-height: 1em;
+	margin: 2px auto;	
+}
+
+.precio-regular-list{
+	color: gray;
+	font-size: .9em;
+	text-decoration: line-through;
+	margin: 0 auto;
+}
+.precio-oferta-list{
+	color: black;
+	font-size: 1.5em;
+	line-height: 1em;
+	margin: 0 auto;
+}
+.detalle-oferta-list{
+	margin: 3px auto;
+	color: #606060;
+	line-height: 1.2em;
+}
+
+.caja-oferta-list{
+	position: relative;
+}
+
+.delivery-list{
+	position: absolute;
+	background-color: white;
+	padding: 0 3px;
+	border: solid 1px grey;
+	border-radius: 50%;
+	bottom: 5px;
+	right: 5px;
+}
+
+.icono-detalle-oferta{
+	vertical-align: bottom;
+	font-size: 1.3em;
+}
+
+.item-lista{
+	margin-bottom: 5px;
 }
 
 /* listado de rubros */

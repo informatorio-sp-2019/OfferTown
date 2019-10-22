@@ -11,7 +11,7 @@ urlpatterns = [
     path('agregar_publicacion/', views.agregar_publicacion, name='agregar_publicacion'),
 
     path('favoritos', views.favoritos),
-    path('tendencia', views.tendencia),
+    path('tendencias', views.tendencia),
     path('intereses', views.intereses),
 
     path('pub/<int:id>/',views.ver_publicacion,name='ver_publicacion'),

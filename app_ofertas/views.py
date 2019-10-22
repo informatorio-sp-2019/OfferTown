@@ -40,9 +40,9 @@ def search(request):
 	
 	#filtrar delivery
 	if (param_delivery=="SI"):
-		print(param_delivery)
+		publicaciones = publicaciones.filter(local__delivery=True)
 	elif (param_delivery=="NO"):
-		print(param_delivery)
+		publicaciones = publicaciones.filter(local__delivery=False)
 	else:
 		print(param_delivery)
 

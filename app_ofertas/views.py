@@ -122,13 +122,13 @@ def ver_publicacion(request,id):
 		pub=Publicacion.objects.get(pk=id)
 	except Publicacion.DoesNotExist:
 		raise Http404("Esta oferta no se encuentra actualmente disponible")
-	return render(request, 'publicacion.html',{'pub':pub})
+	return render(request, 'publicacion/publicacion.html',{'pub':pub})
 
 def ver_rubro(request,id):
 	try:
 		publicaciones=Publicacion.objects.filter(rubro=id)
 	except Rubro.DoesNotExist:
 		raise Http404("Este rubro no se encuentra actualmente disponible")
-	return render(request, 'rubro.html',{'publicaciones':publicaciones})
+	return render(request, 'rubro/rubro.html',{'publicaciones':publicaciones})
 
 

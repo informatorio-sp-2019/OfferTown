@@ -35,6 +35,7 @@ class Local(models.Model):
 	localidad  = models.ForeignKey(Localidad, on_delete = models.CASCADE, related_name = 'locales', null=True)
 	delivery   = models.BooleanField(default=False)
 	telefono   = models.IntegerField(null=True,blank=True)
+	metodo_pago =  models.ManyToManyField("MedioDePago", through="LocalMedioDePago")
 
 	def get_horarios(self):
 		return self.horas.all()

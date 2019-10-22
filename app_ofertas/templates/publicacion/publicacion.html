@@ -1,0 +1,36 @@
+{% extends "esquema.html" %}
+
+{% block title %} {{pub.titulo}} {% endblock %}
+
+{% block content %}
+<div class="row">
+	<a href="/rubro/{{pub.rubro.id}}">{{ pub.rubro }}></a>
+</div>
+
+	<div class="row">
+		<h3 class="titulo-producto">
+			{{pub.titulo}}
+		</h3>
+
+		<div class="caja-oferta-grid z-depth-2">
+				
+			<a href="#">
+				<div class="col s12 m6 l8 teal">
+					<div class="imagen-oferta">
+						<img class="responsive-img" src="{{ pub.imagen.url }}">
+					</div>
+				</div>
+				<!-- <div class="divider"></div> -->
+				<div class="col s12 m6 l4 red">
+					<div class="data-oferta">
+						<p class="titulo-oferta-grid" >{{ pub.titulo }} </p>
+						<p class="precio-regular-grid">{{ pub.precio_regular }}</p>
+						<p class="precio-oferta-grid"> {{ pub.precio_oferta }}</p>
+						<p class="detalle-oferta-grid"> {{ pub.detalle|truncatechars:37 }}</p>
+					</div>
+				</div>
+			</a>
+		</div>
+	</div>
+
+{% endblock %}

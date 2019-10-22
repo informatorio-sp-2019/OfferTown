@@ -1,0 +1,13 @@
+{% extends "esquema.html" %}
+
+{% block title %} rubro {% endblock %}
+
+{% block content %}
+
+	
+	{# manda al template publicacion/publicaciones_listado #}
+	{% include "publicacion/publicaciones_grid.html" with publicaciones=publicaciones %}
+	
+
+
+{%endblock%}

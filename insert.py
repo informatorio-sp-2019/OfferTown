@@ -7,6 +7,7 @@
 		2) Falta registrar datos en campos 'imagen' de Rubros, Usuarios.
 
 		3) No se registran datos en las siguientes entidades: Publicaciones, Favoritos, Intereses.
+
 """
 
 #!/usr/bin/python3
@@ -15,6 +16,8 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', '_OfferTown.settings')
 
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
+
+
 
 from app_ofertas.models import *
 

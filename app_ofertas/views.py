@@ -29,14 +29,28 @@ def search(request):
 	publicaciones = Publicacion.objects.filter(titulo__contains=param_titulo)
 
 	#filtrar metodo pago
+	id_pago = 0
+
 	if (param_payment=="PAY_CASH"):
-		print(param_payment)
+		try:
+			id_pago = MedioDePago.objects.get(nombre="EFECTIVO").id
+		except:
+			pass
 	elif (param_payment=="PAY_DEBIT"):
-		print(param_payment)
+		try:
+			id_pago = MedioDePago.objects.get(nombre="DEBITO").id
+		except:
+			pass		
 	elif (param_payment =="PAY_CREDIT"):
-		print(param_payment)
+		try:
+			id_pago = MedioDePago.objects.get(nombre="CREDITO").id
+		except:
+			pass
 	else:
-		print(param_payment)
+		pass
+
+	if(id_pago!=0):
+		publicaciones = publicaciones.filter(local__metodo_pago = id_pago)
 	
 	#filtrar delivery
 	if (param_delivery=="SI"):

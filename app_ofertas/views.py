@@ -119,8 +119,10 @@ def favoritos(request):
 
 def tendencia(request):
 	#obtener 12 publicaciones mas populares
+	#cant_visitas
+	tendencias = Publicacion.objects.all().order_by("cant_visitas")[:12]
 	contexto = {
-
+		"tendencias":tendencias
 	}
 	return render(request, "tendencia.html", contexto)
 

@@ -82,7 +82,7 @@ def agregar_local(request):
 
 	else:
 		form = LocalForm()
-		return render(request, 'alta_local.html',{'form':form})
+		return render(request, 'local/alta_local.html',{'form':form})
 
 def agregar_publicacion(request):
 	if request.method == 'POST':
@@ -92,7 +92,7 @@ def agregar_publicacion(request):
 
 	else:
 		form = PublicacionForm()
-		return render(request, 'agregar_publicacion.html',{'form':form})
+		return render(request, 'publicacion/agregar_publicacion.html',{'form':form})
 
 
 

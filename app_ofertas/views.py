@@ -52,10 +52,10 @@ def search(request):
 	#ordenar
 	if (param_orden == "1"):
 		#de menor a mayor precio
-		publicaciones = publicaciones.order_by('precio_regular')
+		publicaciones = publicaciones.order_by('precio_oferta','precio_regular')
 	elif (param_orden == "2"):
 		#de mayor a menor precio
-		publicaciones = publicaciones.order_by('-precio_regular')
+		publicaciones = publicaciones.order_by('-precio_oferta','-precio_regular')
 	else:
 		#por abecedario
 		publicaciones = publicaciones.order_by('titulo')

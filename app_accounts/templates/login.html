@@ -1,0 +1,25 @@
+{% extends "base_layout.html" %}
+
+{% block title %}	
+	LOGIN
+{% endblock %}
+
+    {% block navbar %}     
+    {% endblock %}      
+
+{% block content %}	
+	<form method="POST">
+		{% csrf_token %}
+		{{form.as_p}}
+		<button type="submit">Ingresar</button>	
+	</form>
+	{#<a href="{% url 'app_account/signup' %}"> Registrar</a>#}
+
+	
+{% endblock %}
+
+{% block footer %}	
+{% endblock %}
+
+{% block js %}	
+{% endblock %}

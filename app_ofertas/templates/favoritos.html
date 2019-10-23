@@ -1,0 +1,17 @@
+{% extends "esquema.html" %}
+
+{% block title %}Tendencias{% endblock %}
+
+{% block content %}
+	<!-- busquedas -->
+	<div class="row">
+		<!-- metodo get, al /search -->
+		{% include 'search/search_form.html' %}
+	</div>
+
+	<div class="row">
+		<h6>Favoritos</h6>
+	</div>
+
+
+{% endblock %}

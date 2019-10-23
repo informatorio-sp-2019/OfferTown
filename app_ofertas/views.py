@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from app_ofertas.models import Publicacion,Rubro, Local
 from app_ofertas.forms import LocalForm, PublicacionForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def hometest(request):
@@ -109,7 +110,7 @@ def agregar_publicacion(request):
 		return render(request, 'publicacion/agregar_publicacion.html',{'form':form})
 
 
-
+@login_required(login_url='login')
 def favoritos(request):
 	#lugares favoritos
 	contexto = {
@@ -126,6 +127,7 @@ def tendencia(request):
 	}
 	return render(request, "tendencia.html", contexto)
 
+@login_required(login_url='login')
 def intereses(request):
 	#publicaciones rubros favoritos
 	contexto = {

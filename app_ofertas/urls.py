@@ -4,7 +4,7 @@ from app_ofertas import views
 app_name = 'app_ofertas'
 
 urlpatterns = [
-    path('home/',views.hometest),
+    path('home/',views.hometest, name='home'),
     path('', views.index, name = 'index'),
     path('search', views.search),
     path('agregar_local/', views.agregar_local, name="agregar_local"),

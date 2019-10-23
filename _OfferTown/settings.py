@@ -40,7 +40,8 @@ DJANGO_APPS = [
 ]
 
 OFFER_TOWN_APPS = [
-    'app_ofertas'
+    'app_ofertas',
+    'app_accounts',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + OFFER_TOWN_APPS
@@ -125,7 +126,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-LOGIN_URL = 'login'
+LOGIN_URL = 'app_accounts:login'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR,"static" ),

@@ -1,9 +1,6 @@
 # -*- encoding: utf-8 -*-
 
 """
-
-	CORRER DESDE CONSOLA: manage.py shell < insert.py 
-
 	ATENCIÓN: 
 		1) Eliminar el archivo sqlite y volver a generar en migrate antes de correr 'insert.py'
 	
@@ -12,6 +9,15 @@
 		3) No se registran datos en las siguientes entidades: Publicaciones, Favoritos, Intereses.
 
 """
+
+#!/usr/bin/python3
+import os
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', '_OfferTown.settings')
+
+from django.core.wsgi import get_wsgi_application
+application = get_wsgi_application()
+
+
 
 from app_ofertas.models import *
 

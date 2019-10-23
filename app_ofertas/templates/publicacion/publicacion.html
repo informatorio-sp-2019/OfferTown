@@ -3,34 +3,67 @@
 {% block title %} {{pub.titulo}} {% endblock %}
 
 {% block content %}
-<div class="row">
+<div class="row breadcru">
 	<a href="/rubro/{{pub.rubro.id}}">{{ pub.rubro }}></a>
 </div>
 
 	<div class="row">
-		<h3 class="titulo-producto">
-			{{pub.titulo}}
-		</h3>
 
-		<div class="caja-oferta-grid z-depth-2">
+		<div class="caja-oferta-single z-depth-2">
 				
-			<a href="#">
-				<div class="col s12 m6 l8 teal">
-					<div class="imagen-oferta">
-						<img class="responsive-img" src="{{ pub.imagen.url }}">
-					</div>
+			<div class="col s12 m6 l8 sin-padding">
+				<div class="imagen-oferta">
+					<img class="responsive-img" src="{{ pub.imagen.url }}">
 				</div>
+			</div>
 				<!-- <div class="divider"></div> -->
-				<div class="col s12 m6 l4 red">
-					<div class="data-oferta">
-						<p class="titulo-oferta-grid" >{{ pub.titulo }} </p>
-						<p class="precio-regular-grid">{{ pub.precio_regular }}</p>
-						<p class="precio-oferta-grid"> {{ pub.precio_oferta }}</p>
-						<p class="detalle-oferta-grid"> {{ pub.detalle|truncatechars:37 }}</p>
-					</div>
+			<div class="col s12 m6 l4">
+				<div class="data-oferta">
+					<p class="titulo-oferta-single" >{{ pub.titulo }} </p>
+					<p class="precio-regular-single">${{ pub.precio_regular }}</p>
+					<p class="precio-oferta-single"> ${{ pub.precio_oferta }}</p>
+					<p class="detalle-oferta-single"> {{ pub.detalle }}</p>
+					<h6 class="center-align">
+						<span><i class="material-icons tiny">account_box</i></span>
+						<strong>Sobre el vendedor</strong>
+					</h6>
+					<p class="detalle-oferta-single">
+						<i class="material-icons icono-detalle-oferta">store</i> {{ pub.local.nombre }}
+					</p>
+					<p class="detalle-oferta-single">
+						<i class="material-icons icono-detalle-oferta">room</i> {{ pub.local.direccion }}
+					</p>
+					<p class="detalle-oferta-single">
+						<i class="material-icons icono-detalle-oferta">map</i> {{ pub.local.localidad }}
+					</p>
+					<p class="detalle-oferta-single">
+						<i class="material-icons icono-detalle-oferta">payment</i> {{ pub.local.metodo_pago }}
+					</p>
+
+					{% if pub.local.delivery %}
+					<p class="detalle-oferta-single">
+						<i class="material-icons icono-detalle-oferta">motorcycle</i> Entrega a domicilio
+					</p>
+					{% endif %}
+
+					<p class="center-align">
+						<a href="#">más ofertas del vendedor</a>
+					</p>
+					
 				</div>
-			</a>
+			</div>
+			
 		</div>
 	</div>
+
+	<div class="row">
+		<div class="divider"></div>
+	</div>
+	<div>
+		<h6>relacionados</h6>
+	</div>
+
+	{% include "publicacion/publicaciones_grid.html" with publicaciones=relacionados %}
+
 
 {% endblock %}

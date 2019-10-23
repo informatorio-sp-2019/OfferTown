@@ -42,10 +42,6 @@
 	overflow: hidden;
 }
 
-.imagen-oferta{	
-	position: relative;
-}
-
 .data-oferta-list,
 .data-oferta{
 	padding: 3px;
@@ -150,6 +146,74 @@
 .item-lista{
 	margin-bottom: 5px;
 }
+
+
+/* inicio single oferta */
+.breadcru{
+	margin: 0 auto 5px;
+}
+
+.caja-oferta-single{
+	border: solid 1px lightgrey;
+	border-radius: 3px;
+	overflow: hidden;
+}
+
+.imagen-oferta{	
+	position: relative;
+}
+
+.imagen-oferta img{
+	width: 100%;
+}
+
+.data-oferta-list,
+.data-oferta{
+	padding: 3px;
+}
+
+.titulo-oferta-single{
+	font-size: 1.3em;
+	line-height: 1em;
+	margin: 2px auto;
+}
+.precio-regular-single{
+	color: gray;
+	font-size: .9em;
+	text-decoration: line-through;
+	margin: 0 auto;
+}
+.precio-oferta-single{
+	color: black;
+	font-size: 1.5em;
+	line-height: 1em;
+	margin: 0 auto;
+}
+.detalle-oferta-single{
+	margin: 3px auto;
+	color: #606060;
+	line-height: 1.2em;
+}
+
+
+
+.delivery{
+	position: absolute;
+	background-color: white;
+	padding: 0 3px;
+	border: solid 1px grey;
+	border-radius: 50%;
+	bottom: -3px;
+	right: 5px;
+}
+
+.delivery-list .envio,
+.delivery .envio{
+	color: grey;
+	vertical-align: middle;
+}
+
+
 
 /* listado de rubros */
 .caja-rubro-grid{

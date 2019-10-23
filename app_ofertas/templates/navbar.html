@@ -61,10 +61,10 @@
 
                     </a>
                   <a href="#name">
-                    <span class="white-text name">Nombre de Usuario</span>
+                    <span class="white-text name">{{ request.user.username.title }}</span>
                   </a>
                   <a href="#email">
-                    <span class="white-text email">jdandturk@gmail.com</span>
+                    <span class="white-text email">{{ request.user.username.email }}</span>
                   </a>
                 </div>
                   

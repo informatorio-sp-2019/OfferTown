@@ -1,0 +1,25 @@
+{% extends "base_layout.html" %}
+
+{% block title %}	
+	REGISTRAR
+{% endblock %}
+
+<br>
+{% block content %}	
+	
+	<form method="POST">
+		{% csrf_token %}
+		{{form.as_p}}
+		<button type="submit">Registrar</button>
+	</form>
+{% endblock %}
+
+
+{% block script %}
+
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems);
+  });
+
+{% endblock %}

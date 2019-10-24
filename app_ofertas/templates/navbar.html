@@ -44,65 +44,78 @@
         <div class="col s2 center-align">
           <!-- inicio items menu deslizante -->
           <ul id="slide-out" class="sidenav left-align">
-            <li>
-              <div class="user-view">
-                <div class="background green darken4">
-                  <!-- acá va la imagen de fondo cuando esté lista 
-                  <img src="images/office.jpg">
-                  -->
+              {% if user.is_authenticated %}
+                <li>
+                  <div class="user-view">
+                    <div class="background green darken4">
+                      <!-- acá va la imagen de fondo cuando esté lista 
+                      <img src="images/office.jpg">
+                      -->
+                    </div>
+
+                    <a href="#user">
+                      <i class="large material-icons">person</i>
+                      <!-- Esto va si tiene imagen de perfil 
+                      <img class="circle" src="images/yuna.jpg">
+                       -->
+
+                    </a>
+                  <a href="#name">
+                    <span class="white-text name">{{ request.user.username.title }}</span>
+                  </a>
+                  <a href="#email">
+                    <span class="white-text email">{{ request.user.username.email }}</span>
+                  </a>
                 </div>
-
-                <a href="#user">
-                  <i class="large material-icons">person</i>
-                  <!-- Esto va si tiene imagen de perfil 
-                  <img class="circle" src="images/yuna.jpg">
-                   -->
-
+                  
+              </li>
+              <li>
+                <a href="/favoritos" class="waves-effect">
+                  <i class="material-icons">star</i>Mis Tiendas Favoritas
                 </a>
-              <a href="#name">
-                <span class="white-text name">Nombre de Usuario</span>
-              </a>
-              <a href="#email">
-                <span class="white-text email">jdandturk@gmail.com</span>
-              </a>
-            </div>
-          </li>
+              </li>
+              <li>
+                <a href="/tendencias" class="waves-effect">
+                  <i class="material-icons">whatshot</i>Tendencias
+                </a>
+              </li>
+              <li>
+                <a href="/intereses" class="waves-effect">
+                  <i class="material-icons">favorite</i>Mis Intereses
+                </a>
+              </li>            
+              <li><div class="divider"></div></li>
+              <li>
+                <a href="#!" class="waves-effect">
+                  <i class="material-icons">local_offer</i><strong>Crear Oferta</strong>
+                </a>
+              </li> 
+              <li>
+                <a href="#!" class="waves-effect">
+                  <i class="material-icons">style</i><strong>Mis Ofertas</strong>
+                </a>
+              </li> 
+              {% else %}
+                  
+              {% endif %}              
           <!-- inicio lista de enlaces del menú -->
-          <li>
-            <a href="#!" class="waves-effect">
-              <i class="material-icons">star</i>Mis Tiendas Favoritas
-            </a>
-          </li>
-          <li>
-            <a href="#!" class="waves-effect">
-              <i class="material-icons">whatshot</i>Tendencias
-            </a>
-          </li>
-          <li>
-            <a href="#!" class="waves-effect">
-              <i class="material-icons">favorite</i>Mis Intereses
-            </a>
-          </li>            
-          <li><div class="divider"></div></li>
-          <li>
-            <a href="#!" class="waves-effect">
-              <i class="material-icons">local_offer</i><strong>Crear Oferta</strong>
-            </a>
-          </li> 
-          <li>
-            <a href="#!" class="waves-effect">
-              <i class="material-icons">style</i><strong>Mis Ofertas</strong>
-            </a>
-          </li> 
           <li><div class="divider"></div></li>
           <!-- 
           <li><a class="subheader">Subheader</a></li>
           -->
-          <li>
-            <a href="{% url 'app_accounts:logout' %}" class="waves-effect">
-              <i class="material-icons">power_settings_new</i>Cerrar Sesión
-            </a>
-          </li> 
+              {% if user.is_authenticated %}
+                <li>
+                  <a href="{% url 'app_accounts:logout' %}" class="waves-effect">
+                    <i class="material-icons">power_settings_new</i>Cerrar Sesión
+                  </a>
+                </li> 
+              {% else %}
+                <li>
+                  <a href="{% url 'app_accounts:login' %}" class="waves-effect">
+                    <i class="material-icons">power_settings_new</i>Iniciar Sesión
+                  </a>
+                </li>               
+              {% endif %}            
 
           </ul>
           <!-- fin items menu deslizante -->

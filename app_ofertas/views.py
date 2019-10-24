@@ -110,7 +110,7 @@ def agregar_publicacion(request):
 		return render(request, 'publicacion/agregar_publicacion.html',{'form':form})
 
 
-@login_required(login_url='login')
+@login_required
 def favoritos(request):
 	#lugares favoritos
 	contexto = {
@@ -127,7 +127,7 @@ def tendencia(request):
 	}
 	return render(request, "tendencia.html", contexto)
 
-@login_required(login_url='login')
+@login_required
 def intereses(request):
 	#publicaciones rubros favoritos
 	contexto = {
@@ -140,7 +140,10 @@ def ver_publicacion(request,id):
 		pub=Publicacion.objects.get(pk=id)
 	except Publicacion.DoesNotExist:
 		raise Http404("Esta oferta no se encuentra actualmente disponible")
-	return render(request, 'publicacion/publicacion.html',{'pub':pub})
+
+	rubro_pub = pub.rubro
+	relacionados = Publicacion.objects.filter(rubro=rubro_pub).exclude(pk=pub.id).order_by("?")[:4]
+	return render(request, 'publicacion/publicacion.html',{'pub':pub, "relacionados":relacionados})
 
 def ver_rubro(request,id):
 	try:

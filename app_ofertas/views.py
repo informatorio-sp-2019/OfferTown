@@ -160,8 +160,6 @@ def ver_local(request,id):
 	return render(request, 'local/local.html',{'local':local})
 
 
-
-
 def vistas_test(request):
 	#Obtener 9 ofertas recientes (mando todas mientras CORREGIR )
 	recientes=Publicacion.objects.all()

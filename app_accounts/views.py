@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from .forms import LoginForm
+from .forms import LoginForm,CreateForm
 from django.contrib import messages
+import ipdb
+
 # Create your views here.
 
 def login_view(request):	
@@ -20,6 +22,7 @@ def login_view(request):
 		else:
 			messages.error(request, 'Usuario o password incorrecto!!')
 
+
 	form = LoginForm()
 	context = {'form':form}
 	template = 'login.html'
@@ -33,4 +36,24 @@ def logout_view(request):
 	return redirect('app_accounts:login')
 
 
+def create_user_view(request):
+	if request.user.is_authenticated:
+		return redirect('app_ofertas:index') 
 
+	form = CreateForm(request.POST or None)
+	if request.method == 'POST':
+		if form.is_valid():
+			# ipdb.set_trace()	
+			user = form.save(commit=False)
+			user.set_password(user.password)
+			user.is_staff = True			
+			user.imagen = 'fotos_usuarios/'+request.POST['imagen']
+			user.save()
+
+			return redirect('app_accounts:login')					
+
+
+	context = {'form':form}
+	template = 'register.html'
+
+	return render(request,template,context)

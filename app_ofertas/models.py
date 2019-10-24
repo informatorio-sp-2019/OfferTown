@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 
 class Usuario(User):
-	TIPO_USUARIOS = (('ad','ADMINISTRADOR'),('of','OFERENTE'))
+	TIPO_USUARIOS = (('co','CONSULTAR OFERTAS'),('po','PUBLICAR OFERTAS'))
 
 	tipo_usuario = models.CharField(max_length = 2, null=False, choices = TIPO_USUARIOS) 
 	imagen       = models.ImageField(upload_to='fotos_usuarios', null=True,blank=True)

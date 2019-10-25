@@ -12,7 +12,10 @@
 		<div class="caja-oferta-single z-depth-2">
 			<div class="col s12 m6 l8 sin-padding">
 				<div class="imagen-oferta">
-					<img class="responsive-img" src="{{ local.imagen.url }}">
+						{% if local.imagen %}
+							<img class="responsive-img" src="{{ local.imagen.url }}">
+						{% else %}
+						{% endif %}					
 				</div>
 			</div>
 			<div class="col s12 m6 l4">

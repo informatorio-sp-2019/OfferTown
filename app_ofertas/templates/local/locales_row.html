@@ -1,0 +1,41 @@
+	{# muestra listado de una lista de locales #}
+	{# pasar la lista como "locales" #}
+
+
+	<div class="row">
+		{% for local in locales %}
+			<div class="col s4 m3">
+				<div class="caja-oferta-grid z-depth-2">
+					<a href="/loc/{{local.id}}/">
+						<div class="imagen-oferta-grid">
+							<img class="responsive-img" src="{{ item.imagen.url }}">
+							{% if local.delivery %}
+								<div class="delivery z-depth 1">
+									<span class="envio"><i class="tiny material-icons">motorcycle</i></span>
+								</div>
+							{% endif %}
+
+						</div>
+						<!-- <div class="divider"></div> -->
+						<div class="data-oferta-grid">
+							<p class="titulo-oferta-grid truncate tooltipped" data-position="top" data-tooltip="{{ item.titulo }}" >{{ local.nombre }} </p>
+							<p class="precio-regular-grid"></p>
+							<p class="precio-oferta-grid"> </p>
+							<p class="detalle-oferta-grid"></p>
+						</div>
+					</a>
+
+				</div>
+			</div>
+			
+		{% endfor %}
+	</div>
+
+	{% block script %}
+	<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.tooltipped');
+    var instances = M.Tooltip.init(elems);
+  });
+	</script>
+	{% endblock %}

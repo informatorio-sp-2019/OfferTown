@@ -13,7 +13,10 @@
 				
 			<div class="col s12 m6 l8 sin-padding">
 				<div class="imagen-oferta">
-					<img class="responsive-img" src="{{ pub.imagen.url }}">
+					{% if pub.imagen %}
+						<img class="responsive-img" src="{{ pub.imagen.url }}">
+					{% else %}
+					{% endif %}
 				</div>
 			</div>
 				<!-- <div class="divider"></div> -->

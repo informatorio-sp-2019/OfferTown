@@ -6,7 +6,10 @@
 			<div class="caja-rubro-grid">
 				<a href="#" class="waves">
 					<div class="imagen-rubro">
-						<img class="responsive-img" src="{{ categoria.imagen.url }}">
+						{% if pub.imagen %}
+							<img class="responsive-img" src="{{ categoria.imagen.url }}">
+						{% else %}
+						{% endif %}						
 						
 					</div>
 					<!-- <div class="divider"></div> -->

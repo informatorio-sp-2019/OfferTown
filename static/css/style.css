@@ -180,6 +180,23 @@
 	width: 100%;
 }
 
+
+.porcentaje_descuento{
+	position: absolute;
+	vertical-align: bottom;
+	bottom: 86%;
+	left: 86%;
+	font-size: 1.2em;
+	line-height: 1em;
+	width: 50px;
+	height: 50px;
+
+	background-color: lightgreen;
+	border:solid 1px #959595;
+	border-radius: 50%;
+	text-align: center;
+}
+
 .data-oferta-list,
 .data-oferta{
 	padding: 3px;

@@ -5,6 +5,8 @@
 {% block content %}
 <div class="row breadcru">
 	<a href="/rubro/{{pub.rubro.id}}">{{ pub.rubro }}></a>
+	<a href="#!" class="secondary-content"><i class="material-icons tooltipped grey-text" data-position="top" data-tooltip="Agregar {{ pub.rubro }} a mis intereses">favorite_border</i></a>
+
 </div>
 
 	<div class="row">
@@ -17,6 +19,7 @@
 						<img class="responsive-img" src="{{ pub.imagen.url }}">
 					{% else %}
 					{% endif %}
+					<span class="porcentaje_descuento">{{ pub.get_descuento }}% <br>OFF</span>
 				</div>
 			</div>
 				<!-- <div class="divider"></div> -->
@@ -32,6 +35,7 @@
 					</h6>
 					<p class="detalle-oferta-single">
 						<i class="material-icons icono-detalle-oferta">store</i> {{ pub.local.nombre }}
+						<a href="#!" class="secondary-content"><i class="material-icons tooltipped grey-text" data-position="top" data-tooltip="Agregar {{ pub.local.nombre }} a mis favoritos">star_border</i></a>
 					</p>
 					<p class="detalle-oferta-single">
 						<i class="material-icons icono-detalle-oferta">room</i> {{ pub.local.direccion }}
@@ -53,6 +57,11 @@
 						<a href="#">más ofertas del vendedor</a>
 					</p>
 					
+					
+					
+
+
+
 				</div>
 			</div>
 			

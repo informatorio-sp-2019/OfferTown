@@ -94,6 +94,10 @@ class Publicacion(models.Model):
 	def __str__(self):
 		return self.titulo
 
+	def get_descuento(self):
+		descuento = 100 - int(self.precio_oferta * 100 / self.precio_regular)
+		return descuento
+
 	class Meta:
 		ordering = ['fecha_publi']
 

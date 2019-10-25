@@ -4,7 +4,7 @@
 	{% for categoria in rubros %}
 		<div class="col s4 m3 sin-padding">
 			<div class="caja-rubro-grid">
-				<a href="#" class="waves">
+				<a href="/rubro/{{categoria.id}}" class="waves">
 					<div class="imagen-rubro">
 						{% if pub.imagen %}
 							<img class="responsive-img" src="{{ categoria.imagen.url }}">

@@ -40,6 +40,22 @@
 	border: solid 1px lightgrey;
 	border-radius: 3px;
 	overflow: hidden;
+	margin-bottom: 10px;
+}
+
+.imagen-oferta-grid{
+	height: 160px;
+}
+
+.imagen-oferta-grid img{
+	height: 100%;
+	width:auto;
+	margin: 0 auto;
+}
+
+.data-oferta-grid{
+	height: 110px;
+	padding: 0 3px;
 }
 
 .data-oferta-list,
@@ -57,7 +73,6 @@
 	font-size: .9em;
 	text-decoration: line-through;
 	margin: 0 auto;
-	display: none;
 }
 .precio-oferta-grid{
 	color: black;
@@ -69,12 +84,10 @@
 	margin: 3px auto;
 	color: #606060;
 	line-height: 1.2em;
-	display: none;
 }
 
-.caja-oferta-grid:hover .precio-regular-grid,
-.caja-oferta-grid:hover .detalle-oferta-grid{
-	display: block;
+.caja-oferta-grid:hover{
+	border:solid 1px #959595;
 }
 
 .delivery{

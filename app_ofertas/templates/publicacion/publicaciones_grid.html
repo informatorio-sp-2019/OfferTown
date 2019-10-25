@@ -6,16 +6,18 @@
 			<div class="col s4 m3">
 				<div class="caja-oferta-grid z-depth-2">
 					<a href="/pub/{{item.id}}/">
-						<div class="imagen-oferta">
+						<div class="imagen-oferta-grid">
 							<img class="responsive-img" src="{{ item.imagen.url }}">
-							
-							<div class="delivery z-depth 1">
-								<span class="envio"><i class="tiny material-icons">motorcycle</i></span>
-							</div>
+							{% if pub.local.delivery %}
+								<div class="delivery z-depth 1">
+									<span class="envio"><i class="tiny material-icons">motorcycle</i></span>
+								</div>
+							{% endif %}
+
 						</div>
 						<!-- <div class="divider"></div> -->
-						<div class="data-oferta">
-							<p class="titulo-oferta-grid" >{{ item.titulo }} </p>
+						<div class="data-oferta-grid">
+							<p class="titulo-oferta-grid truncate tooltipped" data-position="top" data-tooltip="{{ item.titulo }}" >{{ item.titulo }} </p>
 							<p class="precio-regular-grid">{{ item.precio_regular }}</p>
 							<p class="precio-oferta-grid"> {{ item.precio_oferta }}</p>
 							<p class="detalle-oferta-grid"> {{ item.detalle|truncatechars:37 }}</p>
@@ -27,3 +29,12 @@
 			
 		{% endfor %}
 	</div>
+
+	{% block script %}
+	<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.tooltipped');
+    var instances = M.Tooltip.init(elems);
+  });
+	</script>
+	{% endblock %}

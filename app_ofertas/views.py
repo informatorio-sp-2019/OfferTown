@@ -75,9 +75,15 @@ def search(request):
 		#por abecedario
 		publicaciones = publicaciones.order_by('titulo')
 
+
+	locales = Local.objects.filter(nombre__contains=param_titulo)
+	rubros = Rubro.objects.filter(nombre__contains=param_titulo)
+
 	#preparar contexto para el template
 	contexto = {
 		"publicaciones":publicaciones,
+		"locales":locales,
+		"rubros":rubros,
 		"param_titulo": param_titulo,
 		"param_payment": param_payment,
 		"param_delivery": param_delivery,

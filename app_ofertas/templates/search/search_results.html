@@ -8,12 +8,12 @@
 		{% include 'search/search_form.html' %}
 	</div>
 	<!-- resultados de busqueda -->
-	<row class="divider"></row>
+	<div class="divider"></div>
 	<div class="row">
 		<h6>Resultados</h6>
 	</div>
-	
-	<row class="divider"></row>
+	<div class="divider"></div>
+	<div class="divider"></div>
 
 	<div class="row">
 		<h6>Publicaciones</h6>
@@ -22,7 +22,7 @@
 	{# manda al template publicacion/publicaciones_listado #}
 	{% include "publicacion/publicaciones_row.html" with publicaciones=publicaciones %}
 
-	<row class="divider"></row>
+	<div class="divider"></div>
 
 	<div class="row">
 		<h6>Locales</h6>
@@ -31,7 +31,7 @@
 	{% include "local/locales_grid.html" with locales=locales %}
 
 
-	<row class="divider"></row>
+	<div class="divider"></div>
 
 	<div class="row">
 		<h6>Rubros</h6>

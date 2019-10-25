@@ -1,0 +1,48 @@
+{% extends "esquema.html" %}
+
+{% block title %} {{ local.nombre }} {% endblock %}
+
+{% block content %}
+
+	<div class="row">
+		<h3 class="titulo-local">
+			{{ local.nombre }}
+		</h3>
+
+		<div class="caja-oferta-single z-depth-2">
+			<div class="col s12 m6 l8 sin-padding">
+				<div class="imagen-oferta">
+					<img class="responsive-img" src="{{ local.imagen.url }}">
+				</div>
+			</div>
+			<div class="col s12 m6 l4">
+				<div class="data-oferta">
+					<p class="detalle-oferta-single" ><i class="material-icons icono-detalle-oferta">phone</i>
+						Contactanos: {{ local.telefono }} </p>
+					<p class="detalle-oferta-single" ><i class="material-icons icono-detalle-oferta">location_on</i>
+						Direccion: {{ local.direccion }} </p>
+					<p class="detalle-oferta-single" ><i class="material-icons icono-detalle-oferta">credit_card</i>
+						Metodos de pago: {{ local.metodo_pago }} </p>
+
+					{% if local.delivery == True %}
+						<p class="detalle-oferta-single" ><i class="material-icons icono-detalle-oferta">motorcycle</i>Tenemos Delivery</p>
+					{% endif %}
+
+					<p class="detalle-oferta-single" ><i class="material-icons icono-detalle-oferta">watch_later</i>
+						Horario de Atenciòn: {{ local.horario }} </p>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="row">
+		<div class="divider"></div>
+	</div>
+
+	<div>
+		<h6>Màs ofertas del Vendedor</h6>
+	</div>
+
+{% endblock %}

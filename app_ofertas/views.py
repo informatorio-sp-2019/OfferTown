@@ -152,7 +152,12 @@ def ver_rubro(request,id):
 		raise Http404("Este rubro no se encuentra actualmente disponible")
 	return render(request, 'rubro/rubro.html',{'publicaciones':publicaciones})
 
-
+def ver_local(request,id):
+	try:
+		local=Local.objects.get(pk=id)
+	except Local.DoesNotExist:
+		raise Http404("Este local no se encuentra actualmente disponible")
+	return render(request, 'local/local.html',{'local':local})
 
 
 def vistas_test(request):

@@ -36,6 +36,7 @@ class Local(models.Model):
 	delivery   = models.BooleanField(default=False)
 	telefono   = models.IntegerField(null=True,blank=True)
 	metodo_pago =  models.ManyToManyField("MedioDePago", through="LocalMedioDePago")
+	imagen     = models.ImageField(upload_to='fotos_locales', null=True, blank=True)
 
 	def get_horarios(self):
 		return self.horas.all()

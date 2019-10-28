@@ -141,9 +141,11 @@ def ver_publicacion(request,id):
 	except Publicacion.DoesNotExist:
 		raise Http404("Esta oferta no se encuentra actualmente disponible")
 
+	sucursales = pub.local.get_sucursales()
+	medios = pub.local.get_medios_de_pago()
 	rubro_pub = pub.rubro
 	relacionados = Publicacion.objects.filter(rubro=rubro_pub).exclude(pk=pub.id).order_by("?")[:4]
-	return render(request, 'publicacion/publicacion.html',{'pub':pub, "relacionados":relacionados})
+	return render(request, 'publicacion/publicacion.html',{'pub':pub, "relacionados":relacionados, 'medios':medios, 'sucursales':sucursales})
 
 def ver_rubro(request,id):
 	try:

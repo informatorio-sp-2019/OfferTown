@@ -19,7 +19,10 @@
 						<img class="responsive-img" src="{{ pub.imagen.url }}">
 					{% else %}
 					{% endif %}
-					<span class="porcentaje_descuento">{{ pub.get_descuento }}% <br>OFF</span>
+					<div class="descuento_tag_single">
+						<p class="porcentaje_descuento_single">{{ pub.get_descuento }}%</p>
+						<p class="porcentaje_off_single">OFF</p>
+					</div>
 				</div>
 			</div>
 				<!-- <div class="divider"></div> -->
@@ -37,16 +40,35 @@
 						<i class="material-icons icono-detalle-oferta">store</i> {{ pub.local.nombre }}
 						<a href="#!" class="secondary-content"><i class="material-icons tooltipped grey-text" data-position="top" data-tooltip="Agregar {{ pub.local.nombre }} a mis favoritos">star_border</i></a>
 					</p>
+					{% if pub.local.telefono %}
+						<p class="detalle-oferta-single">
+							<i class="material-icons icono-detalle-oferta">phone</i> {{ pub.local.telefono }}
+						</p>
+					{% endif %}
 					<p class="detalle-oferta-single">
 						<i class="material-icons icono-detalle-oferta">room</i> {{ pub.local.direccion }}
 					</p>
 					<p class="detalle-oferta-single">
 						<i class="material-icons icono-detalle-oferta">map</i> {{ pub.local.localidad }}
 					</p>
-					<p class="detalle-oferta-single">
-						<i class="material-icons icono-detalle-oferta">payment</i> {{ pub.local.metodo_pago }}
-					</p>
 
+					{% for medio in medios %}
+						{% if medio.id == 1 %}
+							<p class="detalle-oferta-single">
+								<i class="material-icons icono-detalle-oferta">attach_money</i> Efectivo
+							</p>
+						{% endif %}
+						{% if medio.id == 2 %}
+							<p class="detalle-oferta-single">
+								<i class="material-icons icono-detalle-oferta">credit_card</i> Débito
+							</p>
+						{% endif %}
+						{% if medio.id == 3 %}
+							<p class="detalle-oferta-single">
+								<i class="material-icons icono-detalle-oferta">credit_card</i> Crédito
+							</p>
+						{% endif %}		
+					{% endfor %}
 					{% if pub.local.delivery %}
 					<p class="detalle-oferta-single">
 						<i class="material-icons icono-detalle-oferta">motorcycle</i> Entrega a domicilio
@@ -57,11 +79,15 @@
 						<a href="#">más ofertas del vendedor</a>
 					</p>
 					
-					
-					
-
-
-
+					<div class="divider"></div>
+					<p class="detalle-oferta-single center-align">
+						<strong>SUCURSALES</strong>
+					</p>
+					{% for sucursal in sucursales %}
+						<p class="detalle-oferta-single truncate tooltipped" data-position="top" data-tooltip="{{ sucursal.direccion }} - {{ sucursal.localidad }}">
+							<i class="material-icons icono-detalle-oferta">store</i> {{ sucursal.direccion }} - {{ sucursal.localidad }}
+						</p>					
+					{% endfor %}
 				</div>
 			</div>
 			

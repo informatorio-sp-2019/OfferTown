@@ -125,5 +125,4 @@ class MedioDePago(models.Model):
 class LocalMedioDePago(models.Model):
 	local = models.ForeignKey(Local, on_delete=models.CASCADE, related_name='medios_de_pago')
 	medio_de_pago = models.ForeignKey(MedioDePago, on_delete=models.CASCADE)
-
-
+	

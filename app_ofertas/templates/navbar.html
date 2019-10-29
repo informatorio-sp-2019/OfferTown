@@ -95,6 +95,22 @@
                   <i class="material-icons">style</i><strong>Mis Ofertas</strong>
                 </a>
               </li> 
+
+              <li><div class="divider"></div></li>
+              <li>
+                <a href="{% url 'app_ofertas:agregar_local' %}" class="waves-effect">
+                  <i class="material-icons">local_offer</i><strong>Registrar local</strong>
+                </a>
+              </li> 
+
+              {% for local in request.user.usuario.get_locales %}
+                    <li>
+                      <a href="{% url 'app_ofertas:ver_local' local.id %}" class="waves-effect">
+                        <i class="material-icons">store</i><strong>{{local.nombre}}</strong>
+                      </a>
+                    </li> 
+              {% endfor %}
+
               {% else %}
                   
               {% endif %}              
@@ -115,6 +131,12 @@
                     <i class="material-icons">power_settings_new</i>Iniciar Sesión
                   </a>
                 </li>               
+                <li>
+                  <a href="{% url 'app_accounts:signup' %}" class="waves-effect">
+                    <i class="material-icons">account_circle</i>Registrar
+                  </a>
+                </li>               
+
               {% endif %}            
 
           </ul>

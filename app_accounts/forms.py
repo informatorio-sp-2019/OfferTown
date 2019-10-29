@@ -18,3 +18,6 @@ class CreateForm(forms.ModelForm):
 				'tipo_usuario',
 				)
 		labels = {"tipo_usuario":"Preferencia de uso", }
+		widgets = {'password':forms.PasswordInput()}
+
+

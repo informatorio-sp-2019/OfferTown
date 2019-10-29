@@ -10,6 +10,7 @@ class Usuario(User):
 	tipo_usuario = models.CharField(max_length = 2, null=False, choices = TIPO_USUARIOS) 
 	imagen       = models.ImageField(upload_to='fotos_usuarios', null=True,blank=True)
 
+	@property
 	def get_locales(self):
 		return self.locales.all()
 
@@ -27,13 +28,14 @@ class Localidad(models.Model):
 
 class Local(models.Model):
 	HORARIOS = ('sh','Abierto según horario'),('24hs','Abierto las 24hs')
+	OP_DELIVERY = ((True,'Sí'),(False,'No'))
 
 	nombre     = models.CharField(max_length = 30)
 	direccion  = models.CharField(max_length = 50)
 	horario    = models.CharField(max_length = 4, choices = HORARIOS)
 	usuario    = models.ForeignKey(User, on_delete = models.CASCADE, related_name = 'locales')
 	localidad  = models.ForeignKey(Localidad, on_delete = models.CASCADE, related_name = 'locales', null=True)
-	delivery   = models.BooleanField(default=False)
+	delivery   = models.BooleanField(default=False, choices=OP_DELIVERY)
 	telefono   = models.IntegerField(null=True,blank=True)
 	metodo_pago =  models.ManyToManyField("MedioDePago", through="LocalMedioDePago")
 	imagen     = models.ImageField(upload_to='fotos_locales', null=True, blank=True)

@@ -40,19 +40,18 @@ def create_user_view(request):
 	if request.user.is_authenticated:
 		return redirect('app_ofertas:index') 
 
-	form = CreateForm(request.POST or None)
 	if request.method == 'POST':
+		form = CreateForm(request.POST, request.FILES)		
 		if form.is_valid():
 			# ipdb.set_trace()	
 			user = form.save(commit=False)
 			user.set_password(user.password)
 			user.is_staff = True			
-			user.imagen = 'fotos_usuarios/'+request.POST['imagen']
 			user.save()
 
 			return redirect('app_accounts:login')					
 
-
+	form = CreateForm()
 	context = {'form':form}
 	template = 'register.html'
 

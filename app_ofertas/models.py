@@ -94,6 +94,10 @@ class Publicacion(models.Model):
 	def __str__(self):
 		return self.titulo
 
+	def get_descuento(self):
+		descuento = 100 - int(self.precio_oferta * 100 / self.precio_regular)
+		return descuento
+
 	class Meta:
 		ordering = ['fecha_publi']
 
@@ -121,5 +125,4 @@ class MedioDePago(models.Model):
 class LocalMedioDePago(models.Model):
 	local = models.ForeignKey(Local, on_delete=models.CASCADE, related_name='medios_de_pago')
 	medio_de_pago = models.ForeignKey(MedioDePago, on_delete=models.CASCADE)
-
-
+	

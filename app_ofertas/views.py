@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from app_ofertas.models import Publicacion,Rubro, Local
 from app_ofertas.forms import LocalForm, PublicacionForm
 from django.contrib.auth.decorators import login_required
+import ipdb
 
 # Create your views here.
+
 def hometest(request):
 	return render(request, 'esquema.html',{})
 
@@ -14,7 +16,7 @@ def index(request):
 	#recientes=Publicacion.objects.order_by('-id')[:9]
 	#Obtener las categorías
 	categorias = Rubro.objects.all().order_by('nombre')
-
+		
 	return render(request,'home.html',{'recientes':recientes, 'categorias':categorias})
 
 
@@ -93,17 +95,23 @@ def search(request):
 	return render(request, "search/search_results.html", contexto)
 #fin Search()
 
+@login_required
 def agregar_local(request):
+	
 	if request.method == 'POST':
-		form = LocalForm(request.POST)
+		form = LocalForm(request.POST, request.FILES)
 		if form.is_valid():
-			local = form.save()
+			local = form.save(commit=False)
+			local.usuario = request.user.usuario
+			local.save()
+			
+			return redirect('app_ofertas:index')	
+	
+	form = LocalForm()
+	context={'form':form}
+	template = 'local/alta_local.html'
 
-			return redirect('local')
-
-	else:
-		form = LocalForm()
-		return render(request, 'local/alta_local.html',{'form':form})
+	return render(request, template, context)
 
 def agregar_publicacion(request):
 	if request.method == 'POST':

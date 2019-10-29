@@ -1,11 +1,19 @@
 from django import forms
-from app_ofertas.models import Local, Publicacion
+from app_ofertas.models import Local, Publicacion, Localidad, MedioDePago
 
 class LocalForm(forms.ModelForm):
 	class Meta:
 		model = Local
-		fields = ('nombre','direccion','horario','usuario','localidad')
+		fields = ('imagen',
+			      'nombre',
+			      'direccion',
+			      'telefono',			      
+			      'localidad',
+			      'delivery',
+			      'metodo_pago',
+			      'horario',)
 
+	
 class PublicacionForm(forms.ModelForm):
 	class Meta:
 		model = Publicacion
@@ -19,6 +27,7 @@ class PublicacionForm(forms.ModelForm):
 			'activada',
 			'tiempo_publi',
 			'cant_visitas',
-			#'fecha_creacion',
-			#'fecha_publi'
 			)
+
+
+

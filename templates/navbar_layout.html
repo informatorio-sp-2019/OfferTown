@@ -35,37 +35,15 @@
         <div class="col s2 center-align">
           <!-- inicio items menu deslizante -->
           <ul id="slide-out" class="sidenav left-align">
-            <li>
-              <div class="user-view">
-                <div class="background green darken4">
-                  <!-- acá va la imagen de fondo cuando esté lista 
-                  <img src="images/office.jpg">
-                  -->
-                </div>
 
-                <a href="#user">
-                  <i class="large material-icons">person</i>
-                  <!-- Esto va si tiene imagen de perfil 
-                  <img class="circle" src="images/yuna.jpg">
-                   -->
-
-                </a>
-              <a href="#name">
-                <span class="white-text name">Nombre de Usuario</span>
-              </a>
-              <a href="#email">
-                <span class="white-text email">jdandturk@gmail.com</span>
-              </a>
-            </div>
-          </li>
           <!-- inicio lista de enlaces del menú -->
           <li>
-            <a href="#!" class="waves-effect">
+            <a href= "{% url 'app_accounts:login' %}" class="waves-effect">
               <i class="material-icons">whatshot</i>Login
             </a>
           </li>
           <li>
-            <a href="#!" class="waves-effect">
+            <a href="{% url 'app_accounts:signup' %}" class="waves-effect">
               <i class="material-icons">favorite</i>Registrar
             </a>
           </li>            

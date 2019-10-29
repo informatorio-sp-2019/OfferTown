@@ -106,7 +106,7 @@ def agregar_local(request):
 			local.save()
 			
 			return redirect('app_ofertas:index')	
-	
+			
 	form = LocalForm()
 	context={'form':form}
 	template = 'local/alta_local.html'
@@ -168,13 +168,17 @@ def ver_rubro(request,id):
 		raise Http404("Este rubro no se encuentra actualmente disponible")
 	return render(request, 'rubro/rubro.html',{'publicaciones':publicaciones})
 
-def ver_local(request,id):
-	try:
-		local=Local.objects.get(pk=id)
-	except Local.DoesNotExist:
+@login_required
+def ver_local(request,usuario,id):
+	if request.user.username == usuario and (id in request.user.usuario.get_locales_id):
+		try:
+			local=Local.objects.get(pk=id)
+		except Local.DoesNotExist:
+			raise Http404("Este local no se encuentra actualmente disponible")
+	else:
 		raise Http404("Este local no se encuentra actualmente disponible")
-	return render(request, 'local/local.html',{'local':local})
 
+	return render(request, 'local/local.html',{'local':local})
 
 def vistas_test(request):
 	#Obtener 9 ofertas recientes (mando todas mientras CORREGIR )
@@ -185,3 +189,4 @@ def vistas_test(request):
 	categorias = Rubro.objects.all().order_by('nombre')
 
 	return render(request,'vistas_test.html',{'publicaciones':recientes, 'rubros':categorias})
+

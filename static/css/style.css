@@ -46,19 +46,20 @@
 .imagen-oferta-grid{
 	height: 160px;
 	position: relative;
+	overflow: hidden;
 }
 
 .imagen-oferta-grid img{
-	height: 100%;
-	width:auto;
+	height: auto;
+	width:100%;
 	margin: 0 auto;
 }
 
 .descuento_tag_grid{
 	position: absolute;
 	vertical-align: bottom;
-	bottom: 68%;
-	left: 68%;
+	bottom: 60%;
+	left: 60%;
 	width: 45px;
 	height: 45px;
 	background-color: #388e3c;
@@ -87,6 +88,7 @@
 .data-oferta-grid{
 	height: 110px;
 	padding: 0 3px;
+	position: relative;
 }
 
 .data-oferta-list,
@@ -123,12 +125,16 @@
 
 .delivery{
 	position: absolute;
-	background-color: white;
+	background-color:
+	white;
 	padding: 0 3px;
-	border: solid 1px grey;
+	border: solid 1px
+	grey;
 	border-radius: 50%;
-	bottom: -3px;
+	top: -17px;
 	right: 5px;
+	height: 25px;
+	width: 25px;
 }
 
 .delivery-list .envio,
@@ -317,6 +323,11 @@
 	text-align: center;
 }
 
+/* single rubro */
+.stiker{
+	width: 15%;
+}
+
 /* pagina de local */
 .columna-dias-hoy,
 .columna-dias{
@@ -325,13 +336,28 @@
 	text-align: center;
 	border: solid 1px #959595;
 	border-radius: 3px;
+	vertical-align: top;
 }
 
 .columna-dias-hoy{
-	background-color: lightgreen;
+	background-color: #388e3c;
 }
 
 .columna-dias-hoy p,
 .columna-dias p{
 	margin: 0;
+}
+
+.columna-dias-hoy p{
+	font-weight: 700;
+	color: #ffffff;
+}
+
+/* login */
+.logo-login{
+	padding: 10px;
+}
+
+.titulo-login{
+	margin-bottom: 2px;
 }

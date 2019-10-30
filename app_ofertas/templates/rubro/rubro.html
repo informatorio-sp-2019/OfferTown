@@ -1,15 +1,27 @@
 {% extends "esquema.html" %}
 
+{% load static from staticfiles %}
+
 {% block title %} rubro {% endblock %}
 
 {% block content %}
 
-	<div class="row">
-		Rubro
+	<div class="row sin-margen">
+		{{rubro.nombre}} ({{cantidad}})	<a href="#!" class="secondary-content"><i class="material-icons tooltipped grey-text" data-position="top" data-tooltip="Agregar {{ rubro.nombre }} a mis intereses">favorite_border</i></a>
 	</div>
-	{# manda al template publicacion/publicaciones_listado #}
-	{% include "publicacion/publicaciones_grid.html" with publicaciones=publicaciones %}
-	
+
+	{% if publicaciones %}
+
+		{# manda al template publicacion/publicaciones_listado #}
+		{% include "publicacion/publicaciones_grid.html" with publicaciones=publicaciones %}
+	{% else %}
+
+		<div class="row center-align">
+			<img class="responsive-img stiker" src="{% static 'img/sin-ofertas.svg' %}">
+			<h6>En este momento no hay ofertas activas de {{rubro.nombre}}, vuelve más tarde. O agregala a tus <strong>Intereses</strong> para ser el primero en recibirlas.</h6>
+		</div>
+
+	{% endif %}	
 
 
 {%endblock%}

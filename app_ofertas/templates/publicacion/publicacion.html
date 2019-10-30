@@ -74,6 +74,14 @@
 							</p>
 						{% endif %}		
 					{% endfor %}
+
+					{% for horario in horarios %}
+
+						{% if hoy == horario.dia %}
+							<p class="detalle-oferta-single" ><i class="material-icons icono-detalle-oferta">watch_later</i> Hoy de {{horario.hora_d1}} a {{horario.hora_h1}} {% if horario.hora_d2 %} y de {{horario.hora_d2}} a {{horario.hora_h2}} {% endif %}</p>
+						{% endif %}
+					{% endfor %}
+
 					{% if pub.local.delivery %}
 					<p class="detalle-oferta-single">
 						<i class="material-icons icono-detalle-oferta">motorcycle</i> Entrega a domicilio

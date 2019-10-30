@@ -36,7 +36,12 @@
 					<div class="divider"></div>
 					<p class="detalle-oferta-single">
 						<i class="material-icons icono-detalle-oferta">store</i>
-						<a href="/loc/{{ pub.local.id }}/"> {{ pub.local.nombre }} </a>
+					
+						{#<a href="/loc/{{ pub.local.id }}/"> {{ pub.local.nombre }} </a> #}
+
+						<a href="{% url 'app_ofertas:ver_local'  pub.local.id %}"> {{ pub.local.nombre }} </a> 
+						
+
 						<a href="#!" class="secondary-content"><i class="material-icons tooltipped grey-text" data-position="top" data-tooltip="Agregar {{ pub.local.nombre }} a mis favoritos">star_border</i></a>
 					</p>
 					{% if pub.local.telefono %}

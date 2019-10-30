@@ -211,6 +211,7 @@
 
 .imagen-oferta{	
 	position: relative;
+	display: flex;
 }
 
 .imagen-oferta img{
@@ -353,6 +354,11 @@
 	color: #ffffff;
 }
 
+.imagen-local{
+	position: relative;
+	display: flex;
+}
+
 /* login */
 .logo-login{
 	padding: 10px;
@@ -360,4 +366,12 @@
 
 .titulo-login{
 	margin-bottom: 2px;
+}
+
+/* menu */
+.imagen-menu{
+	max-width: 20px;
+	margin-right: 27px;
+	margin-left: 3px;
+	vertical-align: middle;
 }

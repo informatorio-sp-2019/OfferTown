@@ -7,7 +7,7 @@
     {% block navbar %}     
     {% endblock %}      
 
-{% block content %}	
+{% block content %}
 		{% if messages %}
 			<ul>
 			{% for message in messages %}
@@ -15,14 +15,20 @@
 			{% endfor %}
 			</ul>
 		{% endif %}
+	<div>
+		<h4 class="center titulo-login"><i class="material-icons circle red white-text logo-login">loyalty</i>OfferTown</h4>
+		<p class="slogan center sin-margen">Ofertas en tu ciudad</p>
+	</div>
 	<form method="POST">
 		{% csrf_token %}
 		{{form.as_p}}
-		<button type="submit">Ingresar</button>	
+		<div class="center-align">
+			<button class="waves-effect waves-light btn-large" type="submit"><i class="material-icons right">vpn_key</i>Ingresar</button>	
+		</div>
 	</form>
 	{#<a href="{% url 'app_account/signup' %}"> Registrar</a>#}
 
-	
+
 {% endblock %}
 
 {% block footer %}	

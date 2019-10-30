@@ -8,11 +8,6 @@
 					<a href="/pub/{{item.id}}/">
 						<div class="imagen-oferta-grid">
 							<img class="responsive-img" src="{{ item.imagen.url }}">
-							{% if item.local.delivery %}
-								<div class="delivery z-depth 1">
-									<span class="envio"><i class="tiny material-icons">motorcycle</i></span>
-								</div>
-							{% endif %}
 
 							<div class="descuento_tag_grid">
 								<p class="porcentaje_descuento_grid">{{ item.get_descuento }}%</p>
@@ -22,6 +17,13 @@
 						</div>
 						<!-- <div class="divider"></div> -->
 						<div class="data-oferta-grid">
+							
+							{% if item.local.delivery %}
+								<div class="delivery z-depth 1">
+									<span class="envio"><i class="tiny material-icons">motorcycle</i></span>
+								</div>
+							{% endif %}
+
 							<p class="titulo-oferta-grid truncate tooltipped" data-position="top" data-tooltip="{{ item.titulo }}" >{{ item.titulo }} </p>
 							<p class="precio-regular-grid">{{ item.precio_regular }}</p>
 							<p class="precio-oferta-grid"> {{ item.precio_oferta }}</p>

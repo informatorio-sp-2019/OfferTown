@@ -31,29 +31,34 @@
 					{% endif %}
 
 					{% for medio in medios %}
+
 						{% if medio.id == 1 %}
+
 							<p class="detalle-oferta-single">
-								<i class="material-icons icono-detalle-oferta">attach_money</i> Efectivo
+								<i class="material-icons icono-detalle-oferta">attach_money</i> {{medio.medio_de_pago}}
 							</p>
+
+						{% else %}
+
+							<p class="detalle-oferta-single">
+								<i class="material-icons icono-detalle-oferta">credit_card</i> {{medio.medio_de_pago}}
+							</p>
+						
 						{% endif %}
-						{% if medio.id == 2 %}
-							<p class="detalle-oferta-single">
-								<i class="material-icons icono-detalle-oferta">credit_card</i> Débito
-							</p>
-						{% endif %}
-						{% if medio.id == 3 %}
-							<p class="detalle-oferta-single">
-								<i class="material-icons icono-detalle-oferta">credit_card</i> Crédito
-							</p>
-						{% endif %}		
+					
 					{% endfor %}
 
 					{% if local.delivery == True %}
 						<p class="detalle-oferta-single" ><i class="material-icons icono-detalle-oferta">motorcycle</i>Envío a Domicilio</p>
 					{% endif %}
 
-					<p class="detalle-oferta-single" ><i class="material-icons icono-detalle-oferta">watch_later</i>
-						Horario de Atenciòn: {{ local.horario }} </p>
+
+					{% for horario in horarios %}
+
+						{% if hoy == horario.dia %}
+							<p class="detalle-oferta-single" ><i class="material-icons icono-detalle-oferta">watch_later</i> Hoy de {{horario.hora_d1}} a {{horario.hora_h1}} {% if horario.hora_d2 %} y de {{horario.hora_d2}} a {{horario.hora_h2}} {% endif %}</p>
+						{% endif %}
+					{% endfor %}
 
 				</div>
 			</div>
@@ -66,7 +71,7 @@
 	</div>
 
 	<div class="row">
-		<h6>Horarios de atención {{hoy}}</h6>
+		<h6>Horarios de atención</h6>
 
 	</div>
 
@@ -80,7 +85,7 @@
 					<p>{{horario.hora_d1}}</p>
 					<p>{{horario.hora_h1}}</p>
 					{% if horario.hora_d2 %}
-						<div class="row"></div>
+						<div class="divider"></div>
 						<p>{{horario.hora_d2}}</p>
 						<p>{{horario.hora_h2}}</p>
 					{% endif %}
@@ -91,7 +96,7 @@
 					<p>{{horario.hora_d1}}</p>
 					<p>{{horario.hora_h1}}</p>
 					{% if horario.hora_d2 %}
-						<div class="row"></div>
+						<div class="divider"></div>
 						<p>{{horario.hora_d2}}</p>
 						<p>{{horario.hora_h2}}</p>
 					{% endif %}
@@ -110,7 +115,7 @@
 	</div>
 
 	<div>
-		<h6>Màs ofertas del Vendedor</h6>
+		<h6>Más ofertas del Vendedor</h6>
 	</div>
 
 	{% include "publicacion/publicaciones_grid.html" with publicaciones=ofertas %}

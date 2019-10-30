@@ -156,18 +156,24 @@ def ver_publicacion(request,id):
 	except Publicacion.DoesNotExist:
 		raise Http404("Esta oferta no se encuentra actualmente disponible")
 
+
+	hoy = dia_spanish()
+	horarios = pub.local.get_horarios()
 	sucursales = pub.local.get_sucursales()
 	medios = pub.local.get_medios_de_pago()
 	rubro_pub = pub.rubro
 	relacionados = Publicacion.objects.filter(rubro=rubro_pub).exclude(pk=pub.id).order_by("?")[:4]
-	return render(request, 'publicacion/publicacion.html',{'pub':pub, "relacionados":relacionados, 'medios':medios, 'sucursales':sucursales})
+	return render(request, 'publicacion/publicacion.html',{'pub':pub, "relacionados":relacionados, 'medios':medios, 'sucursales':sucursales, 'horarios':horarios, 'hoy':hoy})
 
 def ver_rubro(request,id):
 	try:
 		publicaciones=Publicacion.objects.filter(rubro=id)
 	except Rubro.DoesNotExist:
 		raise Http404("Este rubro no se encuentra actualmente disponible")
-	return render(request, 'rubro/rubro.html',{'publicaciones':publicaciones})
+	
+	cantidad = Publicacion.objects.filter(rubro=id).count()
+	rubro= Rubro.objects.get(pk=id)
+	return render(request, 'rubro/rubro.html',{'publicaciones':publicaciones, 'rubro':rubro, 'cantidad':cantidad})
 
 def dia_spanish():
 	hoy = date.today().strftime("%A")

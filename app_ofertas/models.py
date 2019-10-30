@@ -14,6 +14,14 @@ class Usuario(User):
 	def get_locales(self):
 		return self.locales.all()
 
+	@property
+	def get_locales_id(self):
+		locales = self.locales.all()
+		list_id_locales = list()
+		for local in locales:
+			list_id_locales.append(local.id)
+			
+		return list_id_locales
 
 class Localidad(models.Model):
 	nombre = models.CharField(max_length = 30)

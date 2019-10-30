@@ -105,7 +105,7 @@
 
               {% for local in request.user.usuario.get_locales %}
                     <li>
-                      <a href="{% url 'app_ofertas:ver_local' user.username local.id %}" class="waves-effect">
+                      <a href="{% url 'app_ofertas:ver_local_usuario' user.username local.id %}" class="waves-effect">
                         <i class="material-icons">store</i><strong>{{local.nombre}}</strong>
                       </a>
                     </li> 

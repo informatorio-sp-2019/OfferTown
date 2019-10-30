@@ -191,7 +191,7 @@ def dia_spanish():
 
 
 def ver_local(request,id):
-	try:
+	try:		
 		local=Local.objects.get(pk=id)
 	except Local.DoesNotExist:
 		raise Http404("Este local no se encuentra actualmente disponible")
@@ -203,7 +203,7 @@ def ver_local(request,id):
 	return render(request, 'local/local.html',{'local':local, 'medios':medios, 'horarios':horarios, 'ofertas':ofertas, 'hoy':hoy })
 
 @login_required
-def ver_local(request,usuario,id):
+def ver_local_usuario(request,usuario,id):
 	if request.user.username == usuario and (id in request.user.usuario.get_locales_id):
 		try:
 			local=Local.objects.get(pk=id)

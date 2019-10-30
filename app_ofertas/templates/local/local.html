@@ -5,12 +5,13 @@
 {% block content %}
 
 	<div class="row">
-		<h3 class="titulo-local">
+		<h6 class="titulo-local">
 			{{ local.nombre }}
-		</h3>
+			<a href="#!" class="secondary-content"><i class="material-icons tooltipped grey-text" data-position="top" data-tooltip="Agregar {{ local.nombre }} a mis favoritos">star_border</i></a>
+		</h6>
 
 		<div class="caja-oferta-single z-depth-2">
-			<div class="col s12 m6 l8 sin-padding">
+			<div class="col s12 m5 l4 sin-padding">
 				<div class="imagen-oferta">
 						{% if local.imagen %}
 							<img class="responsive-img" src="{{ local.imagen.url }}">
@@ -18,17 +19,37 @@
 						{% endif %}					
 				</div>
 			</div>
-			<div class="col s12 m6 l4">
+			<div class="col s12 m7 l8">
 				<div class="data-oferta">
-					<p class="detalle-oferta-single" ><i class="material-icons icono-detalle-oferta">phone</i>
-						Contactanos: {{ local.telefono }} </p>
 					<p class="detalle-oferta-single" ><i class="material-icons icono-detalle-oferta">location_on</i>
 						Direccion: {{ local.direccion }} </p>
-					<p class="detalle-oferta-single" ><i class="material-icons icono-detalle-oferta">credit_card</i>
-						Metodos de pago: {{ local.metodo_pago }} </p>
+					{% if local.telefono %}
+						<p class="detalle-oferta-single">
+							<i class="material-icons icono-detalle-oferta">phone</i>
+							<a href="tel:{{ local.telefono }}">{{ local.telefono }}</a>
+						</p>
+					{% endif %}
+
+					{% for medio in medios %}
+						{% if medio.id == 1 %}
+							<p class="detalle-oferta-single">
+								<i class="material-icons icono-detalle-oferta">attach_money</i> Efectivo
+							</p>
+						{% endif %}
+						{% if medio.id == 2 %}
+							<p class="detalle-oferta-single">
+								<i class="material-icons icono-detalle-oferta">credit_card</i> Débito
+							</p>
+						{% endif %}
+						{% if medio.id == 3 %}
+							<p class="detalle-oferta-single">
+								<i class="material-icons icono-detalle-oferta">credit_card</i> Crédito
+							</p>
+						{% endif %}		
+					{% endfor %}
 
 					{% if local.delivery == True %}
-						<p class="detalle-oferta-single" ><i class="material-icons icono-detalle-oferta">motorcycle</i>Tenemos Delivery</p>
+						<p class="detalle-oferta-single" ><i class="material-icons icono-detalle-oferta">motorcycle</i>Envío a Domicilio</p>
 					{% endif %}
 
 					<p class="detalle-oferta-single" ><i class="material-icons icono-detalle-oferta">watch_later</i>
@@ -44,8 +65,65 @@
 		<div class="divider"></div>
 	</div>
 
+	<div class="row">
+		<h6>Horarios de atención {{hoy}}</h6>
+
+	</div>
+
+	<div class="row">
+
+		{% for horario in horarios %}
+
+			{% if hoy == horario.dia %}
+				<div class="columna-dias-hoy">
+					<p class="truncate">{{horario.dia}}</p>
+					<p>{{horario.hora_d1}}</p>
+					<p>{{horario.hora_h1}}</p>
+					{% if horario.hora_d2 %}
+						<div class="row"></div>
+						<p>{{horario.hora_d2}}</p>
+						<p>{{horario.hora_h2}}</p>
+					{% endif %}
+				</div>
+			{% else %}
+				<div class="columna-dias">
+					<p class="truncate">{{horario.dia}}</p>
+					<p>{{horario.hora_d1}}</p>
+					<p>{{horario.hora_h1}}</p>
+					{% if horario.hora_d2 %}
+						<div class="row"></div>
+						<p>{{horario.hora_d2}}</p>
+						<p>{{horario.hora_h2}}</p>
+					{% endif %}
+				</div>
+			{% endif %}
+		{% endfor %}
+
+
+
+	</div>
+
+
+
+	<div class="row">
+		<div class="divider"></div>
+	</div>
+
 	<div>
 		<h6>Màs ofertas del Vendedor</h6>
 	</div>
+
+	{% include "publicacion/publicaciones_grid.html" with publicaciones=ofertas %}
+
+{% endblock %}
+
+{% block script %} 
+
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.tooltipped');
+    var instances = M.Tooltip.init(elems);
+  });
+</script>
 
 {% endblock %}

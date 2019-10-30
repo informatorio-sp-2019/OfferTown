@@ -79,6 +79,11 @@ class Horario(models.Model):
 	hora_d2 = models.CharField(max_length = 5, null=True, blank = True)
 	hora_h2 = models.CharField(max_length = 5, null=True, blank = True)
 
+	def __str__(self):
+		if self.hora_h2:
+			return "{0}, de {1} a {2} y de {3} a {4}".format(self.dia, self.hora_d1, self.hora_h1, self.hora_d2, self.hora_h2)
+		else:
+			return "{0}, de {1} a {2}".format(self.dia, self.hora_d1, self.hora_h1)
 
 class Rubro(models.Model):
 	nombre = models.CharField(max_length = 25)

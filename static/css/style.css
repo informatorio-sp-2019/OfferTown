@@ -317,6 +317,21 @@
 	text-align: center;
 }
 
-.titulo-rubro-grid{
+/* pagina de local */
+.columna-dias-hoy,
+.columna-dias{
+	width: 13.5%;
+	display: inline-block;
+	text-align: center;
+	border: solid 1px #959595;
+	border-radius: 3px;
+}
 
+.columna-dias-hoy{
+	background-color: lightgreen;
+}
+
+.columna-dias-hoy p,
+.columna-dias p{
+	margin: 0;
 }

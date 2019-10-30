@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from app_ofertas.models import Publicacion,Rubro, Local
 from app_ofertas.forms import LocalForm, PublicacionForm
 from django.contrib.auth.decorators import login_required
+from datetime import date
 import ipdb
 
 # Create your views here.
@@ -167,6 +168,39 @@ def ver_rubro(request,id):
 	except Rubro.DoesNotExist:
 		raise Http404("Este rubro no se encuentra actualmente disponible")
 	return render(request, 'rubro/rubro.html',{'publicaciones':publicaciones})
+
+def dia_spanish():
+	hoy = date.today().strftime("%A")
+
+	if hoy == "Monday":
+		hoy = "Lunes"
+	elif hoy == "Tuesday":
+		hoy = "Martes"
+	elif hoy== "Wednesday":
+		hoy = "Miércoles"
+	elif hoy == "Thursday":
+		hoy = "Jueves"
+	elif hoy == "Friday":
+		hoy = "Viernes"
+	elif hoy == "Saturday":
+		hoy = "Sábado"
+	else:
+		hoy = "Domingo"
+
+	return hoy
+
+
+def ver_local(request,id):
+	try:
+		local=Local.objects.get(pk=id)
+	except Local.DoesNotExist:
+		raise Http404("Este local no se encuentra actualmente disponible")
+
+	hoy = dia_spanish()
+	medios = local.get_medios_de_pago()
+	horarios = local.get_horarios()
+	ofertas = Publicacion.objects.filter(local=local)
+	return render(request, 'local/local.html',{'local':local, 'medios':medios, 'horarios':horarios, 'ofertas':ofertas, 'hoy':hoy })
 
 @login_required
 def ver_local(request,usuario,id):

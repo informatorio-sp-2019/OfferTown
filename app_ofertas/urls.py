@@ -21,5 +21,6 @@ urlpatterns = [
 
     path('vistas_test', views.vistas_test),
     path('<usuario>/<int:id>/', views.ver_local_usuario,name='ver_local_usuario'),
+#    path('<usuario>/mis_ofertas/', views.mis_ofertas,name='ver_ofertas_usuario'),
 
 ]

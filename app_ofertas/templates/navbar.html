@@ -54,11 +54,12 @@
                     </div>
 
                     <a href="#user">
-                      <!--
-                      <i class="large material-icons">person</i>
-                       Esto va si tiene imagen de perfil 
-                       -->
-                      <img class="circle" src="{{request.user.usuario.imagen.url}}">
+
+                      {% if request.user.usuario.imagen %}
+                        <img class="circle" src="{{request.user.usuario.imagen.url}}">
+                      {% else %}
+                        <i class="large material-icons">person</i>
+                      {% endif %}
 
                     </a>
                   <a href="#name">
@@ -106,9 +107,14 @@
 
               {% for local in request.user.usuario.get_locales %}
                 <li>
-                  <a href="{% url 'app_ofertas:ver_local_usuario' user.username local.id %}" class="waves-effect">  <img src="{{local.imagen.url}}" alt="" class="circle imagen-menu"> <strong>{{local.nombre}}</strong> 
-                      </a>
-                    </li> 
+                  <a href="{% url 'app_ofertas:ver_local_usuario' user.username local.id %}" class="waves-effect">
+                    {% if local.imagen %}
+                      <img src="{{local.imagen.url}}" alt="" class="circle imagen-menu"> <strong>{{local.nombre}}</strong> 
+                    {% else %}
+                      <i class="material-icons">store</i><strong>{{local.nombre}}</strong>
+                    {% endif %}
+                  </a>
+                </li> 
               {% endfor %}
 
               {% else %}

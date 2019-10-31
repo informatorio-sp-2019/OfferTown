@@ -43,7 +43,7 @@
 
         <div class="col s2 center-align">
           <!-- inicio items menu deslizante -->
-          <ul id="slide-out" class="sidenav left-align">
+          <ul id="slide-out" class="sidenav left-align collection">
               {% if user.is_authenticated %}
                 <li>
                   <div class="user-view">
@@ -54,10 +54,11 @@
                     </div>
 
                     <a href="#user">
+                      <!--
                       <i class="large material-icons">person</i>
-                      <!-- Esto va si tiene imagen de perfil 
-                      <img class="circle" src="images/yuna.jpg">
+                       Esto va si tiene imagen de perfil 
                        -->
+                      <img class="circle" src="{{request.user.usuario.imagen.url}}">
 
                     </a>
                   <a href="#name">
@@ -99,14 +100,13 @@
               <li><div class="divider"></div></li>
               <li>
                 <a href="{% url 'app_ofertas:agregar_local' %}" class="waves-effect">
-                  <i class="material-icons">local_offer</i><strong>Registrar local</strong>
+                  <i class="material-icons">store</i><strong>Registrar local</strong>
                 </a>
               </li> 
 
               {% for local in request.user.usuario.get_locales %}
-                    <li>
-                      <a href="{% url 'app_ofertas:ver_local_usuario' user.username local.id %}" class="waves-effect">
-                        <i class="material-icons">store</i><strong>{{local.nombre}}</strong>
+                <li>
+                  <a href="{% url 'app_ofertas:ver_local_usuario' user.username local.id %}" class="waves-effect">  <img src="{{local.imagen.url}}" alt="" class="circle imagen-menu"> <strong>{{local.nombre}}</strong> 
                       </a>
                     </li> 
               {% endfor %}

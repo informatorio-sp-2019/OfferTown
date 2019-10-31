@@ -58,21 +58,21 @@
 					</p>
 
 					{% for medio in medios %}
+
 						{% if medio.id == 1 %}
+
 							<p class="detalle-oferta-single">
-								<i class="material-icons icono-detalle-oferta">attach_money</i> Efectivo
+								<i class="material-icons icono-detalle-oferta">attach_money</i> {{medio.medio_de_pago}}
 							</p>
+
+						{% else %}
+
+							<p class="detalle-oferta-single">
+								<i class="material-icons icono-detalle-oferta">credit_card</i> {{medio.medio_de_pago}}
+							</p>
+						
 						{% endif %}
-						{% if medio.id == 2 %}
-							<p class="detalle-oferta-single">
-								<i class="material-icons icono-detalle-oferta">credit_card</i> Débito
-							</p>
-						{% endif %}
-						{% if medio.id == 3 %}
-							<p class="detalle-oferta-single">
-								<i class="material-icons icono-detalle-oferta">credit_card</i> Crédito
-							</p>
-						{% endif %}		
+					
 					{% endfor %}
 
 					{% for horario in horarios %}

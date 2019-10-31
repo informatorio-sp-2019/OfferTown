@@ -22,5 +22,5 @@ urlpatterns = [
     path('vistas_test', views.vistas_test),
     path('<usuario>/<int:id>/', views.ver_local_usuario,name='ver_local_usuario'),
 
-    path(r'profile/(?P<username>[a-zA-Z0-9]+)$', views.ver_perfil_usuario, name='ver_perfil_usuario')
+    path('<usuario>/perfil/', views.ver_perfil_usuario, name='ver_perfil_usuario')
 ]

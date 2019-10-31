@@ -230,3 +230,6 @@ def vistas_test(request):
 
 	return render(request,'vistas_test.html',{'publicaciones':recientes, 'rubros':categorias})
 
+def ver_perfil_usuario(request, username):
+	user = User.objects.get(username=username)
+	return render(request, 'perfil/perfil.html', {'user':user})

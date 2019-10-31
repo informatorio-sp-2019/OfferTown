@@ -218,7 +218,7 @@ def ver_local_usuario(request,usuario,id):
 	else:
 		raise Http404("Este local no se encuentra actualmente disponible")
 
-	return render(request, 'local/local.html',{'local':local})
+	return render(request, 'local/local_usuario.html',{'local':local})
 
 def vistas_test(request):
 	#Obtener 9 ofertas recientes (mando todas mientras CORREGIR )

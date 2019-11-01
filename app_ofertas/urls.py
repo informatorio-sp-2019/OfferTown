@@ -23,4 +23,7 @@ urlpatterns = [
     path('<usuario>/<int:id>/', views.ver_local_usuario,name='ver_local_usuario'),
     path('<usuario>/<int:id>/nueva_oferta/', views.nueva_oferta,name='nueva_oferta'),
 
+#    path('<usuario>/mis_ofertas/', views.mis_ofertas,name='ver_ofertas_usuario'),
+
+
 ]

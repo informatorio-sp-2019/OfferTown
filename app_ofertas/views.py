@@ -220,6 +220,13 @@ def ver_local_usuario(request,usuario,id):
 
 	return render(request, 'local/local_usuario.html',{'local':local})
 
+#	hoy = dia_spanish()
+#	medios = local.get_medios_de_pago()
+#	horarios = local.get_horarios()
+#	ofertas = Publicacion.objects.filter(local=local)
+#	return render(request, 'local/local_usuario.html',{'local':local, 'medios':medios, 'horarios':horarios, 'ofertas':ofertas, 'hoy':hoy })
+
+
 def vistas_test(request):
 	#Obtener 9 ofertas recientes (mando todas mientras CORREGIR )
 	recientes=Publicacion.objects.all()
@@ -229,6 +236,7 @@ def vistas_test(request):
 	categorias = Rubro.objects.all().order_by('nombre')
 
 	return render(request,'vistas_test.html',{'publicaciones':recientes, 'rubros':categorias})
+
 
 
 @login_required
@@ -248,3 +256,20 @@ def nueva_oferta(request,usuario,id):
 	template = 'publicacion/nueva_oferta.html'
 
 	return render(request, template, context)
+
+#@login_required
+#def mis_ofertas(request,usuario):
+#	try:
+#		locales = Local.objects.filter(usuario=usuario)
+
+#	MATIAS ACÁ NO SE COMO AGREGAR AL QUERYSET LAS OFERTAS DE LOS DISITNTOS LOCALES YA QUE FILTRO LAS OFERTAS DE A UN LOCAL EN LA CONSULTA
+
+
+#		for local in locales:
+#			ofertas = Publicacion.objects.filter(local = local)
+#
+#		ofertas=Publicacion.objects.filter(local__usuario=request.user.username)
+#	except Rubro.DoesNotExist:
+#		raise Http404("no hay publicaciones")
+#	
+#	return render(request, 'publicacion/mis_ofertas.html',{'publicaciones':ofertas})

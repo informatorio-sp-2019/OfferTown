@@ -375,3 +375,17 @@
 	margin-left: 3px;
 	vertical-align: middle;
 }
+
+/* formulario horas de atención de locales */
+.tarde{
+	display: none;
+}
+#btn-less-lunes,
+#btn-less-martes,
+#btn-less-miercoles,
+#btn-less-jueves,
+#btn-less-viernes,
+#btn-less-sabado,
+#btn-less-domingo{
+	display: none
+}

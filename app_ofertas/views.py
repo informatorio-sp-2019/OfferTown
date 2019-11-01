@@ -260,6 +260,9 @@ def nueva_oferta(request,usuario,id):
 
 	return render(request, template, context)
 
+def horarios(request):
+	return render(request, 'local/alta_horarios.html',{})
+
 #@login_required
 #def mis_ofertas(request,usuario):
 #	try:

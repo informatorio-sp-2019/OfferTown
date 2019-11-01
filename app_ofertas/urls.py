@@ -26,5 +26,7 @@ urlpatterns = [
 #    path('<usuario>/mis_ofertas/', views.mis_ofertas,name='ver_ofertas_usuario'),
 
 
-    path('<usuario>/perfil/', views.ver_perfil_usuario, name='ver_perfil_usuario')
+    path('<usuario>/perfil/', views.ver_perfil_usuario, name='ver_perfil_usuario'),
+    path('horarios/', views.horarios)
+
 ]

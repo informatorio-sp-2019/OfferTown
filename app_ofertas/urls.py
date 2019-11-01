@@ -21,5 +21,6 @@ urlpatterns = [
 
     path('vistas_test', views.vistas_test),
     path('<usuario>/<int:id>/', views.ver_local_usuario,name='ver_local_usuario'),
+    path('<usuario>/<int:id>/nueva_oferta/', views.nueva_oferta,name='nueva_oferta'),
 
 ]

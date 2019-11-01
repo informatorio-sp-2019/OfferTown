@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from app_ofertas.models import Publicacion,Rubro, Local
-from app_ofertas.forms import LocalForm, PublicacionForm
+from app_ofertas.forms import LocalForm, PublicacionForm, OfertaForm
 from django.contrib.auth.decorators import login_required
 from datetime import date
 import ipdb
@@ -218,7 +218,7 @@ def ver_local_usuario(request,usuario,id):
 	else:
 		raise Http404("Este local no se encuentra actualmente disponible")
 
-	return render(request, 'local/local.html',{'local':local})
+	return render(request, 'local/local_usuario.html',{'local':local})
 
 def vistas_test(request):
 	#Obtener 9 ofertas recientes (mando todas mientras CORREGIR )
@@ -230,3 +230,21 @@ def vistas_test(request):
 
 	return render(request,'vistas_test.html',{'publicaciones':recientes, 'rubros':categorias})
 
+
+@login_required
+def nueva_oferta(request,usuario,id):
+	if request.method == 'POST':
+		form = OfertaForm(request.POST, request.FILES)
+		if form.is_valid():
+			local = Local.objects.get(pk=id)
+			oferta = form.save(commit=False)
+			oferta.local = local
+			oferta.save()
+			
+			return redirect('app_ofertas:index')	
+			
+	form = OfertaForm()
+	context={'form':form}
+	template = 'publicacion/nueva_oferta.html'
+
+	return render(request, template, context)

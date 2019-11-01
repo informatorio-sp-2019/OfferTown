@@ -14,7 +14,12 @@
 	</div>
 
 	<div class="row sin-margen">
-		{{rubro.nombre}} ({{cantidad}})	<a href="#!" class="secondary-content"><i class="material-icons tooltipped grey-text" data-position="top" data-tooltip="Agregar {{ rubro.nombre }} a mis intereses">favorite_border</i></a>
+		<span class="avatar-rubro">
+            {% if rubro.imagen %}
+                <img src="{{rubro.imagen.url}}" alt="" class="imagen-rubro-avt"> <strong>{{rubro.nombre}}</strong>  ({{cantidad}})	
+            {% endif %}
+		</span>
+		<a href="#!" class="secondary-content"><i class="material-icons tooltipped grey-text" data-position="top" data-tooltip="Agregar {{ rubro.nombre }} a mis intereses">favorite_border</i></a>
 	</div>
 
 	{% if publicaciones %}

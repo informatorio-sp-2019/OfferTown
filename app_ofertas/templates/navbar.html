@@ -53,7 +53,7 @@
                       -->
                     </div>
 
-                    <a href="#user">
+                    <a href="/usuario/perfil/">
                       <!--
                       <i class="large material-icons">person</i>
                        Esto va si tiene imagen de perfil 
@@ -61,11 +61,11 @@
                       <img class="circle" src="{{request.user.usuario.imagen.url}}">
 
                     </a>
-                  <a href="#name">
+                  <a href="/usuario/perfil/">
                     <span class="white-text name">{{ request.user.username.title }}</span>
                   </a>
-                  <a href="#email">
-                    <span class="white-text email">{{ request.user.username.email }}</span>
+                  <a href="/usuario/perfil/">
+                    <span class="white-text email">{{ request.user.usuario.email }}</span>
                   </a>
                 </div>
                   

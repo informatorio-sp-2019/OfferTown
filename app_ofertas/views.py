@@ -218,7 +218,8 @@ def ver_local_usuario(request,usuario,id):
 	else:
 		raise Http404("Este local no se encuentra actualmente disponible")
 
-	return render(request, 'local/local_usuario.html',{'local':local})
+	ofertas = Publicacion.objects.filter(local=local)
+	return render(request, 'local/local_usuario.html',{'local':local, 'ofertas':ofertas})
 
 #	hoy = dia_spanish()
 #	medios = local.get_medios_de_pago()

@@ -1,0 +1,15 @@
+{% extends "esquema.html" %}
+
+{% block title %} {{ perfil.first_name }} {% endblock %}
+
+{% block content %}
+
+<p class="detalle-oferta-single" >{{ perfil.first_name }}</p>
+{{ request.user.username.title }}
+
+{{ usuario.username }} 
+{{ usuario.email }}
+{{ usuario.first_name }} 
+{{ usuario.last_name }} 
+
+{% endblock %}

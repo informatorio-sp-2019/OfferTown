@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from app_ofertas.models import Publicacion,Rubro, Local, MedioDePago
-from app_ofertas.forms import LocalForm, PublicacionForm, OfertaForm
+from app_ofertas.forms import LocalForm, PublicacionForm, OfertaForm, SucursalForm
 from django.contrib.auth.decorators import login_required
 from datetime import date
 import ipdb
@@ -132,6 +132,7 @@ def favoritos(request):
 
 	}
 	return render(request, "favoritos.html", contexto)
+
 
 def tendencia(request):
 	#obtener 12 publicaciones mas populares
@@ -276,3 +277,40 @@ def nueva_oferta(request,usuario,id):
 #		raise Http404("no hay publicaciones")
 #	
 #	return render(request, 'publicacion/mis_ofertas.html',{'publicaciones':ofertas})
+
+@login_required
+def nueva_sucursal(request,usuario,id):
+	
+	if request.method == 'POST':
+		form = SucursalForm(request.POST)
+		if form.is_valid():
+			sucursal = form.save(commit=False)
+			sucursal.local = Local.objects.get(pk=id)
+			sucursal.save()
+			
+			return redirect('app_ofertas:ver_local_usuario', usuario = request.user.username, id=id)	
+			
+	form = SucursalForm()
+	context={'form':form}
+	template = 'local/alta_sucursal.html'
+
+	return render(request, template, context)
+
+
+# @login_required
+# def nueva_oferta(request,usuario,id):
+# 	if request.method == 'POST':
+# 		form = OfertaForm(request.POST, request.FILES)
+# 		if form.is_valid():
+# 			local = Local.objects.get(pk=id)
+# 			oferta = form.save(commit=False)
+# 			oferta.local = local
+# 			oferta.save()
+			
+# 			return redirect('app_ofertas:index')	
+			
+# 	form = OfertaForm()
+# 	context={'form':form}
+# 	template = 'publicacion/nueva_oferta.html'
+
+# 	return render(request, template, context)

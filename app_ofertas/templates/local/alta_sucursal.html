@@ -1,0 +1,32 @@
+{% extends "esquema.html" %}
+
+{% block title %} Alta Sucursal {% endblock %}
+
+{% block content %}
+<form method="POST"  enctype="multipart/form-data">
+    
+    {% csrf_token %}
+
+	{% for field in form %}
+		<p>		
+			<label>
+			{{ field.errors }}
+			{{ field.label_tag }}
+			{{ field }}
+			</label>
+		</p>
+	{% endfor %}
+
+    <input type="submit" value="Guardar"/>
+</form>
+
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems);
+  });
+</script>
+{% endblock %}

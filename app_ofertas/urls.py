@@ -22,7 +22,7 @@ urlpatterns = [
     path('vistas_test', views.vistas_test),
     path('<usuario>/<int:id>/', views.ver_local_usuario,name='ver_local_usuario'),
     path('<usuario>/<int:id>/nueva_oferta/', views.nueva_oferta,name='nueva_oferta'),
-
+    path('<usuario>/<int:id>/nueva_sucursal/', views.nueva_sucursal,name='nueva_sucursal'),
 #    path('<usuario>/mis_ofertas/', views.mis_ofertas,name='ver_ofertas_usuario'),
 
 

@@ -48,7 +48,6 @@ def create_user_view(request):
 			user.set_password(user.password)
 			user.is_staff = True			
 			user.save()
-
 			return redirect('app_accounts:login')					
 
 	form = CreateForm()

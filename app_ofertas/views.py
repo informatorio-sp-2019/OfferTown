@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from app_ofertas.models import Publicacion,Rubro, Local
+from app_ofertas.models import Publicacion,Rubro, Local, MedioDePago
 from app_ofertas.forms import LocalForm, PublicacionForm, OfertaForm
 from django.contrib.auth.decorators import login_required
 from datetime import date

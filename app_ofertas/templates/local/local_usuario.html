@@ -7,7 +7,7 @@
 	<div class="row">
 		<h6 class="titulo-local">
 			{{ local.nombre }}
-			<a href="#!" class="secondary-content"><i class="material-icons tooltipped grey-text" data-position="top" data-tooltip="Agregar {{ local.nombre }} a mis favoritos">star_border</i></a>
+			</a>
 		</h6>
 
 		<div class="caja-oferta-single z-depth-2">
@@ -21,6 +21,7 @@
 			</div>
 			<div class="col s12 m7 l9">
 				<div class="data-oferta">
+					<a href="#!" class="secondary-content btn-floating btn-small waves-effect waves-light tooltipped grey-text" data-position="top" data-tooltip="Editar datos de mi local"><i class="material-icons">edit</i></a>
 					<p class="detalle-oferta-single" ><i class="material-icons icono-detalle-oferta">location_on</i>
 						Direccion: {{ local.direccion }} </p>
 					{% if local.telefono %}
@@ -32,7 +33,7 @@
 
 					{% for medio in medios %}
 
-						{% if medio.medio_de_pago.id == 1 %}
+						{% if medio.id == 1 %}
 
 							<p class="detalle-oferta-single">
 								<i class="material-icons icono-detalle-oferta">attach_money</i> {{medio.medio_de_pago}}
@@ -71,7 +72,9 @@
 	</div>
 
 	<div class="row">
-		<h6>Horarios de atención</h6>
+		<a href="#!" class="secondary-content btn-floating btn-small waves-effect waves-light"><i class="material-icons">edit</i></a>
+		<h6>Horarios de atención 
+		</h6>
 
 	</div>
 
@@ -104,8 +107,6 @@
 			{% endif %}
 		{% endfor %}
 
-
-
 	</div>
 
 
@@ -115,7 +116,7 @@
 	</div>
 
 	<div>
-		<h6>Más ofertas del Vendedor</h6>
+		<h6>MIs ofertas</h6>
 	</div>
 
 	{% include "publicacion/publicaciones_grid.html" with publicaciones=ofertas %}

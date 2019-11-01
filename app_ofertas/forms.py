@@ -30,4 +30,14 @@ class PublicacionForm(forms.ModelForm):
 			)
 
 
+class OfertaForm(forms.ModelForm):
+	class Meta:
+		model = Publicacion
+		fields = ('rubro',
+			'titulo',
+			'detalle',
+			'imagen',
+			'precio_regular',
+			'precio_oferta',
+			)
 

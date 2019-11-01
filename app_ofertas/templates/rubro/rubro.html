@@ -6,6 +6,13 @@
 
 {% block content %}
 
+
+	<!-- busquedas -->
+	<div class="row">
+		<!-- metodo get, al /search -->
+		{% include '../search/search_form.html' %}
+	</div>
+
 	<div class="row sin-margen">
 		{{rubro.nombre}} ({{cantidad}})	<a href="#!" class="secondary-content"><i class="material-icons tooltipped grey-text" data-position="top" data-tooltip="Agregar {{ rubro.nombre }} a mis intereses">favorite_border</i></a>
 	</div>

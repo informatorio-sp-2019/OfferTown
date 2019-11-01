@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from app_ofertas.models import Publicacion,Rubro, Local
-from app_ofertas.forms import LocalForm, PublicacionForm
+from app_ofertas.forms import LocalForm, PublicacionForm, OfertaForm
 from django.contrib.auth.decorators import login_required
 from datetime import date
 import ipdb
@@ -218,7 +218,14 @@ def ver_local_usuario(request,usuario,id):
 	else:
 		raise Http404("Este local no se encuentra actualmente disponible")
 
-	return render(request, 'local/local.html',{'local':local})
+	return render(request, 'local/local_usuario.html',{'local':local})
+
+#	hoy = dia_spanish()
+#	medios = local.get_medios_de_pago()
+#	horarios = local.get_horarios()
+#	ofertas = Publicacion.objects.filter(local=local)
+#	return render(request, 'local/local_usuario.html',{'local':local, 'medios':medios, 'horarios':horarios, 'ofertas':ofertas, 'hoy':hoy })
+
 
 def vistas_test(request):
 	#Obtener 9 ofertas recientes (mando todas mientras CORREGIR )
@@ -233,3 +240,38 @@ def vistas_test(request):
 def ver_perfil_usuario(request, usuario):
 	usuario = usuario
 	return render(request, 'perfil/perfil.html', {'usuario':usuario})
+
+@login_required
+def nueva_oferta(request,usuario,id):
+	if request.method == 'POST':
+		form = OfertaForm(request.POST, request.FILES)
+		if form.is_valid():
+			local = Local.objects.get(pk=id)
+			oferta = form.save(commit=False)
+			oferta.local = local
+			oferta.save()
+			
+			return redirect('app_ofertas:index')	
+			
+	form = OfertaForm()
+	context={'form':form}
+	template = 'publicacion/nueva_oferta.html'
+
+	return render(request, template, context)
+
+#@login_required
+#def mis_ofertas(request,usuario):
+#	try:
+#		locales = Local.objects.filter(usuario=usuario)
+
+#	MATIAS ACÁ NO SE COMO AGREGAR AL QUERYSET LAS OFERTAS DE LOS DISITNTOS LOCALES YA QUE FILTRO LAS OFERTAS DE A UN LOCAL EN LA CONSULTA
+
+
+#		for local in locales:
+#			ofertas = Publicacion.objects.filter(local = local)
+#
+#		ofertas=Publicacion.objects.filter(local__usuario=request.user.username)
+#	except Rubro.DoesNotExist:
+#		raise Http404("no hay publicaciones")
+#	
+#	return render(request, 'publicacion/mis_ofertas.html',{'publicaciones':ofertas})

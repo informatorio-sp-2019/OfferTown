@@ -1,9 +1,12 @@
 from django.shortcuts import render,redirect
-from app_ofertas.models import Publicacion,Rubro, Local, MedioDePago
+
+from app_ofertas.models import Publicacion,Rubro, Local, MedioDePago, Interes
 from app_ofertas.forms import LocalForm, PublicacionForm, OfertaForm, SucursalForm
 from django.contrib.auth.decorators import login_required
 from datetime import date
 import ipdb
+from django.http import Http404
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -146,8 +149,9 @@ def tendencia(request):
 @login_required
 def intereses(request):
 	#publicaciones rubros favoritos
+	rubros = Rubro.objects.all().filter(intereses__usuario=request.user.usuario)  
 	contexto = {
-
+		"rubros":rubros
 	}
 	return render(request, "intereses.html", contexto)
 
@@ -261,6 +265,11 @@ def nueva_oferta(request,usuario,id):
 
 	return render(request, template, context)
 
+
+def horarios(request):
+	return render(request, 'local/alta_horarios.html',{})
+
+
 #@login_required
 #def mis_ofertas(request,usuario):
 #	try:
@@ -314,3 +323,31 @@ def nueva_sucursal(request,usuario,id):
 # 	template = 'publicacion/nueva_oferta.html'
 
 # 	return render(request, template, context)
+
+
+
+
+
+
+
+def toggleInteres(request, id):
+	rubro = Rubro.objects.get(pk=id)
+
+	new_interes, created = Interes.objects.get_or_create(usuario=request.user.usuario, rubro=rubro)
+  
+
+	if created:
+		estado="SI"
+	else:
+		new_interes.delete()
+		estado="NO"
+
+	data = {}
+	
+
+	data = {
+		"id":rubro.id,
+		"estado":estado
+	}
+
+	return JsonResponse(data)

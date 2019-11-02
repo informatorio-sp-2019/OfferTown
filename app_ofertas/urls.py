@@ -20,11 +20,14 @@ urlpatterns = [
     path('rubro/<int:id>/',views.ver_rubro,name='ver_rubro'),
 
     path('vistas_test', views.vistas_test),
-    path('<usuario>/<int:id>/', views.ver_local_usuario,name='ver_local_usuario'),
-    path('<usuario>/<int:id>/nueva_oferta/', views.nueva_oferta,name='nueva_oferta'),
-    path('<usuario>/<int:id>/nueva_sucursal/', views.nueva_sucursal,name='nueva_sucursal'),
+
+    path('toggle_interes/<int:id>/', views.toggleInteres),
 #    path('<usuario>/mis_ofertas/', views.mis_ofertas,name='ver_ofertas_usuario'),
 
+    path('usuario/<usuario>/<int:id>/nueva_sucursal/', views.nueva_oferta,name='nueva_oferta'),
+    path('usuario/<usuario>/<int:id>/nueva_oferta/', views.nueva_oferta,name='nueva_oferta'),  
+    path('usuario/<usuario>/<int:id>/', views.ver_local_usuario,name='ver_local_usuario'),
+    path('usuario/<usuario>/perfil/', views.ver_perfil_usuario, name='ver_perfil_usuario'),
+    path('horarios/', views.horarios)
 
-    path('<usuario>/perfil/', views.ver_perfil_usuario, name='ver_perfil_usuario')
 ]

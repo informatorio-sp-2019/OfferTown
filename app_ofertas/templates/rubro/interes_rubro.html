@@ -1,0 +1,32 @@
+	{# rubro #}
+		
+
+		{% if request.user.usuario in rubro.get_interesados %}
+			<a onclick="toggleInteres(this)" data-id="{{rubro.id}}" class="secondary-content"><i class="material-icons tooltipped grey-text" data-position="top" data-tooltip="Agregar {{ pub.rubro }} a mis intereses">favorite</i></a> 
+		{% else %}
+			<a onclick="toggleInteres(this)" data-id="{{rubro.id}}" class="secondary-content"><i class="material-icons tooltipped grey-text" data-position="top" data-tooltip="Agregar {{ pub.rubro }} a mis intereses">favorite_border</i></a> 
+		{% endif %}
+	
+
+	<script type="text/javascript">
+		function cambiarIcono(estado,anchor){
+			if(estado=="SI"){
+				anchor.children[0].innerText = "favorite_border"
+			}
+			else{
+				anchor.children[0].innerText = "favorite"	
+			}
+		}
+		function toggleInteres(anchor){
+			//fetch api cambiar estado rubro_id
+			//estado
+			//cambiarIcono(estado)
+			
+			//anchor.dataset.id
+			let estado = "NO"
+			if(anchor.children[0].innerText=="favorite"){
+				estado = "SI"
+			}
+			cambiarIcono(estado,anchor)
+		}
+	</script>

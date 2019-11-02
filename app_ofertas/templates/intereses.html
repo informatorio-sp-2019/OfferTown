@@ -13,6 +13,13 @@
 		<h6>Intereses</h6>
 	</div>
 
-
+	{% for categoria in rubros %}
+		<div class="divider"></div>
+		<div class="row">
+			{{categoria.nombre}}
+		</div>
+		{% include "publicacion/publicaciones_grid.html" with publicaciones=categoria.publicaciones.all %}
+		<div class="divider"></div>
+	{% endfor %}
 
 {% endblock %}

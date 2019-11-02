@@ -147,8 +147,9 @@ def tendencia(request):
 @login_required
 def intereses(request):
 	#publicaciones rubros favoritos
+	rubros = Rubro.objects.all().filter(intereses__usuario=request.user.usuario)  
 	contexto = {
-
+		"rubros":rubros
 	}
 	return render(request, "intereses.html", contexto)
 

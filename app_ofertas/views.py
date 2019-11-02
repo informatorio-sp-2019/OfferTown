@@ -295,10 +295,10 @@ def toggleInteres(request, id):
   
 
 	if created:
-		estado="likeado"
+		estado="SI"
 	else:
 		new_interes.delete()
-		estado="disleako"
+		estado="NO"
 
 	data = {}
 	

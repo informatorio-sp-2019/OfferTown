@@ -9,24 +9,34 @@
 	
 
 	<script type="text/javascript">
+		
 		function cambiarIcono(estado,anchor){
+			console.log(anchor)
 			if(estado=="SI"){
-				anchor.children[0].innerText = "favorite_border"
+				anchor.children[0].innerHTML = "favorite"
 			}
-			else{
-				anchor.children[0].innerText = "favorite"	
+			else
+			if(estado=="NO"){
+				anchor.children[0].innerHTML = "favorite_border"	
 			}
 		}
-		function toggleInteres(anchor){
-			//fetch api cambiar estado rubro_id
-			//estado
-			//cambiarIcono(estado)
+		async function toggleInteresRequest(rubro_id){
+			request = "/toggle_interes/" + rubro_id + "/"
+			datos = await fetch(request).then(response=>{
+				return response.json()
+			}).then(data=>{
+				return data
+			}).catch(err=>{
+				//controlar error
+			})
+			return datos.estado
+		}
+		async function toggleInteres(anchor){
 			
-			//anchor.dataset.id
-			let estado = "NO"
-			if(anchor.children[0].innerText=="favorite"){
-				estado = "SI"
-			}
+			let estado = ""
+			let id_rubro = anchor.dataset.id
+			estado = await toggleInteresRequest(id_rubro)
+		
 			cambiarIcono(estado,anchor)
 		}
 	</script>

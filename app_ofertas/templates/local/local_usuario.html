@@ -66,9 +66,7 @@
 				</div>
 			</div>
 		</div>
-			<a href="{% url 'app_ofertas:nueva_oferta' user.username local.id  %}" class="waves-effect">
-                   Agregar Oferta
-            </a>
+			
 	</div>
 
 	<div class="row">
@@ -126,6 +124,19 @@
 	</div>
 
 	{% include "publicacion/publicaciones_grid.html" with publicaciones=ofertas %}
+
+
+
+<!-- acá tiene que poder agregar sucursal o bien oferta -->
+	<div class="fixed-action-btn">
+	  <a class="btn-floating btn-large red tooltipped pulse" data-position="top" data-tooltip="Agregar nueva oferta" href="{% url 'app_ofertas:nueva_oferta' user.username local.id  %}">
+	    <i class="large material-icons">add</i>
+	  </a>
+	</div>
+      
+
+<!-- 		<a href="{% url 'app_ofertas:nueva_oferta' user.username local.id  %}" class="waves-effect">Agregar Oferta</a>
+ -->
 
 {% endblock %}
 

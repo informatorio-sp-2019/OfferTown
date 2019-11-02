@@ -14,7 +14,14 @@
 	</div>
 
 	<div class="row sin-margen">
-		{{rubro.nombre}} ({{cantidad}})	{% include 'rubro/interes_rubro.html' with rubro=rubro  %}
+
+		<span class="avatar-rubro">
+            {% if rubro.imagen %}
+                <img src="{{rubro.imagen.url}}" alt="" class="imagen-rubro-avt"> <strong>{{rubro.nombre}}</strong>  ({{cantidad}})	
+            {% endif %}
+		</span>
+		({{cantidad}})	{% include 'rubro/interes_rubro.html' with rubro=rubro  %}
+
 	</div>
 
 	{% if publicaciones %}

@@ -5,7 +5,8 @@
 {% block content %}
 <div class="row breadcru">
 	<a href="/rubro/{{pub.rubro.id}}">{{ pub.rubro }}></a>
-	<a href="#!" class="secondary-content"><i class="material-icons tooltipped grey-text" data-position="top" data-tooltip="Agregar {{ pub.rubro }} a mis intereses">favorite_border</i></a>
+	{% include 'rubro/interes_rubro.html' with rubro=pub.rubro  %}
+
 
 </div>
 
@@ -41,8 +42,8 @@
 
 						<a href="{% url 'app_ofertas:ver_local'  pub.local.id %}"> {{ pub.local.nombre }} </a> 
 						
+						{% include 'local/favorito_local.html' with local=pub.local  %}
 
-						<a href="#!" class="secondary-content"><i class="material-icons tooltipped grey-text" data-position="top" data-tooltip="Agregar {{ pub.local.nombre }} a mis favoritos">star_border</i></a>
 					</p>
 					{% if pub.local.telefono %}
 						<p class="detalle-oferta-single">
@@ -58,21 +59,21 @@
 					</p>
 
 					{% for medio in medios %}
-						{% if medio.id == 1 %}
+
+						{% if medio.medio_de_pago.id == 1 %}
+
 							<p class="detalle-oferta-single">
-								<i class="material-icons icono-detalle-oferta">attach_money</i> Efectivo
+								<i class="material-icons icono-detalle-oferta">attach_money</i> {{medio.medio_de_pago}}
 							</p>
+
+						{% else %}
+
+							<p class="detalle-oferta-single">
+								<i class="material-icons icono-detalle-oferta">credit_card</i> {{medio.medio_de_pago}}
+							</p>
+						
 						{% endif %}
-						{% if medio.id == 2 %}
-							<p class="detalle-oferta-single">
-								<i class="material-icons icono-detalle-oferta">credit_card</i> Débito
-							</p>
-						{% endif %}
-						{% if medio.id == 3 %}
-							<p class="detalle-oferta-single">
-								<i class="material-icons icono-detalle-oferta">credit_card</i> Crédito
-							</p>
-						{% endif %}		
+					
 					{% endfor %}
 
 					{% for horario in horarios %}

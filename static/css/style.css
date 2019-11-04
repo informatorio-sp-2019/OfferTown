@@ -33,6 +33,13 @@
 	margin: 5px auto 0;
 }
 
+.fondo_rojo{
+	background-color: red;
+}
+
+.fondo_verde{
+	background-color: green;
+}
 
 /* inicio grid ofertas */
 .caja-oferta-list,
@@ -324,6 +331,12 @@
 	text-align: center;
 }
 
+.imagen-rubro-avt {
+    max-width: 20px;
+    margin-left: 3px;
+    vertical-align: middle;
+}
+
 /* single rubro */
 .stiker{
 	width: 15%;
@@ -374,4 +387,18 @@
 	margin-right: 27px;
 	margin-left: 3px;
 	vertical-align: middle;
+}
+
+/* formulario horas de atención de locales */
+.tarde{
+	display: none;
+}
+#btn-less-lunes,
+#btn-less-martes,
+#btn-less-miercoles,
+#btn-less-jueves,
+#btn-less-viernes,
+#btn-less-sabado,
+#btn-less-domingo{
+	display: none
 }

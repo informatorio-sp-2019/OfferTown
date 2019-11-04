@@ -1,5 +1,5 @@
 from django import forms
-from app_ofertas.models import Local, Publicacion, Localidad, MedioDePago
+from app_ofertas.models import Local, Publicacion, Localidad, MedioDePago, Sucursal
 
 class LocalForm(forms.ModelForm):
 	class Meta:
@@ -30,4 +30,23 @@ class PublicacionForm(forms.ModelForm):
 			)
 
 
+class OfertaForm(forms.ModelForm):
+	class Meta:
+		model = Publicacion
+		fields = ('rubro',
+			'titulo',
+			'precio_regular',
+			'precio_oferta',
+			'imagen',
+			'detalle',
+			)
+
+
+
+class SucursalForm(forms.ModelForm):
+	class Meta:
+		model = Sucursal
+		fields= ('localidad',				 
+				 'direccion',
+				 'telefono')
 

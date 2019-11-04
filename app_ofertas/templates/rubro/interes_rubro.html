@@ -1,0 +1,42 @@
+	{# rubro #}
+		
+
+		{% if request.user.usuario in rubro.get_interesados %}
+			<a onclick="toggleInteres(this)" data-id="{{rubro.id}}" class="secondary-content"><i class="material-icons tooltipped grey-text" data-position="top" data-tooltip="Agregar {{ rubro }} a mis intereses">favorite</i></a> 
+		{% else %}
+			<a onclick="toggleInteres(this)" data-id="{{rubro.id}}" class="secondary-content"><i class="material-icons tooltipped grey-text" data-position="top" data-tooltip="Agregar {{ rubro }} a mis intereses">favorite_border</i></a> 
+		{% endif %}
+	
+
+	<script type="text/javascript">
+		
+		function cambiarIcono(estado,anchor){
+			console.log(anchor)
+			if(estado=="SI"){
+				anchor.children[0].innerHTML = "favorite"
+			}
+			else
+			if(estado=="NO"){
+				anchor.children[0].innerHTML = "favorite_border"	
+			}
+		}
+		async function toggleInteresRequest(rubro_id){
+			request = "/toggle_interes/" + rubro_id + "/"
+			datos = await fetch(request).then(response=>{
+				return response.json()
+			}).then(data=>{
+				return data
+			}).catch(err=>{
+				//controlar error
+			})
+			return datos.estado
+		}
+		async function toggleInteres(anchor){
+			
+			let estado = ""
+			let id_rubro = anchor.dataset.id
+			estado = await toggleInteresRequest(id_rubro)
+		
+			cambiarIcono(estado,anchor)
+		}
+	</script>

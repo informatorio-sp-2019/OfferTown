@@ -3,253 +3,259 @@
 {% block title %} Alta Local {% endblock %}
 
 {% block content %}
-<div class="row">
-	<div class="col-s12">
-		<h6>Agregar horarios</h6>
+<form action="/agregar_local/" method="POST"  enctype="multipart/form-data">
+
+	<div class="row">
+		<div class="col-s12">
+			<h6>Agregar horarios</h6>
+		</div>
+		
+		<!-- acá empieza lunes -->
+		<div class="row">
+			<div class="col s12 m3 l2">
+				<h6 class="nombre-dia">Lunes</h6>
+			</div>
+			<div class="col s5 m2">
+		 		<label for="hora_d1">Desde</label>
+		 		<input type="text" id="hora_d1" class="timepicker">
+			</div>
+			<div class="col s5 m2">
+		 		<label for="hora_d1">Hasta</label>
+		 		<input type="text" id="hora_d1" class="timepicker">
+			</div>
+			<div class="col s2 m1" id="btn-add-lunes" onclick="mostrar_tarde_lunes()">
+				<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">add</i></a>
+			</div>
+			<div class="tarde" id="lunes-tarde">
+				<div class="col s5 m2">
+			 		<label for="hora_d1">Desde</label>
+			 		<input type="text" id="hora_d2" class="timepicker">
+				</div>
+				<div class="col s5 m2">
+			 		<label for="hora_d1">Hasta</label>
+			 		<input type="text" id="hora_d2" class="timepicker">
+				</div>
+			</div>
+			<div class="col s2 m1" id="btn-less-lunes" onclick="ocultar_tarde_lunes()">
+				<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">clear</i></a>
+			</div>
+		</div>
+		<!-- acá termina lunes -->
+		<div class="row">
+			<div class="divider"></div>
+		</div>
+		<!-- acá empieza martes -->
+		<div class="row">
+			<div class="col s12 m3 l2">
+				<h6 class="nombre-dia">Martes</h6>
+			</div>
+			<div class="col s5 m2">
+		 		<label for="hora_d1">Desde</label>
+		 		<input type="text" id="hora_d1" class="timepicker">
+			</div>
+			<div class="col s5 m2">
+		 		<label for="hora_d1">Hasta</label>
+		 		<input type="text" id="hora_d1" class="timepicker">
+			</div>
+			<div class="col s2 m1" id="btn-add-martes" onclick="mostrar_tarde_martes()">
+				<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">add</i></a>
+			</div>
+			<div class="tarde" id="martes-tarde">
+				<div class="col s5 m2">
+			 		<label for="hora_d1">Desde</label>
+			 		<input type="text" id="hora_d2" class="timepicker">
+				</div>
+				<div class="col s5 m2">
+			 		<label for="hora_d1">Hasta</label>
+			 		<input type="text" id="hora_d2" class="timepicker">
+				</div>
+			</div>
+			<div class="col s2 m1" id="btn-less-martes" onclick="ocultar_tarde_martes()">
+				<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">clear</i></a>
+			</div>
+		</div>
+		<!-- acá termina martes -->
+
+		<div class="row">
+			<div class="divider"></div>
+		</div>
+		<!-- acá empieza miercoles -->
+		<div class="row">
+			<div class="col s12 m3 l2">
+				<h6 class="nombre-dia">Miércoles</h6>
+			</div>
+			<div class="col s5 m2">
+		 		<label for="hora_d1">Desde</label>
+		 		<input type="text" id="hora_d1" class="timepicker">
+			</div>
+			<div class="col s5 m2">
+		 		<label for="hora_d1">Hasta</label>
+		 		<input type="text" id="hora_d1" class="timepicker">
+			</div>
+			<div class="col s2 m1" id="btn-add-miercoles" onclick="mostrar_tarde_miercoles()">
+				<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">add</i></a>
+			</div>
+			<div class="tarde" id="miercoles-tarde">
+				<div class="col s5 m2">
+			 		<label for="hora_d1">Desde</label>
+			 		<input type="text" id="hora_d2" class="timepicker">
+				</div>
+				<div class="col s5 m2">
+			 		<label for="hora_d1">Hasta</label>
+			 		<input type="text" id="hora_d2" class="timepicker">
+				</div>
+			</div>
+			<div class="col s2 m1" id="btn-less-miercoles" onclick="ocultar_tarde_miercoles()">
+				<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">clear</i></a>
+			</div>
+		</div>
+		<!-- acá termina miercoles -->
+
+		<div class="row">
+			<div class="divider"></div>
+		</div>
+		<!-- acá empieza jueves -->
+		<div class="row">
+			<div class="col s12 m3 l2">
+				<h6 class="nombre-dia">Jueves</h6>
+			</div>
+			<div class="col s5 m2">
+		 		<label for="hora_d1">Desde</label>
+		 		<input type="text" id="hora_d1" class="timepicker">
+			</div>
+			<div class="col s5 m2">
+		 		<label for="hora_d1">Hasta</label>
+		 		<input type="text" id="hora_d1" class="timepicker">
+			</div>
+			<div class="col s2 m1" id="btn-add-jueves" onclick="mostrar_tarde_jueves()">
+				<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">add</i></a>
+			</div>
+			<div class="tarde" id="jueves-tarde">
+				<div class="col s5 m2">
+			 		<label for="hora_d1">Desde</label>
+			 		<input type="text" id="hora_d2" class="timepicker">
+				</div>
+				<div class="col s5 m2">
+			 		<label for="hora_d1">Hasta</label>
+			 		<input type="text" id="hora_d2" class="timepicker">
+				</div>
+			</div>
+			<div class="col s2 m1" id="btn-less-jueves" onclick="ocultar_tarde_jueves()">
+				<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">clear</i></a>
+			</div>
+		</div>
+		<!-- acá termina jueves -->
+
+		<div class="row">
+			<div class="divider"></div>
+		</div>
+		<!-- acá empieza viernes -->
+		<div class="row">
+			<div class="col s12 m3 l2">
+				<h6 class="nombre-dia">Viernes</h6>
+			</div>
+			<div class="col s5 m2">
+		 		<label for="hora_d1">Desde</label>
+		 		<input type="text" id="hora_d1" class="timepicker">
+			</div>
+			<div class="col s5 m2">
+		 		<label for="hora_d1">Hasta</label>
+		 		<input type="text" id="hora_d1" class="timepicker">
+			</div>
+			<div class="col s2 m1" id="btn-add-viernes" onclick="mostrar_tarde_viernes()">
+				<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">add</i></a>
+			</div>
+			<div class="tarde" id="viernes-tarde">
+				<div class="col s5 m2">
+			 		<label for="hora_d1">Desde</label>
+			 		<input type="text" id="hora_d2" class="timepicker">
+				</div>
+				<div class="col s5 m2">
+			 		<label for="hora_d1">Hasta</label>
+			 		<input type="text" id="hora_d2" class="timepicker">
+				</div>
+			</div>
+			<div class="col s2 m1" id="btn-less-viernes" onclick="ocultar_tarde_viernes()">
+				<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">clear</i></a>
+			</div>
+		</div>
+		<!-- acá termina viernes -->
+
+		<div class="row">
+			<div class="divider"></div>
+		</div>
+		<!-- acá empieza sabado -->
+		<div class="row">
+			<div class="col s12 m3 l2">
+				<h6 class="nombre-dia">Sábado</h6>
+			</div>
+			<div class="col s5 m2">
+		 		<label for="hora_d1">Desde</label>
+		 		<input type="text" id="hora_d1" class="timepicker">
+			</div>
+			<div class="col s5 m2">
+		 		<label for="hora_d1">Hasta</label>
+		 		<input type="text" id="hora_d1" class="timepicker">
+			</div>
+			<div class="col s2 m1" id="btn-add-sabado" onclick="mostrar_tarde_sabado()">
+				<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">add</i></a>
+			</div>
+			<div class="tarde" id="sabado-tarde">
+				<div class="col s5 m2">
+			 		<label for="hora_d1">Desde</label>
+			 		<input type="text" id="hora_d2" class="timepicker">
+				</div>
+				<div class="col s5 m2">
+			 		<label for="hora_d1">Hasta</label>
+			 		<input type="text" id="hora_d2" class="timepicker">
+				</div>
+			</div>
+			<div class="col s2 m1" id="btn-less-sabado" onclick="ocultar_tarde_sabado()">
+				<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">clear</i></a>
+			</div>
+		</div>
+		<!-- acá termina sabado -->
+
+		<div class="row">
+			<div class="divider"></div>
+		</div>
+		<!-- acá empieza domingo -->
+		<div class="row">
+			<div class="col s12 m3 l2">
+				<h6 class="nombre-dia">domingo</h6>
+			</div>
+			<div class="col s5 m2">
+		 		<label for="hora_d1">Desde</label>
+		 		<input type="text" id="hora_d1" class="timepicker">
+			</div>
+			<div class="col s5 m2">
+		 		<label for="hora_d1">Hasta</label>
+		 		<input type="text" id="hora_d1" class="timepicker">
+			</div>
+			<div class="col s2 m1" id="btn-add-domingo" onclick="mostrar_tarde_domingo()">
+				<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">add</i></a>
+			</div>
+			<div class="tarde" id="domingo-tarde">
+				<div class="col s5 m2">
+			 		<label for="hora_d1">Desde</label>
+			 		<input type="text" id="hora_d2" class="timepicker">
+				</div>
+				<div class="col s5 m2">
+			 		<label for="hora_d1">Hasta</label>
+			 		<input type="text" id="hora_d2" class="timepicker">
+				</div>
+			</div>
+			<div class="col s2 m1" id="btn-less-domingo" onclick="ocultar_tarde_domingo()">
+				<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">clear</i></a>
+			</div>
+		</div>
+		<!-- acá termina domingo -->
+
 	</div>
 	
-	<!-- acá empieza lunes -->
-	<div class="row">
-		<div class="col s12 m3 l2">
-			<h6 class="nombre-dia">Lunes</h6>
-		</div>
-		<div class="col s5 m2">
-	 		<label for="hora_d1">Desde</label>
-	 		<input type="text" id="hora_d1" class="timepicker">
-		</div>
-		<div class="col s5 m2">
-	 		<label for="hora_d1">Hasta</label>
-	 		<input type="text" id="hora_d1" class="timepicker">
-		</div>
-		<div class="col s2 m1" id="btn-add-lunes" onclick="mostrar_tarde_lunes()">
-			<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">add</i></a>
-		</div>
-		<div class="tarde" id="lunes-tarde">
-			<div class="col s5 m2">
-		 		<label for="hora_d1">Desde</label>
-		 		<input type="text" id="hora_d2" class="timepicker">
-			</div>
-			<div class="col s5 m2">
-		 		<label for="hora_d1">Hasta</label>
-		 		<input type="text" id="hora_d2" class="timepicker">
-			</div>
-		</div>
-		<div class="col s2 m1" id="btn-less-lunes" onclick="ocultar_tarde_lunes()">
-			<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">clear</i></a>
-		</div>
-	</div>
-	<!-- acá termina lunes -->
-	<div class="row">
-		<div class="divider"></div>
-	</div>
-	<!-- acá empieza martes -->
-	<div class="row">
-		<div class="col s12 m3 l2">
-			<h6 class="nombre-dia">Martes</h6>
-		</div>
-		<div class="col s5 m2">
-	 		<label for="hora_d1">Desde</label>
-	 		<input type="text" id="hora_d1" class="timepicker">
-		</div>
-		<div class="col s5 m2">
-	 		<label for="hora_d1">Hasta</label>
-	 		<input type="text" id="hora_d1" class="timepicker">
-		</div>
-		<div class="col s2 m1" id="btn-add-martes" onclick="mostrar_tarde_martes()">
-			<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">add</i></a>
-		</div>
-		<div class="tarde" id="martes-tarde">
-			<div class="col s5 m2">
-		 		<label for="hora_d1">Desde</label>
-		 		<input type="text" id="hora_d2" class="timepicker">
-			</div>
-			<div class="col s5 m2">
-		 		<label for="hora_d1">Hasta</label>
-		 		<input type="text" id="hora_d2" class="timepicker">
-			</div>
-		</div>
-		<div class="col s2 m1" id="btn-less-martes" onclick="ocultar_tarde_martes()">
-			<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">clear</i></a>
-		</div>
-	</div>
-	<!-- acá termina martes -->
 
-	<div class="row">
-		<div class="divider"></div>
-	</div>
-	<!-- acá empieza miercoles -->
-	<div class="row">
-		<div class="col s12 m3 l2">
-			<h6 class="nombre-dia">Miércoles</h6>
-		</div>
-		<div class="col s5 m2">
-	 		<label for="hora_d1">Desde</label>
-	 		<input type="text" id="hora_d1" class="timepicker">
-		</div>
-		<div class="col s5 m2">
-	 		<label for="hora_d1">Hasta</label>
-	 		<input type="text" id="hora_d1" class="timepicker">
-		</div>
-		<div class="col s2 m1" id="btn-add-miercoles" onclick="mostrar_tarde_miercoles()">
-			<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">add</i></a>
-		</div>
-		<div class="tarde" id="miercoles-tarde">
-			<div class="col s5 m2">
-		 		<label for="hora_d1">Desde</label>
-		 		<input type="text" id="hora_d2" class="timepicker">
-			</div>
-			<div class="col s5 m2">
-		 		<label for="hora_d1">Hasta</label>
-		 		<input type="text" id="hora_d2" class="timepicker">
-			</div>
-		</div>
-		<div class="col s2 m1" id="btn-less-miercoles" onclick="ocultar_tarde_miercoles()">
-			<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">clear</i></a>
-		</div>
-	</div>
-	<!-- acá termina miercoles -->
+</form>
 
-	<div class="row">
-		<div class="divider"></div>
-	</div>
-	<!-- acá empieza jueves -->
-	<div class="row">
-		<div class="col s12 m3 l2">
-			<h6 class="nombre-dia">Jueves</h6>
-		</div>
-		<div class="col s5 m2">
-	 		<label for="hora_d1">Desde</label>
-	 		<input type="text" id="hora_d1" class="timepicker">
-		</div>
-		<div class="col s5 m2">
-	 		<label for="hora_d1">Hasta</label>
-	 		<input type="text" id="hora_d1" class="timepicker">
-		</div>
-		<div class="col s2 m1" id="btn-add-jueves" onclick="mostrar_tarde_jueves()">
-			<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">add</i></a>
-		</div>
-		<div class="tarde" id="jueves-tarde">
-			<div class="col s5 m2">
-		 		<label for="hora_d1">Desde</label>
-		 		<input type="text" id="hora_d2" class="timepicker">
-			</div>
-			<div class="col s5 m2">
-		 		<label for="hora_d1">Hasta</label>
-		 		<input type="text" id="hora_d2" class="timepicker">
-			</div>
-		</div>
-		<div class="col s2 m1" id="btn-less-jueves" onclick="ocultar_tarde_jueves()">
-			<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">clear</i></a>
-		</div>
-	</div>
-	<!-- acá termina jueves -->
-
-	<div class="row">
-		<div class="divider"></div>
-	</div>
-	<!-- acá empieza viernes -->
-	<div class="row">
-		<div class="col s12 m3 l2">
-			<h6 class="nombre-dia">Viernes</h6>
-		</div>
-		<div class="col s5 m2">
-	 		<label for="hora_d1">Desde</label>
-	 		<input type="text" id="hora_d1" class="timepicker">
-		</div>
-		<div class="col s5 m2">
-	 		<label for="hora_d1">Hasta</label>
-	 		<input type="text" id="hora_d1" class="timepicker">
-		</div>
-		<div class="col s2 m1" id="btn-add-viernes" onclick="mostrar_tarde_viernes()">
-			<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">add</i></a>
-		</div>
-		<div class="tarde" id="viernes-tarde">
-			<div class="col s5 m2">
-		 		<label for="hora_d1">Desde</label>
-		 		<input type="text" id="hora_d2" class="timepicker">
-			</div>
-			<div class="col s5 m2">
-		 		<label for="hora_d1">Hasta</label>
-		 		<input type="text" id="hora_d2" class="timepicker">
-			</div>
-		</div>
-		<div class="col s2 m1" id="btn-less-viernes" onclick="ocultar_tarde_viernes()">
-			<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">clear</i></a>
-		</div>
-	</div>
-	<!-- acá termina viernes -->
-
-	<div class="row">
-		<div class="divider"></div>
-	</div>
-	<!-- acá empieza sabado -->
-	<div class="row">
-		<div class="col s12 m3 l2">
-			<h6 class="nombre-dia">Sábado</h6>
-		</div>
-		<div class="col s5 m2">
-	 		<label for="hora_d1">Desde</label>
-	 		<input type="text" id="hora_d1" class="timepicker">
-		</div>
-		<div class="col s5 m2">
-	 		<label for="hora_d1">Hasta</label>
-	 		<input type="text" id="hora_d1" class="timepicker">
-		</div>
-		<div class="col s2 m1" id="btn-add-sabado" onclick="mostrar_tarde_sabado()">
-			<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">add</i></a>
-		</div>
-		<div class="tarde" id="sabado-tarde">
-			<div class="col s5 m2">
-		 		<label for="hora_d1">Desde</label>
-		 		<input type="text" id="hora_d2" class="timepicker">
-			</div>
-			<div class="col s5 m2">
-		 		<label for="hora_d1">Hasta</label>
-		 		<input type="text" id="hora_d2" class="timepicker">
-			</div>
-		</div>
-		<div class="col s2 m1" id="btn-less-sabado" onclick="ocultar_tarde_sabado()">
-			<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">clear</i></a>
-		</div>
-	</div>
-	<!-- acá termina sabado -->
-
-	<div class="row">
-		<div class="divider"></div>
-	</div>
-	<!-- acá empieza domingo -->
-	<div class="row">
-		<div class="col s12 m3 l2">
-			<h6 class="nombre-dia">domingo</h6>
-		</div>
-		<div class="col s5 m2">
-	 		<label for="hora_d1">Desde</label>
-	 		<input type="text" id="hora_d1" class="timepicker">
-		</div>
-		<div class="col s5 m2">
-	 		<label for="hora_d1">Hasta</label>
-	 		<input type="text" id="hora_d1" class="timepicker">
-		</div>
-		<div class="col s2 m1" id="btn-add-domingo" onclick="mostrar_tarde_domingo()">
-			<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">add</i></a>
-		</div>
-		<div class="tarde" id="domingo-tarde">
-			<div class="col s5 m2">
-		 		<label for="hora_d1">Desde</label>
-		 		<input type="text" id="hora_d2" class="timepicker">
-			</div>
-			<div class="col s5 m2">
-		 		<label for="hora_d1">Hasta</label>
-		 		<input type="text" id="hora_d2" class="timepicker">
-			</div>
-		</div>
-		<div class="col s2 m1" id="btn-less-domingo" onclick="ocultar_tarde_domingo()">
-			<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">clear</i></a>
-		</div>
-	</div>
-	<!-- acá termina domingo -->
-
-</div>
 
 {% endblock %}
 

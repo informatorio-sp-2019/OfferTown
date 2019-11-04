@@ -20,7 +20,7 @@
                 <img src="{{rubro.imagen.url}}" alt="" class="imagen-rubro-avt"> <strong>{{rubro.nombre}}</strong>  ({{cantidad}})	
             {% endif %}
 		</span>
-		({{cantidad}})	{% include 'rubro/interes_rubro.html' with rubro=rubro  %}
+		{% include 'rubro/interes_rubro.html' with rubro=rubro  %}
 
 	</div>
 

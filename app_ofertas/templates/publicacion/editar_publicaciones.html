@@ -1,0 +1,57 @@
+{% extends "esquema.html" %}
+
+{% block title %} Mis Oferta {% endblock %}
+
+
+	{% block content %}
+
+		{% for item in ofertas %}
+			<div class="row item-lista">
+						
+				<a href="/pub/{{item.id}}/">
+					<div class="caja-oferta-list z-depth-2">
+						<div class="col s4 m5 l3 sin-padding">
+							<div class="imagen-oferta">
+								<img class="responsive-img" src="{{ item.imagen.url }}">
+								
+							</div>
+						</div>
+
+						<div class="col s8 m7 l9 sin-padding">
+							<div class="data-oferta-list">
+								<p class="titulo-oferta-list" >{{ item.titulo }} </p>
+								<p class="precio-regular-list">{{ item.precio_regular }}</p>
+								<p class="precio-oferta-list">{{ item.precio_oferta }}</p>
+								<p class="detalle-oferta-list">
+									{{ item.detalle|truncatechars:40 }}
+								</p>
+								<p class="detalle-oferta-list">
+									<i class="material-icons icono-detalle-oferta">store</i> {{ item.local.nombre }}
+								</p>
+								<p class="detalle-oferta-list">
+									<i class="material-icons icono-detalle-oferta">room</i> {{ item.local.direccion }}
+								</p>
+								<p class="detalle-oferta-list">
+									<i class="material-icons icono-detalle-oferta">room</i> {{ item.local.metodo_pago }}
+								</p>
+									
+	 						</div>
+						</div>
+						<div class="delivery-list z-depth 1">
+							<span class="envio"><i class="tiny material-icons">motorcycle</i></span>
+						</div>
+					</div>
+				</a>
+			</div>
+		{% endfor %}
+
+	{% endblock %}
+
+	{% block script %}
+	<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.tooltipped');
+    var instances = M.Tooltip.init(elems);
+  });
+	</script>
+	{% endblock %}

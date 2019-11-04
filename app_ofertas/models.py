@@ -60,6 +60,14 @@ class Local(models.Model):
 	def get_medios_de_pago(self):
 		return self.medios_de_pago.all()
 
+	def get_interesados(self):
+		#usuario ver como acceder al logueado
+		print("hola")
+		usuarios = []
+		for x in self.favoritos.all():
+			usuarios.append(x.usuario)
+		return usuarios		
+
 	def __str__(self):
 		return self.nombre
 

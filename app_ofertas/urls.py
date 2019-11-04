@@ -22,6 +22,7 @@ urlpatterns = [
     path('vistas_test', views.vistas_test),
 
     path('toggle_interes/<int:id>/', views.toggleInteres),
+    path('toggle_favorito/<int:id>/', views.toggleFavorito),
 #    path('<usuario>/mis_ofertas/', views.mis_ofertas,name='ver_ofertas_usuario'),
 
     path('usuario/<usuario>/<int:id>/nueva_sucursal/', views.nueva_oferta,name='nueva_oferta'),

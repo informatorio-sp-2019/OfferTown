@@ -7,7 +7,7 @@
 	<div class="row">
 		<h6 class="titulo-local">
 			{{ local.nombre }}
-			<a href="#!" class="secondary-content"><i class="material-icons tooltipped grey-text" data-position="top" data-tooltip="Agregar {{ local.nombre }} a mis favoritos">star_border</i></a>
+			{% include 'local/favorito_local.html' with local=local  %}
 		</h6>
 
 		<div class="caja-oferta-single z-depth-2">

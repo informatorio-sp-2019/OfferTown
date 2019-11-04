@@ -42,8 +42,8 @@
 
 						<a href="{% url 'app_ofertas:ver_local'  pub.local.id %}"> {{ pub.local.nombre }} </a> 
 						
+						{% include 'local/favorito_local.html' with local=pub.local  %}
 
-						<a href="#!" class="secondary-content"><i class="material-icons tooltipped grey-text" data-position="top" data-tooltip="Agregar {{ pub.local.nombre }} a mis favoritos">star_border</i></a>
 					</p>
 					{% if pub.local.telefono %}
 						<p class="detalle-oferta-single">

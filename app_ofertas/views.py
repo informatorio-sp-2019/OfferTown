@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 
-from app_ofertas.models import Publicacion,Rubro, Local, MedioDePago, Interes
+from app_ofertas.models import Publicacion,Rubro, Local, MedioDePago, Interes, Favorito
 from app_ofertas.forms import LocalForm, PublicacionForm, OfertaForm, SucursalForm
 from django.contrib.auth.decorators import login_required
 from datetime import date
@@ -131,8 +131,9 @@ def agregar_publicacion(request):
 @login_required
 def favoritos(request):
 	#lugares favoritos
+	locales = Local.objects.all().filter(favoritos__usuario=request.user.usuario)
 	contexto = {
-
+		"locales":locales
 	}
 	return render(request, "favoritos.html", contexto)
 
@@ -347,6 +348,29 @@ def toggleInteres(request, id):
 
 	data = {
 		"id":rubro.id,
+		"estado":estado
+	}
+
+	return JsonResponse(data)
+
+
+def toggleFavorito(request, id):
+	local = Local.objects.get(pk=id)
+
+	new_favorito, created = Favorito.objects.get_or_create(usuario=request.user.usuario, local=local)
+  
+
+	if created:
+		estado="SI"
+	else:
+		new_favorito.delete()
+		estado="NO"
+
+	data = {}
+	
+
+	data = {
+		"id":local.id,
 		"estado":estado
 	}
 

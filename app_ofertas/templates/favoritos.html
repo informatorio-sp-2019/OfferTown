@@ -14,4 +14,15 @@
 	</div>
 
 
+	{% for local in locales %}
+		<div class="divider"></div>
+		<div class="row">
+			{{local.nombre}}
+		</div>
+		{% include "publicacion/publicaciones_grid.html" with publicaciones=local.publicaciones.all %}
+		<div class="divider"></div>
+	{% endfor %}
+
+
+
 {% endblock %}

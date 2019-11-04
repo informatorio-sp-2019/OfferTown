@@ -10,7 +10,7 @@
 
 	<script type="text/javascript">
 		
-		function cambiarIcono(estado,anchor){
+		function cambiarIconoFav(estado,anchor){
 			console.log(anchor)
 			if(estado=="SI"){
 				anchor.children[0].innerHTML = "star"
@@ -37,6 +37,6 @@
 			let id_local = anchor.dataset.id
 			estado = await toggleFavoritoRequest(id_local)
 		
-			cambiarIcono(estado,anchor)
+			cambiarIconoFav(estado,anchor)
 		}
 	</script>

@@ -33,6 +33,13 @@
 	margin: 5px auto 0;
 }
 
+.fondo_rojo{
+	background-color: red;
+}
+
+.fondo_verde{
+	background-color: green;
+}
 
 /* inicio grid ofertas */
 .caja-oferta-list,

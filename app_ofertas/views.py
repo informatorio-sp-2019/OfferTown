@@ -226,6 +226,7 @@ def ver_local_usuario(request,usuario,id):
 	ofertas = Publicacion.objects.filter(local=local)
 	return render(request, 'local/local_usuario.html',{'local':local, 'ofertas':ofertas})
 
+
 #	hoy = dia_spanish()
 #	medios = local.get_medios_de_pago()
 #	horarios = local.get_horarios()

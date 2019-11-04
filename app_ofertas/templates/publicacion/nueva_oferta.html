@@ -2,14 +2,76 @@
 
 {% block title %} Nueva Oferta {% endblock %}
 
-{% block content %}
-<form method="POST"  enctype="multipart/form-data">
-    
-    {% csrf_token %}  
-    {{ form.as_p}}
 
-    <input type="submit" value="Guardar"/>
-</form>
+{% block content %}
+
+<div class="row">
+	<form method="POST"  enctype="multipart/form-data">
+	    
+	    <p>Completa los datos para publicar tu oferta</p>
+
+	    {% csrf_token %}  
+	    {% for field in form %}
+	    
+	    	{% if field.name == 'rubro' %}
+				<div class=" col s12 m3 l4">		
+					<label>
+					{{ field.errors }}
+					{{ field.label_tag }}
+					{{ field }}
+					</label>
+				</div>
+		 		{% elif field.name == 'titulo' %}
+					<div class=" col s12 m5 l4">		
+						<label>
+						{{ field.errors }}
+						{{ field.label_tag }}
+						{{ field }}
+						</label>
+					</div>
+				{% elif field.name == 'precio_regular' %}
+					<div class=" col s6 m2 l2">		
+						<label>
+						{{ field.errors }}
+						{{ field.label_tag }}
+						{{ field }}
+						</label>
+					</div>	
+				{% elif field.name == 'precio_oferta' %}
+					<div class=" col s6 m2 l2">		
+						<label>
+						{{ field.errors }}
+						{{ field.label_tag }}
+						{{ field }}
+						</label>
+					</div>
+				{% elif field.name == 'imagen' %}
+					<div class=" col s12 m3 l2">		
+						<label>
+						{{ field.errors }}
+						{{ field.label_tag }}
+						{{ field }}
+						</label>
+					</div>
+				{% elif field.name == 'detalle' %}
+					<div class=" col s12 m9 l10">		
+						<label>
+						{{ field.errors }}
+						{{ field.label_tag }}
+						{{ field }}
+						</label>
+					</div>
+
+				{% endif %}	
+	    {% endfor %}
+
+    <div class="row center-align">
+		 	<button class="btn-large waves-effect waves-light" type="submit" name="action" value="Guardar">Guardar
+				<i class="material-icons right">save</i>
+			</button>
+    </div>
+	</form>
+</div>
 
 {% endblock %}
 

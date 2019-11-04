@@ -1,15 +1,69 @@
 {% extends "esquema.html" %}
 
-{% block title %} {{ perfil.first_name }} {% endblock %}
+{% block title %} Perfil {% endblock %}
 
 {% block content %}
+	
+	<div class="row">
+		<h6 class="titulo-local">
+			Perfil
+		</h6>
 
-<p class="detalle-oferta-single" >{{ perfil.first_name }}</p>
-{{ request.user.username.title }}
+		<div class="caja-oferta-single z-depth-2">
+			<div class="col s12 m5 l3 sin-padding">
+				<div class="imagen-local">
+					<img class="responsive-img" src="{{ request.user.usuario.imagen.url }}">
+				</div>
+			</div>
 
-{{ usuario.username }} 
-{{ usuario.email }}
-{{ usuario.first_name }} 
-{{ usuario.last_name }} 
+			<div class="col s12 m7 l9">
+				<div class="data-oferta">
+					<p class="detalle-oferta-single">
+						<i class="material-icons icono-detalle-oferta">face</i>
+						Nombre: {{ request.user.usuario.first_name }} {{ request.user.usuario.last_name }} 	
+					</p>
+					<p class="detalle-oferta-single">
+						<i class="material-icons icono-detalle-oferta">account_box</i>
+						Username: {{ request.user.username.title }}	
+					</p>
+					<p class="detalle-oferta-single">
+						<i class="material-icons icono-detalle-oferta">email</i>
+						Email: {{ request.user.usuario.email }}
+					</p>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="row">
+			<div class="divider"></div>
+		</div>
+
+		<div>
+			<h6>Mis Locales</h6>
+		</div>
+
+		<div class="row">
+			<div class="divider"></div>
+		</div>
+
+			{% for local in request.user.usuario.get_locales %}
+				<div class="col s6 m3">
+					<div class="caja-oferta-grid z-depth-2">
+						<a href="{% url 'app_ofertas:ver_local_usuario' user.username local.id %}">
+							<div class="imagen-oferta-grid">
+								<img class="responsive-img" src="{{local.imagen.url}}">
+							</div>
+							<div class="data-oferta-grid">
+								<p class="precio-oferta-single"><i class="material-icons icono-detalle-oferta">store</i>{{ local.nombre }}
+								</p>
+								<p class="detalle-oferta-single"><i class="material-icons icono-detalle-oferta">location_on</i>{{ local.direccion }}
+								</p>
+							</div>
+						</a>
+					</div>
+				</div>
+			{% endfor %}
+	</div>
 
 {% endblock %}

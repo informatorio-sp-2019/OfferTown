@@ -1,5 +1,7 @@
 {% extends "esquema.html" %}
 
+{% load static from staticfiles %}
+
 {% block title %} {{ local.nombre }} {% endblock %}
 
 {% block content %}
@@ -7,8 +9,6 @@
 	<div class="row">
 		<h6 class="titulo-local">
 			{{ local.nombre }}
-
-			<a href="#!" class="secondary-content"><i class="material-icons tooltipped grey-text" data-position="top" data-tooltip="Agregar {{ local.nombre }} a mis favoritos">star_border</i></a>
 		</h6>
 
 		<div class="caja-oferta-single z-depth-2">
@@ -17,13 +17,16 @@
 						{% if local.imagen %}
 							<img class="responsive-img" src="{{ local.imagen.url }}">
 						{% else %}
-						{% endif %}					
+							<img class="responsive-img sin-foto-local" src="{% static 'img/sin-foto-local.svg' %}">
+						{% endif %}							
 				</div>
 			</div>
 			<div class="col s12 m7 l9">
 				<div class="data-oferta">
 
 					<a href="#!" class="secondary-content btn-floating btn-small waves-effect waves-light tooltipped grey-text" data-position="top" data-tooltip="Editar datos de mi local"><i class="material-icons">edit</i></a>
+
+					<a href="{% url 'app_ofertas:nueva_sucursal' user.username local.id  %}" class="boton-add-sucursal secondary-content btn-floating btn-small waves-effect waves-light tooltipped grey-text" data-position="top" data-tooltip="Agregar Sucursal"><i class="material-icons">add</i></a>
 
 					<p class="detalle-oferta-single" ><i class="material-icons icono-detalle-oferta">location_on</i>
 						Direccion: {{ local.direccion }} </p>
@@ -67,10 +70,6 @@
 			</div>
 		</div>
 
-
-			<a href="{% url 'app_ofertas:nueva_sucursal' user.username local.id  %}" class="waves-effect">
-                   Agregar Sucursal
-            </a>            
 	</div>
 
 	<div class="row">
@@ -79,9 +78,8 @@
 
 	<div class="row">
 
-		<a href="#!" class="secondary-content btn-floating btn-small waves-effect waves-light"><i class="material-icons">edit</i></a>
-		<h6>Horarios de atención 
-		</h6>
+		<a href="#!" class="secondary-content btn-floating btn-small waves-effect waves-light tooltipped grey-text" data-position="top" data-tooltip="Editar horarios"><i class="material-icons">edit</i></a>
+		<h6>Horarios de atención </h6>
 
 	</div>
 
@@ -126,14 +124,19 @@
 	<div>
 		<h6>MIs ofertas</h6>
 	</div>
+	{% if ofertas %}
+		{% include "publicacion/publicaciones_grid.html" with publicaciones=ofertas %}
+	{% else %}
+		<div class="row center-align">
+			<img class="responsive-img stiker" src="{% static 'img/sin-ofertas.svg' %}">
+			<h6>Aún no has publicado ofertas. Publica una ahora haciendo click abajo a la derecha en <i class="material-icons"> add_circle </i> 
+			</h6>			
+		</div>
+	{% endif %}
 
-	{% include "publicacion/publicaciones_grid.html" with publicaciones=ofertas %}
-
-
-
-<!-- acá tiene que poder agregar sucursal o bien oferta -->
+	
 	<div class="fixed-action-btn">
-	  <a class="btn-floating btn-large red tooltipped pulse" data-position="top" data-tooltip="Agregar nueva oferta" href="{% url 'app_ofertas:nueva_oferta' user.username local.id  %}">
+	  <a class="btn-floating btn-large red tooltipped pulse" data-position="top" data-tooltip="Agregar Oferta" href="{% url 'app_ofertas:nueva_oferta' user.username local.id  %}">
 	    <i class="large material-icons">add</i>
 	  </a>
 	</div>

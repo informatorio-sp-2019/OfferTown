@@ -372,6 +372,15 @@
 	display: flex;
 }
 
+.sin-foto-local{
+	padding:2em;
+	opacity: .3;
+}
+
+.boton-add-sucursal{
+margin-right: 10px
+}
+
 /* login */
 .logo-login{
 	padding: 10px;

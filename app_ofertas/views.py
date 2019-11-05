@@ -15,7 +15,7 @@ def hometest(request):
 
 def index(request):
 	#Obtener 9 ofertas recientes (mando todas mientras CORREGIR )
-	recientes=Publicacion.objects.all()
+	recientes=Publicacion.objects.all().filter(activada=True)
 	#últimas 9
 	#recientes=Publicacion.objects.order_by('-id')[:9]
 	#Obtener las categorías
@@ -33,7 +33,7 @@ def search(request):
 	param_orden =request.GET.get('param_orden','')
 
 	# filtrar titulo
-	publicaciones = Publicacion.objects.filter(titulo__contains=param_titulo)
+	publicaciones = Publicacion.objects.filter(titulo__contains=param_titulo).filter(activada=True)
 
 	#filtrar metodo pago
 	id_pago = 0
@@ -141,7 +141,7 @@ def favoritos(request):
 def tendencia(request):
 	#obtener 12 publicaciones mas populares
 	#cant_visitas
-	tendencias = Publicacion.objects.all().order_by("cant_visitas")[:12]
+	tendencias = Publicacion.objects.filter(activada=True).order_by("cant_visitas")[:12]
 	contexto = {
 		"tendencias":tendencias
 	}
@@ -162,6 +162,8 @@ def ver_publicacion(request,id):
 	except Publicacion.DoesNotExist:
 		raise Http404("Esta oferta no se encuentra actualmente disponible")
 
+	if not pub.activada:
+		raise Http404("Esta oferta no se encuentra actualmente disponible")
 
 	hoy = dia_spanish()
 	horarios = pub.local.get_horarios()

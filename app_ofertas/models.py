@@ -72,7 +72,8 @@ class Local(models.Model):
 		for x in self.favoritos.all():
 			usuarios.append(x.usuario)
 		return usuarios		
-
+	def get_ofertas_activas(self):
+		return self.publicaciones.all().filter(activada=True)
 	def __str__(self):
 		return self.nombre
 
@@ -109,7 +110,9 @@ class Rubro(models.Model):
 		for x in self.intereses.all():
 			usuarios.append(x.usuario)
 		return usuarios
-		
+	
+	def get_ofertas_activas(self):
+		return self.publicaciones.all().filter(activada=True)
 	def __str__(self):
 		return self.nombre
 

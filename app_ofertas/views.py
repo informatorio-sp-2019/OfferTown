@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 
 from app_ofertas.models import Publicacion,Rubro, Local, MedioDePago, Interes, Favorito
-from app_ofertas.forms import LocalForm, PublicacionForm, OfertaForm, SucursalForm
+from app_ofertas.forms import LocalForm, PublicacionForm, OfertaForm, SucursalForm, EditarLocalForm
 from django.contrib.auth.decorators import login_required
 from datetime import date
 import ipdb
@@ -406,7 +406,7 @@ class SetIntereses():
 
 
 def set_intereses(request):
-	ipdb.set_trace()
+	# ipdb.set_trace()
 	rubros = Rubro.objects.all()
 	intereses = Interes.objects.filter(usuario_id=request.user.id)
 	
@@ -427,3 +427,45 @@ def set_intereses(request):
 	template='intereses/seteo_intereses.html'
 	context = {'rubros':lista}
 	return render(request,template,context)
+
+
+@login_required
+def editar_local(request,usuario,id):
+	# ipdb.set_trace()
+	local = Local.objects.get(pk=id)
+	if request.method == 'GET':
+		form = EditarLocalForm(instance = local)
+	else:
+		form = EditarLocalForm(request.POST, request.FILES, instance = local)
+		if form.is_valid():
+			local = form.save(commit=False)
+			local.usuario = request.user.usuario
+			local.save()
+
+			return redirect('app_ofertas:ver_local_usuario', usuario = request.user.username, id=id)	
+
+
+	contexto = {'form':form}
+	template = 'local/editar_local.html'
+	return render(request,template,contexto)
+
+
+# @login_required
+# def agregar_local(request):
+	
+# 	if request.method == 'POST':
+# 		form = LocalForm(request.POST, request.FILES)
+# 		if form.is_valid():
+# 			local = form.save(commit=False)
+# 			local.usuario = request.user.usuario
+# 			local.save()
+			
+# 			return redirect('app_ofertas:index')	
+			
+# 	form = LocalForm()
+# 	context={'form':form}
+# 	template = 'local/alta_local.html'
+
+# 	return render(request, template, context)	
+
+

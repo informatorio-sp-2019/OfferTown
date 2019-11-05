@@ -50,3 +50,15 @@ class SucursalForm(forms.ModelForm):
 				 'direccion',
 				 'telefono')
 
+
+class EditarLocalForm(forms.ModelForm):
+	class Meta:
+		model = Local
+		fields = ('imagen',
+			      'nombre',
+			      'direccion',
+			      'telefono',			      
+			      'localidad',
+			      'delivery',
+			      'metodo_pago',
+			      'horario',)

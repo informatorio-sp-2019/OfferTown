@@ -453,3 +453,28 @@ margin-right: 10px
 #btn-less-domingo{
 	display: none
 }
+/* formularios con imagen */
+input#id_imagen{
+	display: none;
+}
+#image-preview-area img{
+	max-width: 100%;
+
+}
+.cajaimagenform{
+	position: relative;
+}
+.simil-btn-add-img{
+	display: block;
+	margin: auto;
+	text-align: center;
+	color:#000000!important;
+	background-color: #lightgrey;
+	border: solid 1px #222222;
+	border-radius: 3px;
+	cursor: pointer;
+	overflow: hidden;
+}
+.simil-btn-add-img i{
+	padding: 20px;
+}

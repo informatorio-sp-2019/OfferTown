@@ -5,7 +5,16 @@
 {% block content %}
 	<h2>LISTADO DE RUBROS (INTERESES)</h2>
 	{% for r in rubros %}
-		<p>{{r.nombre}} - {{r.valor}}</p>
+	<div class="row">
+			<div class="col s8">
+				{{r.nombre}}
+			</div>
+			<div class="col s4">
+				{% include 'rubro/interes_rubro.html' with rubro=r  %}
+			</div>
+		
+	</div>
+		
 	{% endfor %}
 {% endblock %}
 

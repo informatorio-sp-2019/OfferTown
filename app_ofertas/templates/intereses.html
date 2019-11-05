@@ -18,7 +18,7 @@
 		<div class="row">
 			{{categoria.nombre}}
 		</div>
-		{% include "publicacion/publicaciones_grid.html" with publicaciones=categoria.publicaciones.all %}
+		{% include "publicacion/publicaciones_grid.html" with publicaciones=categoria.get_ofertas_activas %}
 		<div class="divider"></div>
 	{% endfor %}
 

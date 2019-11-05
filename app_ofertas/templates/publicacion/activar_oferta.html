@@ -1,0 +1,62 @@
+{# oferta #}
+{%if oferta.activada %}
+	<p id="title_estado_{{oferta.id}}" class="estado-oferta">Activa</p>
+	<div class="switch">
+	  <label>
+	    <input onchange="toggleActivado(this)" data-id="{{oferta.id}}" type="checkbox" checked="">
+	    <span class="lever"></span>
+	  </label>
+	</div>
+{% else %}
+	<p id="title_estado_{{oferta.id}}" class="estado-oferta">Desactiva</p>
+	<div class="switch">
+	  <label>
+	    <input onchange="toggleActivado(this)" data-id="{{oferta.id}}" type="checkbox">
+	    <span class="lever"></span>
+	  </label>
+	</div>
+{% endif %}
+
+
+<script type="text/javascript">
+	function renderActivadoEstado(estado, checkbox){
+			id_estado = "#" + "title_estado_" + checkbox.dataset.id
+			id_caja = "#" + "oferta-container-" + checkbox.dataset.id
+			
+			console.log("jajaja")
+			console.log(id_estado)
+			if(estado=="SI"){
+				checkbox.checked = true
+				document.querySelector(id_estado).innerHTML = "Activa"
+				document.querySelector(id_caja).classList.remove("desactivada")
+			}
+			else
+			if(estado=="NO"){
+				checkbox.checked = false
+				document.querySelector(id_estado).innerHTML = "Desactiva"
+				document.querySelector(id_caja).classList.add("desactivada")
+				
+			}		
+	}
+
+	async function toggleActivadoRequest(oferta_id){
+		request = "/toggle_activado_oferta/" + oferta_id + "/"
+		datos = await fetch(request).then(response=>{
+			return response.json()
+		}).then(data=>{
+			return data
+		}).catch(err=>{
+
+		})
+		return datos.estado
+	}
+
+	async function toggleActivado(checkbox){
+		let estado = ""
+		let id_oferta = checkbox.dataset.id
+		
+		estado = await toggleActivadoRequest(id_oferta)
+
+		renderActivadoEstado(estado, checkbox)
+	}
+</script>

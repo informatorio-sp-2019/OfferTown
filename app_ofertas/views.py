@@ -15,7 +15,7 @@ def hometest(request):
 
 def index(request):
 	#Obtener 9 ofertas recientes (mando todas mientras CORREGIR )
-	recientes=Publicacion.objects.all()
+	recientes=Publicacion.objects.all().filter(activada=True)
 	#últimas 9
 	#recientes=Publicacion.objects.order_by('-id')[:9]
 	#Obtener las categorías
@@ -33,7 +33,7 @@ def search(request):
 	param_orden =request.GET.get('param_orden','')
 
 	# filtrar titulo
-	publicaciones = Publicacion.objects.filter(titulo__contains=param_titulo)
+	publicaciones = Publicacion.objects.filter(titulo__contains=param_titulo).filter(activada=True)
 
 	#filtrar metodo pago
 	id_pago = 0
@@ -141,7 +141,7 @@ def favoritos(request):
 def tendencia(request):
 	#obtener 12 publicaciones mas populares
 	#cant_visitas
-	tendencias = Publicacion.objects.all().order_by("cant_visitas")[:12]
+	tendencias = Publicacion.objects.filter(activada=True).order_by("cant_visitas")[:12]
 	contexto = {
 		"tendencias":tendencias
 	}
@@ -162,6 +162,8 @@ def ver_publicacion(request,id):
 	except Publicacion.DoesNotExist:
 		raise Http404("Esta oferta no se encuentra actualmente disponible")
 
+	if not pub.activada:
+		raise Http404("Esta oferta no se encuentra actualmente disponible")
 
 	hoy = dia_spanish()
 	horarios = pub.local.get_horarios()
@@ -393,6 +395,34 @@ def toggleFavorito(request, id):
 		"estado":estado
 	}
 
+def toggleActivadoOferta(request,id):
+	oferta = Publicacion.objects.get(pk=id)
+	data = {}
+	estado = ""
+	print("a")
+	print(estado)
+	print(oferta.local.usuario)
+	print(request.user.usuario)
+
+	if (oferta.local.usuario.id == request.user.usuario.id):
+		print("usuario igual")
+		if oferta.activada:
+			oferta.activada = False
+			oferta.save()
+			estado="NO"
+		else:
+			oferta.activada = True
+			oferta.save()
+			estado="SI"
+
+		data = {
+			"id":oferta.id,
+			"estado":estado
+		}
+	else:
+		print("usuario distinto")
+
+
 	return JsonResponse(data)
 
 class SetIntereses():
@@ -406,29 +436,15 @@ class SetIntereses():
 
 
 def set_intereses(request):
-	# ipdb.set_trace()
+
+	#ipdb.set_trace()
+
 	rubros = Rubro.objects.all()
-	intereses = Interes.objects.filter(usuario_id=request.user.id)
+	template='intereses/seteo_intereses.html'  
+	context = {'rubros':rubros}
+	return render(request,template,context)	
+
 	
-	# list_rubros = [i.id for i in rubros]
-	list_intereses = [i.rubro_id for i in intereses]
-	lista = list()
-	for r in rubros:
-		if r.id in list_intereses:
-			valor = True
-		else:
-			valor = False
-
-		set_int = SetIntereses(r.nombre,r.id,valor)
-		lista.append(set_int)
-
-	print(lista)
-
-	template='intereses/seteo_intereses.html'
-	context = {'rubros':lista}
-	return render(request,template,context)
-
-
 @login_required
 def editar_local(request,usuario,id):
 	# ipdb.set_trace()
@@ -449,23 +465,5 @@ def editar_local(request,usuario,id):
 	template = 'local/editar_local.html'
 	return render(request,template,contexto)
 
-
-# @login_required
-# def agregar_local(request):
-	
-# 	if request.method == 'POST':
-# 		form = LocalForm(request.POST, request.FILES)
-# 		if form.is_valid():
-# 			local = form.save(commit=False)
-# 			local.usuario = request.user.usuario
-# 			local.save()
-			
-# 			return redirect('app_ofertas:index')	
-			
-# 	form = LocalForm()
-# 	context={'form':form}
-# 	template = 'local/alta_local.html'
-
-# 	return render(request, template, context)	
 
 

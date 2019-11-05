@@ -23,6 +23,7 @@ urlpatterns = [
 
     path('toggle_interes/<int:id>/', views.toggleInteres),
     path('toggle_favorito/<int:id>/', views.toggleFavorito),
+    path('toggle_activado_oferta/<int:id>/', views.toggleActivadoOferta),
 #    path('<usuario>/mis_ofertas/', views.mis_ofertas,name='ver_ofertas_usuario'),
 
     path('usuario/<usuario>/<int:id>/nueva_sucursal/', views.nueva_sucursal,name='nueva_sucursal'),

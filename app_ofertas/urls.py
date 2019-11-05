@@ -10,7 +10,7 @@ urlpatterns = [
     path('agregar_local/', views.agregar_local, name="agregar_local"),
     path('agregar_publicacion/', views.agregar_publicacion, name='agregar_publicacion'),
 
-    path('favoritos', views.favoritos),
+    path('favoritos/', views.favoritos),
     path('tendencias', views.tendencia),
     path('intereses', views.intereses),
 

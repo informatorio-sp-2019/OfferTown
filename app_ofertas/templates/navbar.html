@@ -55,7 +55,7 @@
                     </div>
 
 
-                    <a href="/usuario/perfil/">
+                    <a href="/usuario/{{ user.username }}/perfil/">
 
                       {% if request.user.usuario.imagen %}
                         <img class="circle" src="{{request.user.usuario.imagen.url}}">
@@ -64,10 +64,10 @@
                       {% endif %}
 
                     </a>
-                  <a href="/usuario/perfil/">
+                  <a href="/usuario/{{ user.username }}/perfil/">
                     <span class="white-text name">{{ request.user.username.title }}</span>
                   </a>
-                  <a href="/usuario/perfil/">
+                  <a href="/usuario/{{ user.username }}/perfil/">
                     <span class="white-text email">{{ request.user.usuario.email }}</span>
                   </a>
                 </div>

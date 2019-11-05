@@ -29,6 +29,7 @@ urlpatterns = [
     path('usuario/<usuario>/<int:id>/nueva_oferta/', views.nueva_oferta,name='nueva_oferta'),  
     path('usuario/<usuario>/<int:id>/', views.ver_local_usuario,name='ver_local_usuario'),
     path('usuario/<usuario>/perfil/', views.ver_perfil_usuario, name='ver_perfil_usuario'),
-    path('horarios/', views.horarios)
+    path('horarios/', views.horarios),
+    path('set_intereses/', views.set_intereses, name='set_intereses'),
 
 ]

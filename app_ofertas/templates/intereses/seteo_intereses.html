@@ -1,0 +1,11 @@
+{% extends "esquema.html" %}
+
+{% block title %} Intereses {% endblock %}
+	
+{% block content %}
+	<h2>LISTADO DE RUBROS (INTERESES)</h2>
+	{% for r in rubros %}
+		<p>{{r.nombre}} - {{r.valor}}</p>
+	{% endfor %}
+{% endblock %}
+

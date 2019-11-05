@@ -406,7 +406,7 @@ class SetIntereses():
 
 
 def set_intereses(request):
-	ipdb.set_trace()
+	#ipdb.set_trace()
 	rubros = Rubro.objects.all()
 	intereses = Interes.objects.filter(usuario_id=request.user.id)
 	

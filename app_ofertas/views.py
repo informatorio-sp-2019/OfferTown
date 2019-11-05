@@ -395,6 +395,7 @@ def toggleFavorito(request, id):
 		"estado":estado
 	}
 
+	return JsonResponse(data)
 def toggleActivadoOferta(request,id):
 	oferta = Publicacion.objects.get(pk=id)
 	data = {}

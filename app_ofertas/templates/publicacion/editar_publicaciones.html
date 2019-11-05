@@ -13,9 +13,9 @@
 		{% for item in ofertas %}
 			<div class="row item-lista">
 					{% if item.activada %}			
-						<div class="caja-oferta-list z-depth-2">
+						<div id="oferta-container-{{item.id}}" class="caja-oferta-list z-depth-2">
 					{% else %}
-						<div class="caja-oferta-list z-depth-2 desactivada">
+						<div id="oferta-container-{{item.id}}" class="caja-oferta-list z-depth-2 desactivada">
 					{% endif %}
 						<div class="col s2 m3 l3 sin-padding">
 							<div class="imagen-oferta valign-wrapper">

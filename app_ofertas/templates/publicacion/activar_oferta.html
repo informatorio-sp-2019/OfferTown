@@ -21,16 +21,21 @@
 <script type="text/javascript">
 	function renderActivadoEstado(estado, checkbox){
 			id_estado = "#" + "title_estado_" + checkbox.dataset.id
+			id_caja = "#" + "oferta-container-" + checkbox.dataset.id
+			
 			console.log("jajaja")
 			console.log(id_estado)
 			if(estado=="SI"){
 				checkbox.checked = true
 				document.querySelector(id_estado).innerHTML = "Activa"
+				document.querySelector(id_caja).classList.remove("desactivada")
 			}
 			else
 			if(estado=="NO"){
 				checkbox.checked = false
 				document.querySelector(id_estado).innerHTML = "Desactiva"
+				document.querySelector(id_caja).classList.add("desactivada")
+				
 			}		
 	}
 

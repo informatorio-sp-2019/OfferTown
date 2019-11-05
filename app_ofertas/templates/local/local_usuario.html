@@ -24,7 +24,7 @@
 			<div class="col s12 m7 l9">
 				<div class="data-oferta">
 
-					<a href="#!" class="secondary-content btn-floating btn-small waves-effect waves-light tooltipped grey-text" data-position="top" data-tooltip="Editar datos de mi local"><i class="material-icons">edit</i></a>
+					<a href="{% url 'app_ofertas:editar_local' user.username local.id %}" class="secondary-content btn-floating btn-small waves-effect waves-light tooltipped grey-text" data-position="top" data-tooltip="Editar datos de mi local"><i class="material-icons">edit</i></a>
 
 					<a href="{% url 'app_ofertas:nueva_sucursal' user.username local.id  %}" class="boton-add-sucursal secondary-content btn-floating btn-small waves-effect waves-light tooltipped grey-text" data-position="top" data-tooltip="Agregar Sucursal"><i class="material-icons">add</i></a>
 

@@ -20,6 +20,11 @@
 	display: block!important;
 }
 
+
+.fondo-menu img{
+	opacity: .4;
+}
+
 /* helpers */
 .sin-margen{
 	margin: 0!important;
@@ -27,6 +32,10 @@
 
 .sin-padding{
 	padding: 0!important;
+}
+
+.fantasma{
+	clear: both;
 }
 
 .titulo-lista{
@@ -73,6 +82,19 @@
 	border:solid 2px #959595;
 	border-radius: 50%;
 	box-shadow: 0 4px 2px 0 rgba(0,0,0,0.14),0 1px 10px 0 rgba(0,0,0,0.12),0 2px 4px -1px rgba(0,0,0,0.3);
+}
+.descuento_tag_list{
+position: absolute;
+	vertical-align: bottom;
+	bottom: 10%;
+	left: 10%;
+	width: 45px;
+	height: 45px;
+	background-color: #388e3c;
+	border:solid 2px #959595;
+	border-radius: 50%;
+	box-shadow: 0 4px 2px 0 rgba(0,0,0,0.14),0 1px 10px 0 rgba(0,0,0,0.12),0 2px 4px -1px rgba(0,0,0,0.3);
+
 }
 
 .porcentaje_descuento_grid{
@@ -202,6 +224,12 @@
 
 .item-lista{
 	margin-bottom: 5px;
+}
+
+/* ver mis ofertas */
+.estado-oferta{
+	margin-bottom: 5px;
+	margin-top: 10px;
 }
 
 
@@ -392,9 +420,10 @@ margin-right: 10px
 
 /* menu */
 .imagen-menu{
-	max-width: 20px;
-	margin-right: 27px;
-	margin-left: 3px;
+	max-width: 27px;
+	height: 27px;
+	margin-right: 20px;
+	margin-left: 0px;
 	vertical-align: middle;
 }
 

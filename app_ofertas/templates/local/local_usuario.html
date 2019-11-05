@@ -81,9 +81,6 @@
 		<a href="#!" class="secondary-content btn-floating btn-small waves-effect waves-light tooltipped grey-text" data-position="top" data-tooltip="Editar horarios"><i class="material-icons">edit</i></a>
 		<h6>Horarios de atención </h6>
 
-	</div>
-
-	<div class="row">
 
 		{% for horario in horarios %}
 
@@ -125,6 +122,7 @@
 		<h6>MIs ofertas</h6>
 	</div>
 	{% if ofertas %}
+	<a href="{% url 'app_ofertas:editar_ofertas' user.username local.id  %}" class="secondary-content btn-floating btn-small waves-effect waves-light tooltipped grey-text" data-position="top" data-tooltip="Editar mis ofertas"><i class="material-icons">edit</i></a>
 		{% include "publicacion/publicaciones_grid.html" with publicaciones=ofertas %}
 	{% else %}
 		<div class="row center-align">

@@ -267,6 +267,24 @@ def nueva_oferta(request,usuario,id):
 
 	return render(request, template, context)
 
+@login_required
+def editar_ofertas(request,usuario,id):
+	if request.user.username == usuario and (id in request.user.usuario.get_locales_id):
+		try:
+			local=Local.objects.get(pk=id)
+		except Local.DoesNotExist:
+			raise Http404("Este local no se encuentra actualmente disponible")
+	else:
+		raise Http404("Este local no se encuentra actualmente disponible")
+
+	ofertas = Publicacion.objects.filter(local=local)
+	cantidad = Publicacion.objects.filter(local=local).count()
+
+	return render(request, 'publicacion/editar_publicaciones.html', {'usuario':usuario, 'local':local, 'ofertas':ofertas, 'cantidad':cantidad})
+
+
+
+
 
 def horarios(request):
 	return render(request, 'local/alta_horarios.html',{})

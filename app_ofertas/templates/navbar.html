@@ -1,3 +1,4 @@
+{% load static from staticfiles %}
 <nav>
   <div class="nav-wrapper">
       <div class="row">
@@ -8,7 +9,7 @@
 
         <div class="col s8">
 
-          <div class="row">
+          <div class="row sin-margen">
             <div class="col s4">
               <a href="/favoritos" class="top-bar-button">
                 <div class=" icon-top-bar-button">
@@ -47,10 +48,10 @@
               {% if user.is_authenticated %}
                 <li>
                   <div class="user-view">
-                    <div class="background green darken4">
-                      <!-- acá va la imagen de fondo cuando esté lista 
-                      <img src="images/office.jpg">
-                      -->
+                    <div class="background black fondo-menu">
+                      
+                      <img src="{% static 'img/tags-min.jpg' %}">
+                      
                     </div>
 
 
@@ -112,7 +113,7 @@
                     {% if local.imagen %}
                       <img src="{{local.imagen.url}}" alt="" class="circle imagen-menu"> <strong>{{local.nombre}}</strong> 
                     {% else %}
-                      <i class="material-icons">store</i><strong>{{local.nombre}}</strong>
+                      <img src="{% static 'img/sin-foto-local.svg' %}" alt="" class="imagen-menu"> <strong>{{local.nombre}}</strong> 
                     {% endif %}
                   </a>
                 </li> 

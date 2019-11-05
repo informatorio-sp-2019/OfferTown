@@ -393,4 +393,32 @@ def toggleFavorito(request, id):
 		"estado":estado
 	}
 
+def toggleActivadoOferta(request,id):
+	oferta = Publicacion.objects.get(pk=id)
+	data = {}
+	estado = ""
+	print("a")
+	print(estado)
+	print(oferta.local.usuario)
+	print(request.user.usuario)
+
+	if (oferta.local.usuario.id == request.user.usuario.id):
+		print("usuario igual")
+		if oferta.activada:
+			oferta.activada = False
+			oferta.save()
+			estado="NO"
+		else:
+			oferta.activada = True
+			oferta.save()
+			estado="SI"
+
+		data = {
+			"id":oferta.id,
+			"estado":estado
+		}
+	else:
+		print("usuario distinto")
+
+
 	return JsonResponse(data)

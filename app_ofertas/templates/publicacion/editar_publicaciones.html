@@ -35,13 +35,8 @@
 					</div>
 
 					<div class="col s4 m2 sin-padding center">
-						<p class="estado-oferta">Aactiva</p>
-						<div class="switch">
-						  <label>
-						    <input type="checkbox" class>
-						    <span class="lever"></span>
-						  </label>
-						</div>
+
+						{% include 'publicacion/activar_oferta.html' with oferta=item  %}
 						<br>
 						<a href="#!" class="center-align btn-floating btn-small waves-effect waves-light tooltipped grey-text" data-position="top" data-tooltip="Editar horarios"><i class="material-icons">edit</i></a>
 					</div>

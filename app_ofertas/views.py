@@ -394,3 +394,36 @@ def toggleFavorito(request, id):
 	}
 
 	return JsonResponse(data)
+
+class SetIntereses():
+	def __init__(self,nombre,id,valor):
+		self.nombre =nombre
+		self.id     = id
+		self.valor  = valor
+
+	def __str__(self):
+		return 'Rubro: {}, Id: {}, Valor: {}'.format(self.nombre,self.id,self.valor)
+
+
+def set_intereses(request):
+	ipdb.set_trace()
+	rubros = Rubro.objects.all()
+	intereses = Interes.objects.filter(usuario_id=request.user.id)
+	
+	# list_rubros = [i.id for i in rubros]
+	list_intereses = [i.rubro_id for i in intereses]
+	lista = list()
+	for r in rubros:
+		if r.id in list_intereses:
+			valor = True
+		else:
+			valor = False
+
+		set_int = SetIntereses(r.nombre,r.id,valor)
+		lista.append(set_int)
+
+	print(lista)
+
+	template='intereses/seteo_intereses.html'
+	context = {'rubros':lista}
+	return render(request,template,context)

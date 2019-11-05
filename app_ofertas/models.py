@@ -23,6 +23,11 @@ class Usuario(User):
 			
 		return list_id_locales
 
+	@property
+	def get_intereses(self):
+		return self.intereses.all()
+
+
 class Localidad(models.Model):
 	nombre = models.CharField(max_length = 30)
 

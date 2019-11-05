@@ -7,10 +7,9 @@
 <br>
 {% block content %}	
 	
-	<form method="POST" enctype="multipart/form-data">
+	<form method="POST" enctype="multipart/form-data" >
 		{% csrf_token %}
 		{{form.as_p}}
-
 		<button type="submit">Registrar</button>
 	</form>
 {% endblock %}

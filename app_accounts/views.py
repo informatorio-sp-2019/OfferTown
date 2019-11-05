@@ -7,7 +7,9 @@ import ipdb
 
 # Create your views here.
 
+
 def login_view(request):	
+	# ipdb.set_trace()
 	if request.user.is_authenticated:
 		return redirect('app_ofertas:index') 
 
@@ -18,6 +20,14 @@ def login_view(request):
 
 		if user is not None:
 			login(request,user)
+			# ipdb.set_trace()
+			if request.user.usuario.tipo_usuario == 'po':
+				if request.user.usuario.get_locales.exists() is False:
+					return redirect('app_ofertas:agregar_local')	
+			else:
+				if request.user.usuario.get_intereses.exists() is False:
+					return redirect('app_ofertas:set_intereses')	
+							
 			return redirect('app_ofertas:index')
 		else:
 			messages.error(request, 'Usuario o password incorrecto!!')
@@ -47,7 +57,7 @@ def create_user_view(request):
 			user = form.save(commit=False)
 			user.set_password(user.password)
 			user.is_staff = True			
-			user.save()
+			user.save()		
 			return redirect('app_accounts:login')					
 
 	form = CreateForm()

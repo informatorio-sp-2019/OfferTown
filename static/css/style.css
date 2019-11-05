@@ -232,6 +232,19 @@ position: absolute;
 	margin-top: 10px;
 }
 
+.desactivada{
+	background-color: #e0e0e0;
+}
+
+.desactivada .data-oferta-list{
+	opacity: .5;
+}
+
+.desactivada .imagen-oferta img{
+	filter:grayscale(100%);
+	opacity: .7;
+}
+
 
 /* inicio single oferta */
 .breadcru{

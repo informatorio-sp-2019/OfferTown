@@ -12,38 +12,67 @@
 
 		{% for item in ofertas %}
 			<div class="row item-lista">
-						
-				<div class="caja-oferta-list z-depth-2">
-					<div class="col s2 m3 l2 sin-padding">
-						<div class="imagen-oferta valign-wrapper">
-							<img class="responsive-img" src="{{ item.imagen.url }}">
+				{% if item.activada %}			
+					<div class="caja-oferta-list z-depth-2">
+						<div class="col s2 m3 l3 sin-padding">
+							<div class="imagen-oferta valign-wrapper">
+								<img class="responsive-img" src="{{ item.imagen.url }}">
+							</div>
+						</div>
+						<div class="col s6 m7 l7 sin-padding">
+							<div class="data-oferta-list">
+								<p class="titulo-oferta-list truncate tooltipped" data-position="top" data-tooltip="{{ item.titulo }}" >{{ item.titulo }} </p>
+								<p class="precio-regular-list">${{ item.precio_regular }}</p>
+								<p class="precio-oferta-list">${{ item.precio_oferta }}</p>
+								<p class="detalle-oferta-list truncate tooltipped" data-position="top" data-tooltip="{{ item.detalle }}" >
+									{{ item.detalle }}
+								</p>
+								<p class="detalle-oferta-list">
+									<i class="material-icons icono-detalle-oferta">local_offer</i> {{ item.get_descuento }}%
+								</p>
+		 					</div>
+						</div>
+						<div class="col s4 m2 sin-padding center">
+							<p class="estado-oferta">Aactiva</p>
+							<div class="switch">
+							  <label>
+							    <input type="checkbox" class>
+							    <span class="lever"></span>
+							  </label>
+							</div>
+							<br>
+							<a href="#!" class="center-align btn-floating btn-small waves-effect waves-light tooltipped grey-text" data-position="top" data-tooltip="Editar Oferta"><i class="material-icons">edit</i></a>
 						</div>
 					</div>
-					<div class="col s6 m7 l8 sin-padding">
-						<div class="data-oferta-list">
-							<p class="titulo-oferta-list truncate tooltipped" data-position="top" data-tooltip="{{ item.titulo }}" >{{ item.titulo }} </p>
-							<p class="precio-regular-list">${{ item.precio_regular }}</p>
-							<p class="precio-oferta-list">${{ item.precio_oferta }}</p>
-							<p class="detalle-oferta-list truncate tooltipped" data-position="top" data-tooltip="{{ item.detalle }}" >
-								{{ item.detalle }}
-							</p>
-							<p class="detalle-oferta-list">
-								<i class="material-icons icono-detalle-oferta">local_offer</i> {{ item.get_descuento }}%
-							</p>
-									
-	 					</div>
+
+				{% else %}
+					<div class="caja-oferta-list z-depth-2 desactivada">
+						<div class="col s2 m3 l3 sin-padding">
+							<div class="imagen-oferta valign-wrapper">
+								<img class="responsive-img" src="{{ item.imagen.url }}">
+							</div>
+						</div>
+						<div class="col s6 m7 l7 sin-padding">
+							<div class="data-oferta-list">
+								<p class="titulo-oferta-list truncate tooltipped" data-position="top" data-tooltip="{{ item.titulo }}" >{{ item.titulo }} </p>
+								<p class="precio-regular-list">${{ item.precio_regular }}</p>
+								<p class="precio-oferta-list">${{ item.precio_oferta }}</p>
+								<p class="detalle-oferta-list truncate tooltipped" data-position="top" data-tooltip="{{ item.detalle }}" >
+									{{ item.detalle }}
+								</p>
+								<p class="detalle-oferta-list">
+									<i class="material-icons icono-detalle-oferta">local_offer</i> {{ item.get_descuento }}%
+								</p>
+		 					</div>
+						</div>
+						<div class="col s4 m2 sin-padding center">
+							{% include 'publicacion/activar_oferta.html' with oferta=item  %}
+							<br>
+							<a href="#!" class="center-align btn-floating btn-small waves-effect waves-light tooltipped grey-text" data-position="top" data-tooltip="Editar Oferta"><i class="material-icons">edit</i></a>
+						</div>
+
 					</div>
-
-					<div class="col s4 m2 sin-padding center">
-
-						{% include 'publicacion/activar_oferta.html' with oferta=item  %}
-						<br>
-						<a href="#!" class="center-align btn-floating btn-small waves-effect waves-light tooltipped grey-text" data-position="top" data-tooltip="Editar horarios"><i class="material-icons">edit</i></a>
-					</div>
-
-
-				</div>
-
+				{% endif %}
 			</div>
 		{% endfor %}
 

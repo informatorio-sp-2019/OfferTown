@@ -33,5 +33,7 @@ urlpatterns = [
     path('usuario/<usuario>/perfil/', views.ver_perfil_usuario, name='ver_perfil_usuario'),
     path('horarios/', views.horarios),
     path('set_intereses/', views.set_intereses, name='set_intereses'),
+    path('usuario/<usuario>/<int:id>/editar_local/', views.editar_local,name='editar_local'),
+
 
 ]

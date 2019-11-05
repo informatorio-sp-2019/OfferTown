@@ -65,3 +65,4 @@ def create_user_view(request):
 	template = 'register.html'
 
 	return render(request,template,context)
+

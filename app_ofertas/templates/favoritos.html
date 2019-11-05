@@ -13,15 +13,21 @@
 		<h6>Favoritos</h6>
 	</div>
 
-
-	{% for local in locales %}
-		<div class="divider"></div>
+	{% if locales.count > 0%}
+		{% for local in locales %}
+			<div class="divider"></div>
+			<div class="row">
+				{{local.nombre}}
+			</div>
+			{% include "publicacion/publicaciones_grid.html" with publicaciones=local.get_ofertas_activas %}
+			<div class="divider"></div>
+		{% endfor %}
+		
+	{%else%}
 		<div class="row">
-			{{local.nombre}}
+			<h6>No tiene locales agregado a favoritos</h6>
 		</div>
-		{% include "publicacion/publicaciones_grid.html" with publicaciones=local.get_ofertas_activas %}
-		<div class="divider"></div>
-	{% endfor %}
+	{%endif%}
 
 
 

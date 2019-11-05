@@ -434,24 +434,12 @@ class SetIntereses():
 
 
 def set_intereses(request):
-	ipdb.set_trace()
+	#ipdb.set_trace()
 	rubros = Rubro.objects.all()
-	intereses = Interes.objects.filter(usuario_id=request.user.id)
 	
-	# list_rubros = [i.id for i in rubros]
-	list_intereses = [i.rubro_id for i in intereses]
-	lista = list()
-	for r in rubros:
-		if r.id in list_intereses:
-			valor = True
-		else:
-			valor = False
 
-		set_int = SetIntereses(r.nombre,r.id,valor)
-		lista.append(set_int)
-
-	print(lista)
+	
 
 	template='intereses/seteo_intereses.html'
-	context = {'rubros':lista}
+	context = {'rubros':rubros}
 	return render(request,template,context)

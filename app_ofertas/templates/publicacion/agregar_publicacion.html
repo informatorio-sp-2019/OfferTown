@@ -3,6 +3,12 @@
 {% block title %} Alta Publicacion {% endblock %}
 
 {% block content %}
+<style type="text/css">
+	#image-preview-area img{
+		width: 200px;
+	}
+</style>
+<div id="image-preview-area"></div>
 <form action="/agregar_publicacion/" method="POST">
     
     {% csrf_token %}
@@ -19,5 +25,35 @@
 	    var elems = document.querySelectorAll('select');
 	    var instances = M.FormSelect.init(elems);
 	  });
+</script>
+
+<script type="text/javascript">
+	    function readFile(input) {
+	        if (input.files && input.files[0]) {
+	            var reader = new FileReader();
+	 
+	            reader.onload = function (e) {
+	                var imagePreview = document.createElement('img');
+	                imagePreview.id = 'image-preview';
+	                
+	                imagePreview.src = e.target.result;
+	 
+	                var previewArea = document.getElementById('image-preview-area');
+
+									while(previewArea.firstChild) {
+											previewArea.removeChild(previewArea.firstChild);
+										}                
+									imagePreview.style.width = "200px;"
+	                previewArea.appendChild(imagePreview);
+	            }
+	 
+	            reader.readAsDataURL(input.files[0]);
+	        }
+	    }
+	 
+	    var imageUpload = document.getElementById('id_imagen');
+	    imageUpload.onchange = function (e) {
+	        readFile(e.srcElement);
+	    }	
 </script>
 {% endblock %}

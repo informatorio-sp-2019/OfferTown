@@ -278,8 +278,9 @@ def editar_ofertas(request,usuario,id):
 		raise Http404("Este local no se encuentra actualmente disponible")
 
 	ofertas = Publicacion.objects.filter(local=local)
+	cantidad = Publicacion.objects.filter(local=local).count()
 
-	return render(request, 'publicacion/editar_publicaciones.html', {'usuario':usuario, 'local':local, 'ofertas':ofertas})
+	return render(request, 'publicacion/editar_publicaciones.html', {'usuario':usuario, 'local':local, 'ofertas':ofertas, 'cantidad':cantidad})
 
 
 

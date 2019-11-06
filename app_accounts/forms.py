@@ -21,3 +21,16 @@ class CreateForm(forms.ModelForm):
 		widgets = {'password':forms.PasswordInput()}
 
 
+class UpdatePerfilForm(forms.ModelForm):
+	class Meta:
+		model= Usuario
+		fields=('imagen',
+				'username',
+				'first_name',
+				'last_name',
+				'email',
+				'tipo_usuario',
+				)
+		labels = {"tipo_usuario":"Preferencia de uso", }
+		widgets = {'password':forms.PasswordInput()}
+

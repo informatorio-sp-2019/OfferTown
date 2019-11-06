@@ -3,18 +3,16 @@
 {% block title %} Intereses {% endblock %}
 	
 {% block content %}
-	<h2>LISTADO DE RUBROS (INTERESES)</h2>
-	{% for r in rubros %}
+	<h5 class="center-align">Marca el corazón de los rubros de tu interés</h5>
+	<p class="center-align"><strong>Offertown</strong> seleccionará las ofertas que más te gustan</p>
+	<br>
 	<div class="row">
-			<div class="col s8">
-				{{r.nombre}}
-			</div>
-			<div class="col s4">
-				{% include 'rubro/interes_rubro.html' with rubro=r  %}
-			</div>
-		
-	</div>
-		
+	{% for r in rubros %}
+			<div class="col s12 m4 l3 hoverable">
+				<span class="btn-interes-list">{{r.nombre}}</span>
+				<span class="btn-interes-icon">{% include 'rubro/interes_rubro.html' with rubro=r  %}</span>
+			</div>		
 	{% endfor %}
+	</div>
 {% endblock %}
 

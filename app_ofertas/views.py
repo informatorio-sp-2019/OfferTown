@@ -170,6 +170,8 @@ def ver_publicacion(request,id):
 	if not pub.activada:
 		raise Http404("Esta oferta no se encuentra actualmente disponible")
 
+	pub.cant_visitas = pub.cant_visitas +1
+	pub.save()
 	hoy = dia_spanish()
 	horarios = pub.local.get_horarios()
 	sucursales = pub.local.get_sucursales()

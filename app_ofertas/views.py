@@ -121,7 +121,9 @@ def agregar_publicacion(request):
 	if request.method == 'POST':
 		form = PublicacionForm(request.POST)
 		if form.is_valid():
-			publicacion = form.save()
+			publicacion = form.save(commit=False)
+			publicacion.activada = True
+			publicacion.save()
 
 	else:
 		form = PublicacionForm()
@@ -247,8 +249,10 @@ def vistas_test(request):
 
 	return render(request,'vistas_test.html',{'publicaciones':recientes, 'rubros':categorias})
 
-def ver_perfil_usuario(request, usuario):
-	usuario = usuario
+
+def ver_perfil_usuario(request):
+	# usuario = usuario
+	usuario = request.user.usuario
 	return render(request, 'perfil/perfil.html', {'usuario':usuario})
 
 @login_required
@@ -465,6 +469,7 @@ def editar_local(request,usuario,id):
 	contexto = {'form':form}
 	template = 'local/editar_local.html'
 	return render(request,template,contexto)
+
 
 
 

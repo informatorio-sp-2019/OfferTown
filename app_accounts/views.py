@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from .forms import LoginForm,CreateForm
+from .forms import LoginForm, CreateForm, UpdatePerfilForm
 from django.contrib import messages
 import ipdb
 
@@ -66,3 +66,17 @@ def create_user_view(request):
 
 	return render(request,template,context)
 
+	
+@login_required
+def update_perfil(request):
+	if request.method =='GET':
+		form = UpdatePerfilForm(instance = request.user.usuario)
+	else:
+		form = UpdatePerfilForm(request.POST, request.FILES, instance = request.user.usuario)
+		if form.is_valid():
+			form.save()						
+			return redirect('app_ofertas:index')
+
+	context = {'form':form}
+	template = 'update_perfil.html'
+	return render(request,template,context)

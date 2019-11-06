@@ -143,9 +143,10 @@ def favoritos(request):
 
 
 def tendencia(request):
-	#obtener 12 publicaciones mas populares
-	#cant_visitas
-	tendencias = Publicacion.objects.filter(activada=True).order_by("cant_visitas")[:12]
+	query=Publicacion.objects.filter(activada=True).order_by("cant_visitas")[:30]
+	tendencias=Publicacion.objects.filter(id__in=query).order_by("?")[:12]	
+
+	
 	contexto = {
 		"tendencias":tendencias
 	}

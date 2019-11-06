@@ -132,7 +132,7 @@ class Publicacion(models.Model):
 	precio_oferta  = models.DecimalField(max_digits=10, decimal_places=2,null=True,blank=True)
 	fecha_creacion = models.DateTimeField(auto_now_add=True, editable=False)
 	fecha_publi    = models.DateTimeField(auto_now_add=True)
-	activada 	   = models.BooleanField(default=False)
+	activada 	   = models.BooleanField(default=True)
 	tiempo_publi   = models.IntegerField(default=1440)
 	cant_visitas   = models.IntegerField(default=0)
 

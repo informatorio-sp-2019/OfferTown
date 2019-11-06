@@ -4,13 +4,86 @@
 	REGISTRAR
 {% endblock %}
 
-<br>
 {% block content %}	
+	<div>
+		<h4 class="center titulo-login"><i class="material-icons circle red white-text logo-login">loyalty</i>OfferTown</h4>
+		<p class="slogan center sin-margen grey-text">Ofertas en tu ciudad</p>
+	</div>
+
+	<h6 class="center">Registra tu perfil para recibir y publicar ofertas gratis.</h6>
+
+<br>
 	
 	<form method="POST" enctype="multipart/form-data" >
 		{% csrf_token %}
-		{{form.as_p}}
-		<button type="submit">Registrar</button>
+		<div class="row">
+			<div class="col s12 m4 l3 cajaimagenform">
+				{{ form.imagen.errors }}
+				{{ form.imagen.label_tag }}
+				{{ form.imagen }}
+				<label id="image-preview-area" for="id_imagen"  class="simil-btn-add-img">
+					<i class="material-icons">add_a_photo</i>
+				</label>
+			</div>
+			<div class="col s12 m8 l9">
+				<div class="row">
+					<div class="col s12 m6">
+						<label>
+							{{ form.first_name.errors }}
+							{{ form.first_name.label_tag }}
+							{{ form.first_name }}
+						</label>
+					</div>
+					<div class="col s12 m6">
+						<label>
+							{{ form.last_name.errors }}
+							{{ form.last_name.label_tag }}
+							{{ form.last_name }}
+						</label>
+					</div>
+					<div class="col s12 m6">
+						<label>
+							{{ form.username.errors }}
+							{{ form.username.label_tag }}
+							{{ form.username }}
+						</label>
+					</div>
+					<div class="col s12 m6">
+						<label>
+							{{ form.password.errors }}
+							{{ form.password.label_tag }}
+							{{ form.password }}
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+			<div class="fantasma"></div>
+		<div class="row">
+			<div class="col s12 m6">
+				<label>
+					{{ form.email.errors }}
+					{{ form.email.label_tag }}
+					{{ form.email }}
+				</label>
+			</div>
+			<div class="col s12 m6">
+				<label>
+					{{ form.tipo_usuario.errors }}
+					{{ form.tipo_usuario.label_tag }}
+					{{ form.tipo_usuario }}
+				</label>
+			</div>
+		</div>
+		<div class="row center-align">
+		 	<button class="btn-large waves-effect waves-light" type="submit" name="action" value="Guardar">Guardar
+				<i class="material-icons right">save</i>
+			</button>
+    </div>
+
+
+		<!-- {{form.as_p}}
+		<button type="submit">Registrar</button> -->
 	</form>
 {% endblock %}
 
@@ -22,5 +95,33 @@
 		    var instances = M.FormSelect.init(elems);
 		  });
 	</script>
+<script type="text/javascript">
+	    function readFile(input) {
+	        if (input.files && input.files[0]) {
+	            var reader = new FileReader();
+	 
+	            reader.onload = function (e) {
+	                var imagePreview = document.createElement('img');
+	                imagePreview.id = 'image-preview';
+	                
+	                imagePreview.src = e.target.result;
+	 
+	                var previewArea = document.getElementById('image-preview-area');
 
+									while(previewArea.firstChild) {
+											previewArea.removeChild(previewArea.firstChild);
+										}                
+									imagePreview.style.width = "200px;"
+	                previewArea.appendChild(imagePreview);
+	            }
+	 
+	            reader.readAsDataURL(input.files[0]);
+	        }
+	    }
+	 
+	    var imageUpload = document.getElementById('id_imagen');
+	    imageUpload.onchange = function (e) {
+	        readFile(e.srcElement);
+	    }	
+</script>
 {% endblock %}

@@ -15,7 +15,9 @@ def hometest(request):
 
 def index(request):
 	#Obtener 9 ofertas recientes (mando todas mientras CORREGIR )
-	recientes=Publicacion.objects.all().filter(activada=True)
+	query=Publicacion.objects.all().filter(activada=True).order_by("fecha_creacion")[:30]
+	recientes=Publicacion.objects.filter(id__in=query).order_by("?")[:12]
+	
 	#últimas 9
 	#recientes=Publicacion.objects.order_by('-id')[:9]
 	#Obtener las categorías

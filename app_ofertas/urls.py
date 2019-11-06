@@ -8,7 +8,7 @@ urlpatterns = [
     path('', views.index, name = 'index'),
     path('search', views.search),
     path('agregar_local/', views.agregar_local, name="agregar_local"),
-    path('agregar_publicacion/', views.agregar_publicacion, name='agregar_publicacion'),
+    # path('agregar_publicacion/', views.agregar_publicacion, name='agregar_publicacion'),
 
     path('favoritos/', views.favoritos),
     path('tendencias/', views.tendencia),
@@ -28,7 +28,7 @@ urlpatterns = [
 
     path('usuario/<usuario>/<int:id>/nueva_sucursal/', views.nueva_sucursal,name='nueva_sucursal'),
     path('usuario/<usuario>/<int:id>/nueva_oferta/', views.nueva_oferta,name='nueva_oferta'),
-    path('usuario/<usuario>/<int:id>/editar_ofertas/', views.editar_ofertas,name='editar_ofertas'),  
+    path('usuario/<usuario>/<int:id>/ofertas/', views.editar_ofertas,name='editar_ofertas'),  
     path('usuario/<usuario>/<int:id>/', views.ver_local_usuario,name='ver_local_usuario'),
     path('usuario/perfil/', views.ver_perfil_usuario, name='ver_perfil_usuario'),    
     path('horarios/', views.horarios, name='horarios'),

@@ -13,13 +13,23 @@
 		<h6>Intereses</h6>
 	</div>
 
-	{% for categoria in rubros %}
-		<div class="divider"></div>
+
+	{% if rubros.count > 0 %}
+		{% for categoria in rubros %}
+			<div class="divider"></div>
+			<div class="row">
+				{{categoria.nombre}}
+			</div>
+			{% include "publicacion/publicaciones_grid.html" with publicaciones=categoria.get_ofertas_activas %}
+			<div class="divider"></div>
+		{% endfor %}
+	{% else %}
 		<div class="row">
-			{{categoria.nombre}}
-		</div>
-		{% include "publicacion/publicaciones_grid.html" with publicaciones=categoria.get_ofertas_activas %}
-		<div class="divider"></div>
-	{% endfor %}
+			<h6>No tiene Rubros agregado a intereses</h6>
+			<p>
+				visite <a href="/set_intereses/">Agregar Intereses</a>
+			</p>
+		</div>	
+	{% endif %}
 
 {% endblock %}

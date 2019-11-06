@@ -115,7 +115,10 @@ class Rubro(models.Model):
 		return usuarios
 	
 	def get_ofertas_activas(self):
-		return self.publicaciones.all().filter(activada=True)
+		query=self.publicaciones.all().filter(activada=True).order_by("fecha_creacion")[:30]
+		ofertas=self.publicaciones.filter(id__in=query).order_by("?")[:12]		
+		return ofertas		
+
 	def __str__(self):
 		return self.nombre
 

@@ -17,8 +17,11 @@
 
 		<span class="avatar-rubro">
             {% if rubro.imagen %}
-                <img src="{{rubro.imagen.url}}" alt="" class="imagen-rubro-avt"> <strong>{{rubro.nombre}}</strong>  ({{cantidad}})	
+                <img src="{{rubro.imagen.url}}" alt="" class="imagen-rubro-avt"> 
+            {% else %}
+            	<img src="https://www.angelsinapronscare.com.au/image/cache/catalog/placeholder-400x400.jpg" alt="" class="imagen-rubro-avt">
             {% endif %}
+                <strong>{{rubro.nombre}}</strong>  ({{cantidad}})	
 		</span>
 		{% include 'rubro/interes_rubro.html' with rubro=rubro  %}
 

@@ -10,24 +10,31 @@
 	</div>
 
 	<div class="row">
-		<h6>Intereses</h6>
+		<h6 class="right-align">Intereses</h6>
 	</div>
 
 
 	{% if rubros.count > 0 %}
 		{% for categoria in rubros %}
-			<div class="divider"></div>
+			
 			<div class="row">
 				{{categoria.nombre}}
+				{% include 'rubro/interes_rubro.html' with rubro=categoria  %}
 			</div>
-			{% include "publicacion/publicaciones_grid.html" with publicaciones=categoria.get_ofertas_activas %}
+				{% if categoria.get_ofertas_activas %}
+					{% include "publicacion/publicaciones_grid.html" with publicaciones=categoria.get_ofertas_activas %}
+				{% else %}
+					<p class="grey-text center-align">Actualmente no hay publicaciones activas para {{categoria.nombre}}</p>
+				{% endif %}
 			<div class="divider"></div>
 		{% endfor %}
 	{% else %}
 		<div class="row">
-			<h6>No tiene Rubros agregado a intereses</h6>
-			<p>
-				visite <a href="/set_intereses/">Agregar Intereses</a>
+			<h5 class="center-align">No intereses registrados</h5>
+			<p class="center-align">Hacé click en <i class="material-icons tiny">favorite</i> elegí tus intereses y te mostraremos solo las ofertas que te gustan</p>
+			<p class="center-align">
+				<a href="/set_intereses/"><i class="material-icons large red-text">favorite</i>
+				</a>
 			</p>
 		</div>	
 	{% endif %}

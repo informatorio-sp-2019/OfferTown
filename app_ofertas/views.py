@@ -105,11 +105,12 @@ def agregar_local(request):
 	if request.method == 'POST':
 		form = LocalForm(request.POST, request.FILES)
 		if form.is_valid():
+			ipdb.set_trace()
 			local = form.save(commit=False)
 			local.usuario = request.user.usuario
 			local.save()
 			
-			return redirect('app_ofertas:index')	
+			return redirect('app_ofertas:ver_local_usuario', usuario = request.user.username, id=local.id)
 			
 	form = LocalForm()
 	context={'form':form}
@@ -117,17 +118,16 @@ def agregar_local(request):
 
 	return render(request, template, context)
 
-def agregar_publicacion(request):
-	if request.method == 'POST':
-		form = PublicacionForm(request.POST)
-		if form.is_valid():
-			publicacion = form.save(commit=False)
-			publicacion.activada = True
-			publicacion.save()
+# def agregar_publicacion(request):
+# 	if request.method == 'POST':
+# 		form = PublicacionForm(request.POST)
+# 		if form.is_valid():
+# 			form.save()
 
-	else:
-		form = PublicacionForm()
-		return render(request, 'publicacion/agregar_publicacion.html',{'form':form})
+# 			return redirect('app_ofertas:ver_local_usuario', usuario = request.user.username, id=id)
+
+# 	form = PublicacionForm()
+# 	return render(request, 'publicacion/agregar_publicacion.html',{'form':form})
 
 
 @login_required
@@ -265,7 +265,7 @@ def nueva_oferta(request,usuario,id):
 			oferta.local = local
 			oferta.save()
 			
-			return redirect('app_ofertas:index')	
+			return redirect('app_ofertas:ver_local_usuario', usuario = request.user.username, id=id)
 			
 	form = OfertaForm()
 	context={'form':form}

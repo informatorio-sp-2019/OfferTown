@@ -107,7 +107,7 @@ def agregar_local(request):
 	if request.method == 'POST':
 		form = LocalForm(request.POST, request.FILES)
 		if form.is_valid():
-			ipdb.set_trace()
+			# ipdb.set_trace()
 			local = form.save(commit=False)
 			local.usuario = request.user.usuario
 			local.save()
@@ -475,6 +475,19 @@ def editar_local(request,usuario,id):
 	template = 'local/editar_local.html'
 	return render(request,template,contexto)
 
+def comprobar_usuario(request,usuario):
+	if request.user.username == usuario:
+		return True
+	else:
+		return False
 
+@login_required
+def eliminar_oferta(request,usuario,id,id_oferta):
+	if comprobar_usuario(request,usuario):
+		Publicacion.objects.filter(id=id_oferta).delete()	
+	else:
+		raise Http404("No se encuentra habilitado para realizar ésta operación!")		
 
+	return redirect('app_ofertas:editar_ofertas', usuario = request.user.username, id=id)	
+	
 

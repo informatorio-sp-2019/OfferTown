@@ -1,5 +1,7 @@
 {% extends "esquema.html" %}
 
+{% load static from staticfiles %}
+
 {% block title %} Perfil {% endblock %}
 
 {% block content %}
@@ -12,7 +14,14 @@
 		<div class="caja-oferta-single z-depth-2">
 			<div class="col s12 m5 l3 sin-padding">
 				<div class="imagen-local">
-					<img class="responsive-img" src="{{ request.user.usuario.imagen.url }}">
+
+
+					{% if request.user.usuario.imagen %}
+                    	<img class="responsive-img" src="{{ request.user.usuario.imagen.url }}">
+                    {% else %}
+                    	<i class="large material-icons">person</i>
+                   	{% endif %}
+				
 				</div>
 			</div>
 
@@ -55,7 +64,11 @@
 					<div class="caja-oferta-grid z-depth-2">
 						<a href="{% url 'app_ofertas:ver_local_usuario' user.username local.id %}">
 							<div class="imagen-oferta-grid">
-								<img class="responsive-img" src="{{local.imagen.url}}">
+								{% if local.imagen %}
+									<img class="responsive-img" src="{{ local.imagen.url }}">
+								{% else %}
+									<img class="responsive-img sin-foto-local" src="{% static 'img/sin-foto-local.svg' %}">
+								{% endif %}
 							</div>
 							<div class="divider"></div>
 							<div class="data-oferta-grid">

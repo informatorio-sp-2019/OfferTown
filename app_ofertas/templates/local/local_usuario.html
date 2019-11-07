@@ -72,22 +72,22 @@
 
 	</div>
 
-	<p class="ttl-sucursal">Sucursales</p>
-	<div class="row">
-		{% for suc in local.get_sucursales %}
-			<div class="col s4 m3 l2 padding3px">
-				<div class="sucursal">
-					<!-- <img class="responsive-img foto-sucursal" src="{% static 'img/sin-foto-local.svg' %}"> -->
-					<p class="center-align sin-margen"><i class="material-icons medium grey-text text-darken-2">store</i></p>
-					<p class="data-suc truncate">{{suc.direccion}}</p>
-					<p class="data-suc truncate">{{suc.localidad}}</p>
-					<p class="data-suc truncate">{{suc.telefono}}</p>
-				</div>
-			</div>	
-			{% endfor %}
-
-	</div>
-
+	{% if local.get_sucursales %}
+		<p class="ttl-sucursal">Sucursales</p>
+		<div class="row">
+			{% for suc in local.get_sucursales %}
+				<div class="col s4 m3 l2 padding3px">
+					<div class="sucursal">
+						<!-- <img class="responsive-img foto-sucursal" src="{% static 'img/sin-foto-local.svg' %}"> -->
+						<p class="center-align sin-margen"><i class="material-icons medium grey-text text-darken-2">store</i></p>
+						<p class="data-suc truncate tooltipped" data-position="top" data-tooltip="{{suc.direccion}}">{{suc.direccion}}</p>
+						<p class="data-suc truncate tooltipped" data-position="top" data-tooltip="{{suc.localidad}}">{{suc.localidad}}</p>
+						<p class="data-suc truncate tooltipped" data-position="top" data-tooltip="{{suc.telefono}}">{{suc.telefono}}</p>
+					</div>
+				</div>	
+				{% endfor %}
+		</div>
+	{% endif %}
 	<div class="row">
 		<div class="divider"></div>
 	</div>
@@ -173,4 +173,10 @@
   });
 </script>
 
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.tooltipped');
+    var instances = M.Tooltip.init(elems);
+  });
+</script>
 {% endblock %}

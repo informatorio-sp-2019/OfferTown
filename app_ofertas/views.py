@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 
 from app_ofertas.models import Publicacion,Rubro, Local, MedioDePago, Interes, Favorito
-from app_ofertas.forms import LocalForm, PublicacionForm, OfertaForm, SucursalForm, EditarLocalForm
+from app_ofertas.forms import LocalForm, PublicacionForm, OfertaForm, SucursalForm, EditarLocalForm, EditarOfertaForm
 from django.contrib.auth.decorators import login_required
 from datetime import date
 import ipdb
@@ -469,7 +469,6 @@ def editar_local(request,usuario,id):
 
 			return redirect('app_ofertas:ver_local_usuario', usuario = request.user.username, id=id)	
 
-
 	contexto = {'form':form}
 	template = 'local/editar_local.html'
 	return render(request,template,contexto)
@@ -490,3 +489,23 @@ def eliminar_oferta(request,usuario,id,id_oferta):
 	return redirect('app_ofertas:editar_ofertas', usuario = request.user.username, id=id)	
 	
 
+@login_required
+def re_editar_oferta(request,usuario,id,id_oferta):
+	if not comprobar_usuario(request,usuario):
+		raise Http404("No se encuentra habilitado para realizar ésta operación!")		
+	else:
+		q_oferta = Publicacion.objects.get(pk=id_oferta)
+		if request.method == 'GET':
+			form = EditarOfertaForm(instance = q_oferta)
+		else:
+			form = EditarOfertaForm(request.POST, request.FILES, instance = q_oferta)
+			if form.is_valid():
+				oferta = form.save(commit=False)
+				oferta.usuario = request.user.usuario
+				oferta.save()
+					
+				return redirect('app_ofertas:editar_ofertas', usuario = request.user.username, id=id)	
+
+	template = 'publicacion/re_editar_oferta.html'
+	context  = {'form':form}
+	return render(request,template,context)

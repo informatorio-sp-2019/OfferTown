@@ -36,5 +36,5 @@ urlpatterns = [
     path('usuario/<usuario>/<int:id>/editar_local/', views.editar_local,name='editar_local'),
     
     path('usuario/<usuario>/<int:id>/ofertas/eliminar_oferta/<int:id_oferta>', views.eliminar_oferta,name='eliminar_oferta'),
-    # path('usuario/<usuario>/eliminar_oferta/<int:id_oferta>', views.eliminar_oferta,name='eliminar_oferta'),
+    path('usuario/<usuario>/<int:id>/ofertas/editar_oferta/<int:id_oferta>', views.re_editar_oferta,name='re_editar_oferta'),    
 ]

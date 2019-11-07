@@ -62,3 +62,12 @@ class EditarLocalForm(forms.ModelForm):
 			      'delivery',
 			      'metodo_pago',
 			      'horario',)
+
+class EditarOfertaForm(forms.ModelForm):
+	class Meta:
+		model = Publicacion
+		fields = ('rubro',
+			'titulo',
+			'imagen',
+			'detalle',
+			)

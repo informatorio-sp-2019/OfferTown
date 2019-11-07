@@ -80,27 +80,11 @@
 			<p>Delivery</p>
       <label>
 				{% if param_delivery == "SI" %}
-					<input type="radio" class="with-gap" name="param_delivery" value="SI" id="delivery_si" checked>
+					<input type="checkbox" class="with-gap" name="param_delivery" value="SI" id="delivery_si" checked>
 				{% else %}
-					<input type="radio" class="with-gap" name="param_delivery" value="SI" id="delivery_si">
+					<input type="checkbox" class="with-gap" name="param_delivery" value="SI" id="delivery_si">
 				{% endif %}
-        <span>SI</span>
-      </label>
-      <label>
-				{% if param_delivery == "NO" %}
-					<input type="radio" class="with-gap" name="param_delivery" value="NO" id="delivery_no" checked>
-				{% else %}
-					<input type="radio" class="with-gap" name="param_delivery" value="NO" id="delivery_no">
-				{% endif %}	      	
-        <span>NO</span>
-      </label>
-      <label>
-				{% if param_delivery == "ALL" %}
-					<input type="radio" class="with-gap" name="param_delivery" value="ALL" id="delivery_all" checked>
-				{% else %}
-					<input type="radio" class="with-gap" name="param_delivery" value="ALL" id="delivery_all">
-				{% endif %}	      	
-        <span>TODOS</span>
+        <span></span>
       </label>
 		</div>
 	{% endif %}

@@ -33,7 +33,8 @@ def search(request):
 	param_payment = request.GET.get('param_payment','')
 	param_delivery = request.GET.get('param_delivery','')
 	param_orden =request.GET.get('param_orden','')
-
+	print("valor del checkbox")
+	print(param_delivery)
 	# filtrar titulo
 	publicaciones = Publicacion.objects.filter(titulo__contains=param_titulo).filter(activada=True)
 
@@ -64,8 +65,6 @@ def search(request):
 	#filtrar delivery
 	if (param_delivery=="SI"):
 		publicaciones = publicaciones.filter(local__delivery=True)
-	elif (param_delivery=="NO"):
-		publicaciones = publicaciones.filter(local__delivery=False)
 	else:
 		print(param_delivery)
 

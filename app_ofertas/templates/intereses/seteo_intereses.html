@@ -8,11 +8,16 @@
 	<br>
 	<div class="row">
 	{% for r in rubros %}
-			<div class="col s12 m4 l3 hoverable">
+			<div onclick="clickCorazon(this)" class="col s12 m4 l3 hoverable">
 				<span class="btn-interes-list">{{r.nombre}}</span>
 				<span class="btn-interes-icon">{% include 'rubro/interes_rubro.html' with rubro=r  %}</span>
 			</div>		
 	{% endfor %}
 	</div>
+	<script type="text/javascript">
+		function clickCorazon(div_hover){
+			div_hover.children[1].children[0].click()
+		}
+	</script>
 {% endblock %}
 

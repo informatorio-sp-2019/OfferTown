@@ -182,7 +182,7 @@ def ver_publicacion(request,id):
 
 def ver_rubro(request,id):
 	try:
-		publicaciones=Publicacion.objects.filter(rubro=id)
+		publicaciones=Publicacion.objects.filter(rubro=id).filter(activada=True)
 	except Rubro.DoesNotExist:
 		raise Http404("Este rubro no se encuentra actualmente disponible")
 	

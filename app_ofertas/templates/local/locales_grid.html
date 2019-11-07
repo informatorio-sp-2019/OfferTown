@@ -4,27 +4,29 @@
 
 	<div class="row">
 		{% for local in locales %}
-			<div class="col s4 m3">
-				<div class="caja-oferta-grid z-depth-2">
+			<div class="col s6 m3">
+				<div class="caja-oferta-grid z-depth-2 hoverable">
 					<a href="/loc/{{local.id}}/">
 						<div class="imagen-oferta-grid">
-							<img class="responsive-img" src="{{ item.imagen.url }}">
-							{% if local.delivery %}
-								<div class="delivery z-depth 1">
-									<span class="envio"><i class="tiny material-icons">motorcycle</i></span>
-								</div>
+							{% if local.imagen %}
+								<img class="responsive-img" src="{{ local.imagen.url }}">
+							{% else %}
+								<img class="responsive-img" src="https://www.angelsinapronscare.com.au/image/cache/catalog/placeholder-400x400.jpg">
+							{% endif %}
+						</div>
+						<div class="data-oferta-grid">
+							<p class="titulo-oferta-grid truncate tooltipped" data-position="top" data-tooltip="{{ local.nombre }}" >{{ local.nombre }} </p>
+
+							<p class="detalle-oferta-single" ><i class="material-icons icono-detalle-oferta">location_on</i>
+								Direccion: {{ local.direccion }} </p>
+
+							{% if local.delivery == True %}
+								<p class="detalle-oferta-single" ><i class="material-icons icono-detalle-oferta">motorcycle</i>Envío a Domicilio</p>
 							{% endif %}
 
-						</div>
-						<!-- <div class="divider"></div> -->
-						<div class="data-oferta-grid">
-							<p class="titulo-oferta-grid truncate tooltipped" data-position="top" data-tooltip="{{ item.titulo }}" >{{ local.nombre }} </p>
-							<p class="precio-regular-grid"></p>
-							<p class="precio-oferta-grid"> </p>
-							<p class="detalle-oferta-grid"></p>
+
 						</div>
 					</a>
-
 				</div>
 			</div>
 			

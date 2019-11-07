@@ -177,7 +177,7 @@ def ver_publicacion(request,id):
 	sucursales = pub.local.get_sucursales()
 	medios = pub.local.get_medios_de_pago()
 	rubro_pub = pub.rubro
-	relacionados = Publicacion.objects.filter(rubro=rubro_pub).exclude(pk=pub.id).order_by("?")[:4]
+	relacionados = Publicacion.objects.filter(rubro=rubro_pub).exclude(pk=pub.id).order_by("?").filter(activada=True)[:4]
 	return render(request, 'publicacion/publicacion.html',{'pub':pub, "relacionados":relacionados, 'medios':medios, 'sucursales':sucursales, 'horarios':horarios, 'hoy':hoy})
 
 def ver_rubro(request,id):

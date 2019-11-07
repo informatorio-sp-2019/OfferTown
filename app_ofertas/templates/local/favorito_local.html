@@ -4,7 +4,7 @@
 		{% if request.user.usuario in local.get_interesados %}
 			<a onclick="toggleFavorito(this)" data-id="{{local.id}}" class="secondary-content"><i class="material-icons tooltipped grey-text" data-position="top" data-tooltip="Agregar {{ local.nombre }} a mis favoritos">star</i></a> 
 		{% else %}
-			<a onclick="toggleFavorito(this)" data-id="{{local.id}}" class="secondary-content"><i class="material-icons tooltipped grey-text" data-position="top" data-tooltip="Agregar {{ local.nombre }} a mis intereses">star_border</i></a> 
+			<a onclick="toggleFavorito(this)" data-id="{{local.id}}" class="secondary-content"><i class="material-icons tooltipped grey-text" data-position="top" data-tooltip="Agregar {{ local.nombre }} a mis favoritos">star_border</i></a> 
 		{% endif %}
 	
 

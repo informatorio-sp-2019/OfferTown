@@ -19,15 +19,19 @@ def login_view(request):
 		user = authenticate(request,username = username_post,password = password_post)
 
 		if user is not None:
-			login(request,user)
 			# ipdb.set_trace()
+			login(request,user)
+
+			if 'next' in request.GET and request.GET.get('next') != '/logout/':
+				return redirect(request.GET.get('next'))
+			
 			if request.user.usuario.tipo_usuario == 'po':
 				if request.user.usuario.get_locales.exists() is False:
 					return redirect('app_ofertas:agregar_local')	
 			else:
 				if request.user.usuario.get_intereses.exists() is False:
 					return redirect('app_ofertas:set_intereses')	
-							
+
 			return redirect('app_ofertas:index')
 		else:
 			messages.error(request, 'Usuario o password incorrecto!!')

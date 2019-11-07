@@ -220,7 +220,7 @@ def ver_local(request,id):
 	hoy = dia_spanish()
 	medios = local.get_medios_de_pago()
 	horarios = local.get_horarios()
-	ofertas = Publicacion.objects.filter(local=local)
+	ofertas = Publicacion.objects.filter(local=local).filter(activada=True)
 	return render(request, 'local/local.html',{'local':local, 'medios':medios, 'horarios':horarios, 'ofertas':ofertas, 'hoy':hoy })
 
 @login_required

@@ -236,13 +236,23 @@ position: absolute;
 	background-color: #e0e0e0;
 }
 
+.desactivada .data-oferta-grid,
 .desactivada .data-oferta-list{
 	opacity: .5;
 }
 
+.desactivada .imagen-oferta-grid img,
 .desactivada .imagen-oferta img{
 	filter:grayscale(100%);
 	opacity: .7;
+}
+
+.desactivada .titulo-oferta-grid{
+	color: grey;
+}
+
+.desactivada .imagen-oferta-grid .descuento_tag_grid{
+	background-color: grey;
 }
 
 

@@ -4,7 +4,7 @@
 	<div class="row">
 		{% for item in publicaciones %}
 			<div class="col s6 m3">
-				<div class="caja-oferta-grid z-depth-2 hoverable">
+				<div class="caja-oferta-grid z-depth-2 hoverable {% if not item.activada %}desactivada{% endif %}">
 					<a href="/pub/{{item.id}}/">
 						<div class="imagen-oferta-grid">
 							<img class="responsive-img" src="{{ item.imagen.url }}">

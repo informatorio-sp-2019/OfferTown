@@ -38,7 +38,7 @@
 						<div class="col s4 m2 sin-padding center">
 							{% include 'publicacion/activar_oferta.html' with oferta=item  %}
 							<br>
-							<a href="#!" class="center-align btn-floating btn-small waves-effect waves-light tooltipped grey-text" data-position="top" data-tooltip="Editar Oferta"><i class="material-icons">edit</i></a>
+							<a href="{% url 'app_ofertas:re_editar_oferta' user.username local.id item.id %}" class="center-align btn-floating btn-small waves-effect waves-light tooltipped grey-text" data-position="top" data-tooltip="Editar Oferta"><i class="material-icons">edit</i></a>
 
 							<a href="{% url 'app_ofertas:eliminar_oferta' user.username local.id item.id %}" class="center-align btn-floating btn-small waves-effect waves-light tooltipped grey-text" data-position="top" data-tooltip="Eliminar Oferta"><i class="material-icons">delete</i></a>
 

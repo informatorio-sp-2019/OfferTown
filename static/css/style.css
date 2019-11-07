@@ -419,7 +419,34 @@ position: absolute;
 }
 
 .boton-add-sucursal{
-margin-right: 10px
+	margin-right: 10px
+}
+
+.ttl-sucursal{
+	margin: 0;
+	line-height: 2em;
+}
+
+
+.padding3px{
+	padding: 0 3px !important;
+}
+.sucursal{
+	border: solid 1px #999;
+	border-radius: 3px;
+	padding: 3px;
+}
+
+.sucursal .foto-sucursal{
+	padding: .5em 1.5em 0;
+	filter: grayscale(90);
+}
+
+.sucursal .data-suc{
+	font-size: .8em;
+	line-height: 1.2em;
+	margin: 0;
+	text-align: center;
 }
 
 /* login */

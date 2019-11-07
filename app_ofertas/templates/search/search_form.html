@@ -19,7 +19,7 @@
 	<!-- Filtros para el Form -->
 	{% if param_titulo %}
 		<!-- input orden param_orden -->
-	  <div class="input-field col s12">
+	  <div class="input-field col s12 m5">
 	    <select name="param_orden">
 	    		<option value="0">Seleccione</option>
 	      <optgroup label="Precio">
@@ -39,7 +39,7 @@
 	  </div>
 
 		<!-- input formas de pago -->
-		<div class="input-field col s12 m6">
+		<div class="input-field col s12 m5">
 	    <select>
 	      <option value="PAY_ALL" selected>Mostrar Todo</option>
 	      <option value="PAY_CASH">Efectivo</option>
@@ -52,7 +52,7 @@
 		</div>
 		
 		<!-- input delivery param_delivery -->
-		<div class="col s12 m6">
+		<div class="col s12 m2">
 			<p>Delivery</p>
       <label>
 				{% if param_delivery == "SI" %}

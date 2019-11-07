@@ -39,40 +39,16 @@
 	  </div>
 
 		<!-- input formas de pago -->
-		<div class="col s12 m6">
-			<p>Método de Pago</p>
-      <label>
-      	{% if param_payment == "PAY_CASH" %}
-					<input type="radio" class="with-gap" name="param_payment" value="PAY_CASH" id="pay_cash" checked>
-      	{% else %}
-      		<input type="radio" class="with-gap" name="param_payment" value="PAY_CASH" id="pay_cash">
-      	{% endif %}
-        <span>Efectivo</span>
-      </label>
-      <label>
-      	{% if param_payment == "PAY_CREDIT" %}
-      		<input type="radio" class="with-gap" name="param_payment" value="PAY_CREDIT" id="pay_credit" checked>
-      	{% else %}
-					<input type="radio" class="with-gap" name="param_payment" value="PAY_CREDIT" id="pay_credit">
-      	{% endif %}
-        <span>Crédito</span>
-      </label>      
-      <label>
-      	{% if param_payment == "PAY_DEBIT" %}
-      		<input type="radio" class="with-gap" name="param_payment" value="PAY_DEBIT" id="pay_debit" checked>
-      	{% else %}
-					<input type="radio" class="with-gap" name="param_payment" value="PAY_DEBIT" id="pay_debit">
-      	{% endif %}
-        <span>Débito</span>
-      </label>
-      <label>
-      	{% if param_payment == "PAY_ALL" %}
-      		<input type="radio" class="with-gap" name="param_payment" value="PAY_ALL" id="pay_all" checked>
-      	{% else %}
-					<input type="radio" class="with-gap" name="param_payment" value="PAY_ALL" id="pay_all">
-      	{% endif %}	      	
-        <span>TODOS</span>
-      </label>
+		<div class="input-field col s12 m6">
+	    <select>
+	      <option value="PAY_ALL" selected>Mostrar Todo</option>
+	      <option value="PAY_CASH">Efectivo</option>
+	      <option value="PAY_CREDIT">Crédito</option>
+	      <option value="PAY_DEBIT">Débito</option>
+	    </select>
+	    <label>Método de Pago</label>
+
+      
 		</div>
 		
 		<!-- input delivery param_delivery -->

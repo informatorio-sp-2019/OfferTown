@@ -107,7 +107,6 @@ def agregar_local(request):
 	if request.method == 'POST':
 		form = LocalForm(request.POST, request.FILES)
 		if form.is_valid():
-			# ipdb.set_trace()
 			local = form.save(commit=False)
 			local.usuario = request.user.usuario
 			local.save()

@@ -1,10 +1,12 @@
 {% extends "esquema.html" %}
 
+{% load static from staticfiles %}
+
 {% block title %} {{ local.nombre }} {% endblock %}
 
 {% block content %}
 
-	<div class="row">
+	<div class="row sin-margen">
 		<h6 class="titulo-local">
 			{{ local.nombre }}
 			{% include 'local/favorito_local.html' with local=local  %}
@@ -16,7 +18,8 @@
 						{% if local.imagen %}
 							<img class="responsive-img" src="{{ local.imagen.url }}">
 						{% else %}
-						{% endif %}					
+							<img class="responsive-img sin-foto-local" src="{% static 'img/sin-foto-local.svg' %}">
+						{% endif %}				
 				</div>
 			</div>
 			<div class="col s12 m7 l9">
@@ -65,6 +68,23 @@
 		</div>
 
 	</div>
+
+	{% if local.get_sucursales %}
+		<p class="ttl-sucursal">Sucursales</p>
+		<div class="row">
+			{% for suc in local.get_sucursales %}
+				<div class="col s4 m3 l2 padding3px">
+					<div class="sucursal">
+						<!-- <img class="responsive-img foto-sucursal" src="{% static 'img/sin-foto-local.svg' %}"> -->
+						<p class="center-align sin-margen"><i class="material-icons medium grey-text text-darken-2">store</i></p>
+						<p class="data-suc truncate tooltipped" data-position="top" data-tooltip="{{suc.direccion}}">{{suc.direccion}}</p>
+						<p class="data-suc truncate tooltipped" data-position="top" data-tooltip="{{suc.localidad}}">{{suc.localidad}}</p>
+						<p class="data-suc truncate tooltipped" data-position="top" data-tooltip="{{suc.telefono}}">{{suc.telefono}}</p>
+					</div>
+				</div>	
+				{% endfor %}
+		</div>
+	{% endif %}
 
 	<div class="row">
 		<div class="divider"></div>

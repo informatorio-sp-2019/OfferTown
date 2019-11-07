@@ -13,14 +13,13 @@ from django.http import JsonResponse
 def hometest(request):
 	return render(request, 'esquema.html',{})
 
+#HOME
 def index(request):
-	#Obtener 9 ofertas recientes (mando todas mientras CORREGIR )
+	#Obtener 30 ofertas recientes activas ordenadas por fecha de creacion
 	query=Publicacion.objects.all().filter(activada=True).order_by("fecha_creacion")[:30]
+	#de esas 30 mezclar orden y tomar solo 12
 	recientes=Publicacion.objects.filter(id__in=query).order_by("?")[:12]
-	
-	#últimas 9
-	#recientes=Publicacion.objects.order_by('-id')[:9]
-	#Obtener las categorías
+	# categorias para mostrar los rubros 
 	categorias = Rubro.objects.all().order_by('nombre')
 		
 	return render(request,'home.html',{'recientes':recientes, 'categorias':categorias})
@@ -28,19 +27,17 @@ def index(request):
 
 #Manda a search_result, con las publicaciones y parametros de la busqueda
 def search(request):	
-	# parametro titulo
+	# parametros
 	param_titulo = request.GET.get('param_titulo','')
 	param_payment = request.GET.get('param_payment','')
 	param_delivery = request.GET.get('param_delivery','')
 	param_orden =request.GET.get('param_orden','')
-	print("valor del checkbox")
-	print(param_delivery)
+
 	# filtrar titulo
 	publicaciones = Publicacion.objects.filter(titulo__contains=param_titulo).filter(activada=True)
 
 	#filtrar metodo pago
 	id_pago = 0
-
 	if (param_payment=="PAY_CASH"):
 		try:
 			id_pago = MedioDePago.objects.get(nombre="EFECTIVO").id
@@ -58,7 +55,6 @@ def search(request):
 			pass
 	else:
 		pass
-
 	if(id_pago!=0):
 		publicaciones = publicaciones.filter(local__metodo_pago = id_pago)
 	
@@ -67,10 +63,7 @@ def search(request):
 		publicaciones = publicaciones.filter(local__delivery=True)
 	else:
 		print(param_delivery)
-
-	#agregar las publicaciones  rubros que entre dentro de param titulo
-	#
-
+	
 	#ordenar
 	if (param_orden == "1"):
 		#de menor a mayor precio
@@ -82,8 +75,9 @@ def search(request):
 		#por abecedario
 		publicaciones = publicaciones.order_by('titulo')
 
-
+	#locales que entre dentro de param titulo
 	locales = Local.objects.filter(nombre__contains=param_titulo)
+	#rubros que entre dentro de param titulo
 	rubros = Rubro.objects.filter(nombre__contains=param_titulo)
 
 	#preparar contexto para el template
@@ -118,17 +112,6 @@ def agregar_local(request):
 
 	return render(request, template, context)
 
-# def agregar_publicacion(request):
-# 	if request.method == 'POST':
-# 		form = PublicacionForm(request.POST)
-# 		if form.is_valid():
-# 			form.save()
-
-# 			return redirect('app_ofertas:ver_local_usuario', usuario = request.user.username, id=id)
-
-# 	form = PublicacionForm()
-# 	return render(request, 'publicacion/agregar_publicacion.html',{'form':form})
-
 
 @login_required
 def favoritos(request):
@@ -141,9 +124,10 @@ def favoritos(request):
 
 
 def tendencia(request):
+	#publicaciones activas ordenadas por cantidad de visitas, y tomar las 30 mas visitadas
 	query=Publicacion.objects.filter(activada=True).order_by("cant_visitas")[:30]
-	tendencias=Publicacion.objects.filter(id__in=query).order_by("?")[:12]	
-
+	#mezclar esas 30 y tomar solo 12
+	tendencias=Publicacion.objects.filter(id__in=query).order_by("?")[:12]
 	
 	contexto = {
 		"tendencias":tendencias
@@ -167,14 +151,16 @@ def ver_publicacion(request,id):
 
 	if not pub.activada:
 		raise Http404("Esta oferta no se encuentra actualmente disponible")
-
+	#actualizar visitas
 	pub.cant_visitas = pub.cant_visitas +1
 	pub.save()
+
 	hoy = dia_spanish()
 	horarios = pub.local.get_horarios()
 	sucursales = pub.local.get_sucursales()
 	medios = pub.local.get_medios_de_pago()
 	rubro_pub = pub.rubro
+	#relacionados: publicaciones del mismo rubro q pub excepto la pub, orden aleatorio, q esten activas, y tomar solo 4
 	relacionados = Publicacion.objects.filter(rubro=rubro_pub).exclude(pk=pub.id).order_by("?").filter(activada=True)[:4]
 	return render(request, 'publicacion/publicacion.html',{'pub':pub, "relacionados":relacionados, 'medios':medios, 'sucursales':sucursales, 'horarios':horarios, 'hoy':hoy})
 
@@ -235,12 +221,6 @@ def ver_local_usuario(request,usuario,id):
 	return render(request, 'local/local_usuario.html',{'local':local, 'ofertas':ofertas})
 
 
-#	hoy = dia_spanish()
-#	medios = local.get_medios_de_pago()
-#	horarios = local.get_horarios()
-#	ofertas = Publicacion.objects.filter(local=local)
-#	return render(request, 'local/local_usuario.html',{'local':local, 'medios':medios, 'horarios':horarios, 'ofertas':ofertas, 'hoy':hoy })
-
 
 def vistas_test(request):
 	#Obtener 9 ofertas recientes (mando todas mientras CORREGIR )
@@ -298,24 +278,6 @@ def editar_ofertas(request,usuario,id):
 def horarios(request):
 	return render(request, 'local/alta_horarios.html',{})
 
-
-#@login_required
-#def mis_ofertas(request,usuario):
-#	try:
-#		locales = Local.objects.filter(usuario=usuario)
-
-#	MATIAS ACÁ NO SE COMO AGREGAR AL QUERYSET LAS OFERTAS DE LOS DISITNTOS LOCALES YA QUE FILTRO LAS OFERTAS DE A UN LOCAL EN LA CONSULTA
-
-
-#		for local in locales:
-#			ofertas = Publicacion.objects.filter(local = local)
-#
-#		ofertas=Publicacion.objects.filter(local__usuario=request.user.username)
-#	except Rubro.DoesNotExist:
-#		raise Http404("no hay publicaciones")
-#	
-#	return render(request, 'publicacion/mis_ofertas.html',{'publicaciones':ofertas})
-
 @login_required
 def nueva_sucursal(request,usuario,id):
 	
@@ -335,29 +297,6 @@ def nueva_sucursal(request,usuario,id):
 	return render(request, template, context)
 
 
-# @login_required
-# def nueva_oferta(request,usuario,id):
-# 	if request.method == 'POST':
-# 		form = OfertaForm(request.POST, request.FILES)
-# 		if form.is_valid():
-# 			local = Local.objects.get(pk=id)
-# 			oferta = form.save(commit=False)
-# 			oferta.local = local
-# 			oferta.save()
-			
-# 			return redirect('app_ofertas:index')	
-			
-# 	form = OfertaForm()
-# 	context={'form':form}
-# 	template = 'publicacion/nueva_oferta.html'
-
-# 	return render(request, template, context)
-
-
-
-
-
-
 
 def toggleInteres(request, id):
 	rubro = Rubro.objects.get(pk=id)
@@ -372,8 +311,6 @@ def toggleInteres(request, id):
 		estado="NO"
 
 	data = {}
-	
-
 	data = {
 		"id":rubro.id,
 		"estado":estado
@@ -395,25 +332,19 @@ def toggleFavorito(request, id):
 		estado="NO"
 
 	data = {}
-	
-
 	data = {
 		"id":local.id,
 		"estado":estado
 	}
 
 	return JsonResponse(data)
+
 def toggleActivadoOferta(request,id):
 	oferta = Publicacion.objects.get(pk=id)
 	data = {}
 	estado = ""
-	print("a")
-	print(estado)
-	print(oferta.local.usuario)
-	print(request.user.usuario)
 
 	if (oferta.local.usuario.id == request.user.usuario.id):
-		print("usuario igual")
 		if oferta.activada:
 			oferta.activada = False
 			oferta.save()
@@ -444,9 +375,6 @@ class SetIntereses():
 
 
 def set_intereses(request):
-
-	#ipdb.set_trace()
-
 	rubros = Rubro.objects.all()
 	template='intereses/seteo_intereses.html'  
 	context = {'rubros':rubros}
@@ -455,7 +383,6 @@ def set_intereses(request):
 	
 @login_required
 def editar_local(request,usuario,id):
-	# ipdb.set_trace()
 	local = Local.objects.get(pk=id)
 	if request.method == 'GET':
 		form = EditarLocalForm(instance = local)

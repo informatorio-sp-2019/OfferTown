@@ -184,7 +184,7 @@ def ver_rubro(request,id):
 	except Rubro.DoesNotExist:
 		raise Http404("Este rubro no se encuentra actualmente disponible")
 	
-	cantidad = Publicacion.objects.filter(rubro=id).count()
+	cantidad = Publicacion.objects.filter(rubro=id).filter(activada=True).count()
 	rubro= Rubro.objects.get(pk=id)
 	return render(request, 'rubro/rubro.html',{'publicaciones':publicaciones, 'rubro':rubro, 'cantidad':cantidad})
 

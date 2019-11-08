@@ -9,12 +9,12 @@
 		{% include 'search/search_form.html' %}
 	</div>
 
-	<div class="row">
-		<h6 class="right-align">Intereses</h6>
-	</div>
 
 
 	{% if rubros.count > 0 %}
+		<div class="row">
+			<h6 class="right-align">Intereses</h6>
+		</div>
 		{% for categoria in rubros %}
 			
 			<div class="row">

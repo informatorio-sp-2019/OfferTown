@@ -1,5 +1,6 @@
 from django import forms
 from app_ofertas.models import Local, Publicacion, Localidad, MedioDePago, Sucursal
+import ipdb
 
 class LocalForm(forms.ModelForm):
 	class Meta:
@@ -41,7 +42,13 @@ class OfertaForm(forms.ModelForm):
 			'detalle',
 			)
 
+	def clean(self):
 
+		form_data = self.cleaned_data
+		if form_data['precio_regular'] <= form_data['precio_oferta']:
+			self._errors['precio_oferta'] = 'El precio de oferta debe ser menor al precio regular.'
+
+		return form_data
 
 class SucursalForm(forms.ModelForm):
 	class Meta:

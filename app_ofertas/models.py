@@ -1,6 +1,7 @@
 
 from django.db import models
 from django.contrib.auth.models import User 
+from django.core.validators import MinValueValidator
 # Create your models here.
 
 
@@ -128,13 +129,14 @@ class Publicacion(models.Model):
 	titulo         = models.CharField(max_length = 30, null=False)
 	detalle        = models.CharField(max_length = 300)
 	imagen         = models.ImageField(upload_to='fotos_publicaciones')
-	precio_regular = models.DecimalField(max_digits=10, decimal_places=2)
-	precio_oferta  = models.DecimalField(max_digits=10, decimal_places=2)
+	precio_regular = models.DecimalField(max_digits=10, decimal_places=2, validators=[MinValueValidator(1)])
+	precio_oferta  = models.DecimalField(max_digits=10, decimal_places=2, validators=[MinValueValidator(1)])
 	fecha_creacion = models.DateTimeField(auto_now_add=True, editable=False)
 	fecha_publi    = models.DateTimeField(auto_now_add=True)
 	activada 	   = models.BooleanField(default=True)
 	tiempo_publi   = models.IntegerField(default=1440)
 	cant_visitas   = models.IntegerField(default=0)
+
 
 	def __str__(self):
 		return self.titulo

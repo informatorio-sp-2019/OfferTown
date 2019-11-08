@@ -7,6 +7,7 @@ from datetime import date
 import ipdb
 from django.http import Http404
 from django.http import JsonResponse
+from django.contrib import messages
 
 # Create your views here.
 
@@ -242,15 +243,18 @@ def ver_perfil_usuario(request):
 def nueva_oferta(request,usuario,id):
 	if request.method == 'POST':
 		form = OfertaForm(request.POST, request.FILES)
-		if form.is_valid():
+		if form.is_valid():			
 			local = Local.objects.get(pk=id)
 			oferta = form.save(commit=False)
 			oferta.local = local
 			oferta.save()
-			
 			return redirect('app_ofertas:ver_local_usuario', usuario = request.user.username, id=id)
-			
-	form = OfertaForm()
+		else:			
+			messages.error(request, "Algo salió mal, controle los datos ingresados.")			
+		
+	else:		
+		form = OfertaForm()
+
 	context={'form':form}
 	template = 'publicacion/nueva_oferta.html'
 

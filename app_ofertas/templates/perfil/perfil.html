@@ -51,14 +51,10 @@
 			<div class="divider"></div>
 		</div>
 
-		<div>
-			<h6>Mis Locales</h6>
-		</div>
-
-		<div class="row">
-			<div class="divider"></div>
-		</div>
-
+			{% if request.user.usuario.get_locales %}
+				<div>
+					<h6>Mis Locales</h6>
+				</div>
 			{% for local in request.user.usuario.get_locales %}
 				<div class="col s6 m3">
 					<div class="caja-oferta-grid z-depth-2">
@@ -81,6 +77,7 @@
 					</div>
 				</div>
 			{% endfor %}
+			{% endif %}
 	</div>
 
 {% endblock %}

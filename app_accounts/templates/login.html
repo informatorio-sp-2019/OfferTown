@@ -8,17 +8,24 @@
     {% endblock %}      
 
 {% block content %}
-		{% if messages %}
-			<ul>
-			{% for message in messages %}
-				<li> {{ message }}</li>
-			{% endfor %}
-			</ul>
-		{% endif %}
+
 	<div>
 		<h4 class="center titulo-login"><i class="material-icons circle red white-text logo-login">loyalty</i>OfferTown</h4>
 		<p class="slogan center sin-margen">Ofertas en tu ciudad</p>
 	</div>
+
+	<div class="row">
+		{% if messages %}
+			  <div class="card-panel red lighten-2" style="border-radius: 5px;">
+				<ul>
+					{% for message in messages %}
+						<li><h6 style="text-align: center; color: white;">{{ message }}</h6> </li>
+					{% endfor %}
+				</ul>
+			</div>
+		{% endif %}
+	</div>
+
 	<form method="POST">
 		{% csrf_token %}
 		{{form.as_p}}

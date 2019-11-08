@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 import os
+import csv
+import unidecode
 from datetime import datetime
+
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', '_OfferTown.settings')
 
 #from django.core.wsgi import get_wsgi_application
@@ -10,38 +13,46 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', '_OfferTown.settings')
 
 QUANTITY = 250
 
+def get_hour(hour_list):
+    hour = [datetime.strptime(j, "%H:%M:%S") for j in hour_list]
+    return hour
+
+def get_nick(name, lastname):
+    nickname = unidecode.unidecode(''.join(e for e in name+lastname if e.isalnum()).lower())
+    return nickname
+
 def popular_usuarios(user_list):
     for user in user_list:
-        db_user = User(username=user['Nickname'], is_superuser=0, first_name=user['Nombre'],
-                last_name=user['Apellido'], email=user['Mail'])
-        print(db_user, user['Mail'])
-        db_user.save()
+        nick = get_nick(user['nombre'], user['apellido'])
+        print(nick)
 
+def read_values(filename):
+    values = []
+    with open(filename, newline='') as csvfile:
+        reader = csv.reader(csvfile)
+        lista = [row for row in reader]
+        lista.remove(lista[0])
+        for i in lista:
+            people = {"ciudad": i[1],
+                   "local": i[2],
+                   "direccion": i[3],
+                   "telefono": i[4],
+                   "delivery": True if i[5] == "Sí" else False,
+                   "atencion": i[6],
+                   "dias": [j for j in i[13].split(', ')],
+                   "foto": i[14],
+                   "nombre": i[15],
+                   "apellido": i[16]}
+            if people['atencion'] == 'Horario Corrido':
+                people['horario'] = get_hour(i[7:9])
+            elif people['atencion'] == 'Mañana y Tarde':
+                people['horario'] = get_hour(i[9:13])
+            values.append(people)
+    return values
 
 def main():
-    #usuarios = generate_users()
-    #localidades = generate_places()
-    #rubros = generate_rubros(localidades)
-    #popular_usuarios(usuarios)
-    #popular_rubros()
-    values = sheets.get_values()
-    print(values)
-    """
-    people = [{"ciudad": i[0],
-               "local": i[1],
-               "direccion": i[2],
-               "delivery": True if i[3] == "Sí" else False,
-               "atencion": i[4],
-               "telefono": i[5],
-               "dias": [j for j in i[6].split(', ')],
-               "nombre": i[9],
-               "apellido": i[10],
-               "foto": i[11],
-               "horario": (get_time_range(i[13], i[14], i[4]),
-                           get_time_range(i[15], i[16], i[4]))
-               } for i in values]
-    print(people)
-    """
+    values = read_values('valores.csv')
+    popular_usuarios(values)
 
 if __name__ == '__main__':
     main()

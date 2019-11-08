@@ -7,39 +7,19 @@
 	<div class="row">
 		<!-- metodo get, al /search -->
 		{% include 'search/search_form.html' %}
-
 	</div>
+
 	<div class="row">
 		<h6>Ofertas Recientes</h6>
 	</div>
-
 	{# manda al template publicacion/publicaciones_listado #}
-	{% include "publicacion/publicaciones_listado.html" with publicaciones=recientes %}
-
-
+	{% include "publicacion/publicaciones_grid.html" with publicaciones=recientes %}
+	
 	<div class="row">
 		<h6>Rubros</h6>
 	</div>
+	{# manda al template rubro/rubros_grid #}
+	{% include "rubro/rubros_grid.html" with rubros=categorias %}
 
-	<div class="row">
-		{% for categoria in categorias %}
-			<div class="col s4 m3 sin-padding">
-				<div class="caja-rubro-grid">
-					<a href="#">
-						<div class="imagen-rubro">
-							<img class="responsive-img" src="https://image.flaticon.com/icons/svg/1165/1165156.svg">
-							
-						</div>
-						<!-- <div class="divider"></div> -->
-						<div class="data-rubro">
-							<p class="titulo-rubro-grid grey-text text-darken-3" >{{ categoria.nombre }} </p>
-						</div>
-					</a>
-
-				</div>
-			</div>
-			
-		{% endfor %}
-	</div>
 
 {% endblock %}

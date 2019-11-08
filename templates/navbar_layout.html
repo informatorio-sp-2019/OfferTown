@@ -1,0 +1,65 @@
+<nav>
+  <div class="nav-wrapper">
+      <div class="row">
+        <div class="col s2 center-align">
+          <a href="#"><i class="material-icons">loyalty</i></a>
+        </div>
+
+
+        <div class="col s8">
+
+          <div class="row">
+
+            <div class="col s4">
+              <a href="/tendencias" class="top-bar-button">
+                <div class=" icon-top-bar-button">
+                  <i class="material-icons">whatshot</i>
+                </div>
+                <div class="txt-top-bar-button truncate">Login</div>
+              </a>
+            </div>
+
+            <div class="col s4">
+              <a href="/intereses" class="top-bar-button">
+                <div class=" icon-top-bar-button">
+                  <i class="material-icons">favorite</i>
+                </div>
+                <div class="txt-top-bar-button truncate">Registrar</div>
+              </a>
+            </div>              
+
+          </div>
+
+        </div>
+
+        <div class="col s2 center-align">
+          <!-- inicio items menu deslizante -->
+          <ul id="slide-out" class="sidenav left-align">
+
+          <!-- inicio lista de enlaces del menú -->
+          <li>
+            <a href= "{% url 'app_accounts:login' %}" class="waves-effect">
+              <i class="material-icons">whatshot</i>Login
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'app_accounts:signup' %}" class="waves-effect">
+              <i class="material-icons">favorite</i>Registrar
+            </a>
+          </li>            
+   
+          <!-- 
+          <li><a class="subheader">Subheader</a></li>
+          -->
+
+          </ul>
+          <!-- fin items menu deslizante -->
+          <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        </div>
+      </div>  
+
+
+
+
+  </div>
+</nav>

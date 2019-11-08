@@ -1,0 +1,47 @@
+{% extends "base_layout.html" %}
+
+{% block title %}	
+	LOGIN
+{% endblock %}
+
+    {% block navbar %}     
+    {% endblock %}      
+
+{% block content %}
+		{% if messages %}
+			<ul>
+			{% for message in messages %}
+				<li> {{ message }}</li>
+			{% endfor %}
+			</ul>
+		{% endif %}
+	<div>
+		<h4 class="center titulo-login"><i class="material-icons circle red white-text logo-login">loyalty</i>OfferTown</h4>
+		<p class="slogan center sin-margen">Ofertas en tu ciudad</p>
+	</div>
+	<form method="POST">
+		{% csrf_token %}
+		{{form.as_p}}
+		{% if requst.GET.next %}
+			<input type="hideen" name="next" value="{{ request.GET.next }}">
+		{% endif %}
+		<div class="center-align">
+			<button class="waves-effect waves-light btn-large" type="submit"><i class="material-icons right">vpn_key</i>Ingresar</button>	
+		</div>
+	</form>
+	{#<a href="{% url 'app_account/signup' %}"> Registrar</a>#}
+
+	<div class="row">
+		<br>
+		<p class="registrate center-align">
+			¿No tienes una cuanta? Registrate <a href="/signup">aquí</a>
+		</p>
+	</div>
+
+{% endblock %}
+
+{% block footer %}	
+{% endblock %}
+
+{% block js %}	
+{% endblock %}

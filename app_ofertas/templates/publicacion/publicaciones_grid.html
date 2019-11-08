@@ -1,0 +1,47 @@
+	{# muestra listado de una lista de publicaciones #}
+	{# pasar la lista como "publicaciones" #}
+
+	<div class="row">
+		{% for item in publicaciones %}
+			<div class="col s6 m3">
+				<div class="caja-oferta-grid z-depth-2 hoverable {% if not item.activada %}desactivada{% endif %}">
+					<a href="/pub/{{item.id}}/">
+						<div class="imagen-oferta-grid">
+							<img class="responsive-img" src="{{ item.imagen.url }}">
+
+							<div class="descuento_tag_grid">
+								<p class="porcentaje_descuento_grid">{{ item.get_descuento }}%</p>
+								<p class="porcentaje_off_grid">OFF</p>
+							</div>
+
+						</div>
+						<!-- <div class="divider"></div> -->
+						<div class="data-oferta-grid">
+							
+							{% if item.local.delivery %}
+								<div class="delivery z-depth 1">
+									<span class="envio"><i class="tiny material-icons">motorcycle</i></span>
+								</div>
+							{% endif %}
+
+							<p class="titulo-oferta-grid truncate tooltipped" data-position="top" data-tooltip="{{ item.titulo }}" >{{ item.titulo }} </p>
+							<p class="precio-regular-grid">{{ item.precio_regular }}</p>
+							<p class="precio-oferta-grid"> {{ item.precio_oferta }}</p>
+							<p class="detalle-oferta-grid"> {{ item.detalle|truncatechars:30 }}</p>
+						</div>
+					</a>
+
+				</div>
+			</div>
+			
+		{% endfor %}
+	</div>
+
+	{% block script %}
+	<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.tooltipped');
+    var instances = M.Tooltip.init(elems);
+  });
+	</script>
+	{% endblock %}

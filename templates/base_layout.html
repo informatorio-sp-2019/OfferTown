@@ -22,11 +22,11 @@
     <body>
 
 
-      {% include "navbar.html" %}
+    {% block navbar %} 
+      
 
-
-
-
+    {% endblock %}      
+      
 
   <div class="container">
 
@@ -35,15 +35,6 @@
 
 
   </div>        
-
-
-
-
-
-
-
-
-
 
 
     </body>
@@ -57,7 +48,9 @@
       });
     </script>
 
-    {% block script %} {% endblock %}
+    
+      {% block script %} {% endblock %}
+    
 
 
   </html>

@@ -1,0 +1,20 @@
+{% extends "esquema.html" %}
+
+{% block title %}Tendencias{% endblock %}
+
+{% block content %}
+	<!-- busquedas -->
+	<div class="row">
+		<!-- metodo get, al /search -->
+		{% include 'search/search_form.html' %}
+	</div>
+
+	<div class="row">
+		<h6>Ofertas en Tendencias</h6>
+	</div>
+	{# manda al template publicacion/publicaciones_listado #}
+	{% include "publicacion/publicaciones_grid.html" with publicaciones=tendencias %}
+	
+
+
+{% endblock %}

@@ -1,0 +1,163 @@
+{% load static from staticfiles %}
+<nav>
+  <div class="nav-wrapper">
+      <div class="row">
+        <div class="col s2 center-align">
+          <a href="{% url 'app_ofertas:index' %}"><i class="material-icons">loyalty</i></a>
+        </div>
+
+
+        <div class="col s8">
+
+          <div class="row sin-margen">
+            <div class="col s4">
+              <a href="/favoritos" class="top-bar-button">
+                <div class=" icon-top-bar-button">
+                  <i class="material-icons">star</i>
+                </div>
+                <div class="txt-top-bar-button truncate">Favoritos</div>
+              </a>
+            </div>
+
+
+            <div class="col s4">
+              <a href="/tendencias" class="top-bar-button">
+                <div class=" icon-top-bar-button">
+                  <i class="material-icons">whatshot</i>
+                </div>
+                <div class="txt-top-bar-button truncate">Tendencias</div>
+              </a>
+            </div>
+
+            <div class="col s4">
+              <a href="/intereses" class="top-bar-button">
+                <div class=" icon-top-bar-button">
+                  <i class="material-icons">favorite</i>
+                </div>
+                <div class="txt-top-bar-button truncate">Intereses</div>
+              </a>
+            </div>              
+
+          </div>
+
+        </div>
+
+        <div class="col s2 center-align">
+          <!-- inicio items menu deslizante -->
+          <ul id="slide-out" class="sidenav left-align collection">
+              {% if user.is_authenticated %}
+                <li>
+                  <div class="user-view">
+                    <div class="background black fondo-menu">
+                      
+                      <img src="{% static 'img/tags-min.jpg' %}">
+                      
+                    </div>
+
+
+                    <a href="/usuario/perfil/">
+
+                      {% if request.user.usuario.imagen %}
+                        <img class="circle" src="{{request.user.usuario.imagen.url}}">
+                      {% else %}
+                        <i class="large material-icons">person</i>
+                      {% endif %}
+
+                    </a>
+                  <a href="/usuario/perfil/">
+                    <span class="white-text name">{{ request.user.username.title }}</span>
+                  </a>
+                  <a href="/usuario/perfil/">
+                    <span class="white-text email">{{ request.user.usuario.email }}</span>
+                  </a>
+                </div>
+                  
+              </li>
+              <li>
+                <a href="/favoritos" class="waves-effect">
+                  <i class="material-icons">star</i>Mis Tiendas Favoritas
+                </a>
+              </li>
+              <li>
+                <a href="/tendencias" class="waves-effect">
+                  <i class="material-icons">whatshot</i>Tendencias
+                </a>
+              </li>
+              <li>
+                <a href="/intereses" class="waves-effect">
+                  <i class="material-icons">favorite</i>Mis Intereses
+                </a>
+              </li>            
+<!--               <li><div class="divider"></div></li>
+              <li>
+                <a href="#!" class="waves-effect">
+                  <i class="material-icons">local_offer</i><strong>Crear Oferta</strong>
+                </a>
+              </li> 
+              <li>
+                <a href="#!" class="waves-effect">
+                  <i class="material-icons">style</i><strong>Mis Ofertas</strong>
+                </a>
+              </li>  -->
+
+              <li><div class="divider"></div></li>
+              <li>
+                <a href="{% url 'app_ofertas:agregar_local' %}" class="waves-effect">
+                  <i class="material-icons">store</i><strong>Registrar local</strong>
+                </a>
+              </li> 
+
+              {% for local in request.user.usuario.get_locales %}
+                <li>
+                  <a href="{% url 'app_ofertas:ver_local_usuario' user.username local.id %}" class="waves-effect">
+                    {% if local.imagen %}
+                      <img src="{{local.imagen.url}}" alt="" class="circle imagen-menu"> <strong>{{local.nombre}}</strong> 
+                    {% else %}
+                      <img src="{% static 'img/sin-foto-local.svg' %}" alt="" class="imagen-menu"> <strong>{{local.nombre}}</strong> 
+                    {% endif %}
+                  </a>
+                </li> 
+              {% endfor %}
+
+              {% else %}
+                  
+              {% endif %}              
+          <!-- inicio lista de enlaces del menú -->
+          <li><div class="divider"></div></li>
+          <!-- 
+          <li><a class="subheader">Subheader</a></li>
+          -->
+              {% if user.is_authenticated %}
+                <li>
+                  <a href="{% url 'app_accounts:logout' %}" class="waves-effect">
+                    <i class="material-icons">power_settings_new</i>Cerrar Sesión
+                  </a>
+                </li> 
+              {% else %}
+                <li>
+
+
+                  <a href="{% url 'app_accounts:login' %}" class="waves-effect">
+                    <i class="material-icons">power_settings_new</i>Iniciar Sesión
+                  </a>
+
+                </li>               
+                <li>
+                  <a href="{% url 'app_accounts:signup' %}" class="waves-effect">
+                    <i class="material-icons">account_circle</i>Registrar
+                  </a>
+                </li>               
+
+              {% endif %}            
+
+          </ul>
+          <!-- fin items menu deslizante -->
+          <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        </div>
+      </div>  
+
+
+
+
+  </div>
+</nav>

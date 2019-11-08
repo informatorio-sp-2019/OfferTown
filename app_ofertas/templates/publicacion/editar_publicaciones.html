@@ -1,0 +1,67 @@
+{% extends "esquema.html" %}
+
+{% block title %} Mis Oferta {% endblock %}
+
+
+	{% block content %}
+
+
+			<h6>Mis ofertas</h6>
+	
+
+
+		{% for item in ofertas %}
+			<div class="row item-lista">
+					{% if item.activada %}			
+						<div id="oferta-container-{{item.id}}" class="caja-oferta-list z-depth-2">
+					{% else %}
+						<div id="oferta-container-{{item.id}}" class="caja-oferta-list z-depth-2 desactivada">
+					{% endif %}
+						<div class="col s2 m3 l3 sin-padding">
+							<div class="imagen-oferta valign-wrapper">
+								<img class="responsive-img" src="{{ item.imagen.url }}">
+							</div>
+						</div>
+						<div class="col s6 m7 l7 sin-padding">
+							<div class="data-oferta-list">
+								<p class="titulo-oferta-list truncate tooltipped" data-position="top" data-tooltip="{{ item.titulo }}" >{{ item.titulo }} </p>
+								<p class="precio-regular-list">${{ item.precio_regular }}</p>
+								<p class="precio-oferta-list">${{ item.precio_oferta }}</p>
+								<p class="detalle-oferta-list truncate tooltipped" data-position="top" data-tooltip="{{ item.detalle }}" >
+									{{ item.detalle }}
+								</p>
+								<p class="detalle-oferta-list">
+									<i class="material-icons icono-detalle-oferta">local_offer</i> {{ item.get_descuento }}%
+								</p>
+		 					</div>
+						</div>
+						<div class="col s4 m2 sin-padding center">
+							{% include 'publicacion/activar_oferta.html' with oferta=item  %}
+							<br>
+							<a href="{% url 'app_ofertas:re_editar_oferta' user.username local.id item.id %}" class="center-align btn-floating btn-small waves-effect waves-light tooltipped grey-text" data-position="top" data-tooltip="Editar Oferta"><i class="material-icons">edit</i></a>
+
+							<a href="{% url 'app_ofertas:eliminar_oferta' user.username local.id item.id %}" class="center-align btn-floating btn-small waves-effect waves-light tooltipped grey-text" data-position="top" data-tooltip="Eliminar Oferta"><i class="material-icons">delete</i></a>
+
+						</div>
+
+					</div>
+			</div>
+		{% endfor %}
+
+	<div class="fixed-action-btn">
+	  <a class="btn-floating btn-large red tooltipped pulse" data-position="top" data-tooltip="Agregar Oferta" href="{% url 'app_ofertas:nueva_oferta' user.username local.id  %}">
+	    <i class="large material-icons">add</i>
+	  </a>
+	</div>
+
+
+	{% endblock %}
+
+	{% block script %}
+	<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.tooltipped');
+    var instances = M.Tooltip.init(elems);
+  });
+	</script>
+	{% endblock %}

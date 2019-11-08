@@ -1,0 +1,27 @@
+	{# muestra listado de una lista de rubros #}
+	{# pasar la lista como "rubros" #}
+
+
+<div class="row">
+	{% for categoria in rubros %}
+		<div class="col s4 m3 sin-padding">
+			<div class="caja-rubro-grid">
+				<a href="/rubro/{{categoria.id}}" class="waves">
+					<div class="imagen-rubro">
+						{% if categoria.imagen %}
+							<img class="responsive-img" src="{{ categoria.imagen.url }}">
+						{% else %}
+						{% endif %}						
+						
+					</div>
+					<!-- <div class="divider"></div> -->
+					<div class="data-rubro">
+						<p class="titulo-rubro-grid grey-text text-darken-3" >{{ categoria.nombre }} </p>
+					</div>
+				</a>
+
+			</div>
+		</div>
+		
+	{% endfor %}
+</div>

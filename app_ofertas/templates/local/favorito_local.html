@@ -1,0 +1,42 @@
+	{# local #}
+		
+
+		{% if request.user.usuario in local.get_interesados %}
+			<a onclick="toggleFavorito(this)" data-id="{{local.id}}" class="secondary-content"><i class="material-icons tooltipped grey-text" data-position="top" data-tooltip="Agregar {{ local.nombre }} a mis favoritos">star</i></a> 
+		{% else %}
+			<a onclick="toggleFavorito(this)" data-id="{{local.id}}" class="secondary-content"><i class="material-icons tooltipped grey-text" data-position="top" data-tooltip="Agregar {{ local.nombre }} a mis favoritos">star_border</i></a> 
+		{% endif %}
+	
+
+	<script type="text/javascript">
+		
+		function cambiarIconoFav(estado,anchor){
+			console.log(anchor)
+			if(estado=="SI"){
+				anchor.children[0].innerHTML = "star"
+			}
+			else
+			if(estado=="NO"){
+				anchor.children[0].innerHTML = "star_border"	
+			}
+		}
+		async function toggleFavoritoRequest(local_id){
+			request = "/toggle_favorito/" + local_id + "/"
+			datos = await fetch(request).then(response=>{
+				return response.json()
+			}).then(data=>{
+				return data
+			}).catch(err=>{
+				//controlar error
+			})
+			return datos.estado
+		}
+		async function toggleFavorito(anchor){
+			
+			let estado = ""
+			let id_local = anchor.dataset.id
+			estado = await toggleFavoritoRequest(id_local)
+		
+			cambiarIconoFav(estado,anchor)
+		}
+	</script>

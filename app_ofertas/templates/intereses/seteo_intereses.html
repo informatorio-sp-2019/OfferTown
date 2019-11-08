@@ -1,0 +1,23 @@
+{% extends "esquema.html" %}
+
+{% block title %} Intereses {% endblock %}
+	
+{% block content %}
+	<h5 class="center-align">Marca el corazón de los rubros de tu interés</h5>
+	<p class="center-align"><strong>Offertown</strong> seleccionará las ofertas que más te gustan</p>
+	<br>
+	<div class="row">
+	{% for r in rubros %}
+			<div onclick="clickCorazon(this)" class="col s12 m4 l3 hoverable">
+				<span class="btn-interes-list">{{r.nombre}}</span>
+				<span class="btn-interes-icon">{% include 'rubro/interes_rubro.html' with rubro=r  %}</span>
+			</div>		
+	{% endfor %}
+	</div>
+	<script type="text/javascript">
+		function clickCorazon(div_hover){
+			div_hover.children[1].children[0].click()
+		}
+	</script>
+{% endblock %}
+

@@ -8,19 +8,41 @@
 		{% include 'search/search_form.html' %}
 	</div>
 	<!-- resultados de busqueda -->
+
+	<div class="divider"></div>
+
 	<div class="row">
-		<h6>Resultados</h6>
+		<h6>Publicaciones</h6>
 	</div>
 
 	{# manda al template publicacion/publicaciones_listado #}
-	{% include "publicacion/publicaciones_listado.html" with publicaciones=publicaciones %}
+	{% include "publicacion/publicaciones_row.html" with publicaciones=publicaciones %}
+
+	<div class="divider"></div>
+
+	<div class="row">
+		<h6>Locales</h6>
+	</div>
+	{# manda al template local/local_grid #}
+	{% include "local/locales_grid.html" with locales=locales %}
+
+
+	<div class="divider"></div>
+
+	<div class="row">
+		<h6>Rubros</h6>
+	</div>
+	{# manda al template rubro/rubros_grid #}
+	{% include "rubro/rubros_grid.html" with rubros=rubros %}
 	
 {% endblock %}
 
 	
 {% block script %}
-  document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('select');
-    var instances = M.FormSelect.init(elems);
-  });
+	<script type="text/javascript">
+	  document.addEventListener('DOMContentLoaded', function() {
+	    var elems = document.querySelectorAll('select');
+	    var instances = M.FormSelect.init(elems);
+	  });
+	</script>
 {% endblock %}

@@ -1,4 +1,5 @@
-<form action="/search" method="GET">
+<form action="/search" method="GET" style="padding-top: 20px;">
+	
 	<!-- Parte principal del form -->
 	<div class="row">
 		<div class="input-field col s10">
@@ -19,7 +20,7 @@
 	<!-- Filtros para el Form -->
 	{% if param_titulo %}
 		<!-- input orden param_orden -->
-	  <div class="input-field col s12">
+	  <div class="input-field col s12 m5">
 	    <select name="param_orden">
 	    		<option value="0">Seleccione</option>
 	      <optgroup label="Precio">
@@ -39,60 +40,28 @@
 	  </div>
 
 		<!-- input formas de pago -->
-		<div class="col s12 m6">
-			<p>Método de Pago</p>
-      <label>
-      	{% if param_payment == "PAY_CASH" %}
-					<input type="radio" class="with-gap" name="param_payment" value="PAY_CASH" id="pay_cash" checked>
-      	{% else %}
-      		<input type="radio" class="with-gap" name="param_payment" value="PAY_CASH" id="pay_cash">
-      	{% endif %}
-        <span>Efectivo</span>
-      </label>
-      <label>
-      	{% if param_payment == "PAY_DEBIT" %}
-      		<input type="radio" class="with-gap" name="param_payment" value="PAY_DEBIT" id="pay_debit" checked>
-      	{% else %}
-					<input type="radio" class="with-gap" name="param_payment" value="PAY_DEBIT" id="pay_debit">
-      	{% endif %}
-        <span>Débito</span>
-      </label>
-      <label>
-      	{% if param_payment == "PAY_ALL" %}
-      		<input type="radio" class="with-gap" name="param_payment" value="PAY_ALL" id="pay_all" checked>
-      	{% else %}
-					<input type="radio" class="with-gap" name="param_payment" value="PAY_ALL" id="pay_all">
-      	{% endif %}	      	
-        <span>TODOS</span>
-      </label>
+		<div class="input-field col s12 m5">
+	    <select>
+	      <option value="PAY_ALL" selected>Mostrar Todo</option>
+	      <option value="PAY_CASH">Efectivo</option>
+	      <option value="PAY_CREDIT">Crédito</option>
+	      <option value="PAY_DEBIT">Débito</option>
+	    </select>
+	    <label>Método de Pago</label>
+
+      
 		</div>
 		
 		<!-- input delivery param_delivery -->
-		<div class="col s12 m6">
+		<div class="col s12 m2">
 			<p>Delivery</p>
       <label>
 				{% if param_delivery == "SI" %}
-					<input type="radio" class="with-gap" name="param_delivery" value="SI" id="delivery_si" checked>
+					<input type="checkbox" class="with-gap" name="param_delivery" value="SI" id="delivery_si" checked>
 				{% else %}
-					<input type="radio" class="with-gap" name="param_delivery" value="SI" id="delivery_si">
+					<input type="checkbox" class="with-gap" name="param_delivery" value="SI" id="delivery_si">
 				{% endif %}
-        <span>SI</span>
-      </label>
-      <label>
-				{% if param_delivery == "NO" %}
-					<input type="radio" class="with-gap" name="param_delivery" value="NO" id="delivery_no" checked>
-				{% else %}
-					<input type="radio" class="with-gap" name="param_delivery" value="NO" id="delivery_no">
-				{% endif %}	      	
-        <span>NO</span>
-      </label>
-      <label>
-				{% if param_delivery == "ALL" %}
-					<input type="radio" class="with-gap" name="param_delivery" value="ALL" id="delivery_all" checked>
-				{% else %}
-					<input type="radio" class="with-gap" name="param_delivery" value="ALL" id="delivery_all">
-				{% endif %}	      	
-        <span>TODOS</span>
+        <span></span>
       </label>
 		</div>
 	{% endif %}

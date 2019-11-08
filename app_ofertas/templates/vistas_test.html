@@ -1,0 +1,116 @@
+{% extends "esquema.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+	<!-- busquedas -->
+	<div class="row">
+		<!-- metodo get, al /search -->
+		{% include 'search/search_form.html' %}
+	</div>
+
+	<div class="row titulo-lista">
+		<h6>Ofertas en grid</h6>
+	</div>
+
+
+	<div class="row">
+		{% for item in publicaciones %}
+			<div class="col s4 m3">
+				<div class="caja-oferta-grid z-depth-2">
+					<a href="/pub/{{item.id}}/">
+						<div class="imagen-oferta">
+							<img class="responsive-img" src="{{ item.imagen.url }}">
+							
+							<div class="delivery z-depth 1">
+								<span class="envio"><i class="tiny material-icons">motorcycle</i></span>
+							</div>
+						</div>
+						<!-- <div class="divider"></div> -->
+						<div class="data-oferta">
+							<p class="titulo-oferta-grid" >{{ item.titulo }} </p>
+							<p class="precio-regular-grid">{{ item.precio_regular }}</p>
+							<p class="precio-oferta-grid"> {{ item.precio_oferta }}</p>
+							<p class="detalle-oferta-grid"> {{ item.detalle|truncatechars:37 }}</p>
+						</div>
+					</a>
+
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+
+
+	<div class="row titulo-lista">
+		<h6>Ofertas en lista 1 columna</h6>
+	</div>
+
+
+		
+	{% for item in publicaciones %}
+		<div class="row item-lista">
+					
+			<a href="/pub/{{item.id}}/">
+				<div class="caja-oferta-list z-depth-2">
+					<div class="col s4 m5 l3 sin-padding">
+						<div class="imagen-oferta">
+							<img class="responsive-img" src="{{ item.imagen.url }}">
+							
+						</div>
+					</div>
+
+					<div class="col s8 m7 l9 sin-padding">
+						<div class="data-oferta-list">
+							<p class="titulo-oferta-list" >{{ item.titulo }} </p>
+							<p class="precio-regular-list">{{ item.precio_regular }}</p>
+							<p class="precio-oferta-list">{{ item.precio_oferta }}</p>
+							<p class="detalle-oferta-list">
+								{{ item.detalle|truncatechars:40 }}
+							</p>
+							<p class="detalle-oferta-list">
+								<i class="material-icons icono-detalle-oferta">store</i> {{ item.local.nombre }}
+							</p>
+							<p class="detalle-oferta-list">
+								<i class="material-icons icono-detalle-oferta">room</i> {{ item.local.direccion }}
+							</p>
+							<p class="detalle-oferta-list">
+								<i class="material-icons icono-detalle-oferta">room</i> {{ item.local.metodo_pago }}
+							</p>
+								
+ 						</div>
+					</div>
+					<div class="delivery-list z-depth 1">
+						<span class="envio"><i class="tiny material-icons">motorcycle</i></span>
+					</div>
+				</div>
+			</a>
+		</div>
+	{% endfor %}
+
+	
+	<div class="row titulo-lista">
+		<h6>Rubros</h6>
+	</div>
+
+	<div class="row">
+		{% for categoria in rubros %}
+			<div class="col s4 m3 sin-padding">
+				<div class="caja-rubro-grid">
+					<a href="#" class="waves">
+						<div class="imagen-rubro">
+							<img class="responsive-img" src="https://image.flaticon.com/icons/svg/1165/1165156.svg">
+							
+						</div>
+						<!-- <div class="divider"></div> -->
+						<div class="data-rubro">
+							<p class="titulo-rubro-grid grey-text text-darken-3" >{{ categoria.nombre }} </p>
+						</div>
+					</a>
+
+				</div>
+			</div>			
+		{% endfor %}
+	</div>
+
+
+{% endblock %}

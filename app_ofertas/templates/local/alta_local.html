@@ -1,0 +1,127 @@
+{% extends "esquema.html" %}
+
+{% block title %} Alta Local {% endblock %}
+
+{% block content %}
+<form action="/agregar_local/" method="POST"  enctype="multipart/form-data">
+    
+    <div class="row">
+    	<p>Para publicar tus ofertas completa primero los datos de tu local</p>
+
+	    {% csrf_token %}
+
+	    <div class="row">
+	    	<div class="col s12 m3 l2 cajaimagenform">
+	
+				{{ form.imagen.errors }}
+				{{ form.imagen.label_tag }}
+				{{ form.imagen }}
+				<label id="image-preview-area" for="id_imagen"  class="simil-btn-add-img">
+					<i class="material-icons">add_a_photo</i>
+				<!-- <label for="id_imagen" class="simil-btn-add-img"> -->	
+				</label>
+	    	</div>
+	    	<div class="col s12 m9 l10">
+	    		<div class="row">
+	    			<div class="col s12 m6">
+	    				<label>
+							{{ form.nombre.errors }}
+							{{ form.nombre.label_tag }}
+							{{ form.nombre }}
+							</label>
+	    			</div>
+	    			<div class="col s12 m6">
+	    				<label>
+							{{ form.direccion.errors }}
+							{{ form.direccion.label_tag }}
+							{{ form.direccion }}
+							</label>
+	    			</div>
+	    			<div class="col s12 m8">
+	    				<label>
+							{{ form.localidad.errors }}
+							{{ form.localidad.label_tag }}
+							{{ form.localidad }}
+							</label>
+	    			</div>
+	    			<div class="col s12 m4">
+	    				<label>
+							{{ form.telefono.errors }}
+							{{ form.telefono.label_tag }}
+							{{ form.telefono }}
+							</label>
+	    			</div>
+	    			<div class="col s10">
+	    				<label>
+							{{ form.metodo_pago.errors }}
+							{{ form.metodo_pago.label_tag }}
+							{{ form.metodo_pago }}
+							</label>
+	    			</div>
+	    			<div class="col s2">
+	    				<label>
+							{{ form.delivery.errors }}
+							{{ form.delivery.label_tag }}
+							{{ form.delivery }}
+							</label>
+	    			</div>
+	    			<div class="col s12">
+	    				<label>
+							{{ form.horario.errors }}
+							{{ form.horario.label_tag }}
+							{{ form.horario }}
+							</label>
+	    			</div>
+	    		</div>
+	    	</div>
+	    </div>
+
+    </div>
+
+    <div class="row center-align">
+	 	<button class="btn-large waves-effect waves-light" type="submit" name="action" value="Guardar">Guardar
+			<i class="material-icons right">save</i>
+		</button>
+    </div>
+    
+</form>
+
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems);
+  });
+</script>
+<script type="text/javascript">
+	    function readFile(input) {
+	        if (input.files && input.files[0]) {
+	            var reader = new FileReader();
+	 
+	            reader.onload = function (e) {
+	                var imagePreview = document.createElement('img');
+	                imagePreview.id = 'image-preview';
+	                
+	                imagePreview.src = e.target.result;
+	 
+	                var previewArea = document.getElementById('image-preview-area');
+
+									while(previewArea.firstChild) {
+											previewArea.removeChild(previewArea.firstChild);
+										}                
+									imagePreview.style.width = "200px;"
+	                previewArea.appendChild(imagePreview);
+	            }
+	 
+	            reader.readAsDataURL(input.files[0]);
+	        }
+	    }
+	 
+	    var imageUpload = document.getElementById('id_imagen');
+	    imageUpload.onchange = function (e) {
+	        readFile(e.srcElement);
+	    }	
+</script>
+{% endblock %}

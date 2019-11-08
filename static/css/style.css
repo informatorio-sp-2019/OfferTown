@@ -20,6 +20,11 @@
 	display: block!important;
 }
 
+
+.fondo-menu img{
+	opacity: .4;
+}
+
 /* helpers */
 .sin-margen{
 	margin: 0!important;
@@ -29,18 +34,93 @@
 	padding: 0!important;
 }
 
+.fantasma{
+	clear: both;
+}
 
-/* inicio listado ofertas */
+.titulo-lista{
+	margin: 5px auto 0;
+}
+
+.fondo_rojo{
+	background-color: red;
+}
+
+.fondo_verde{
+	background-color: green;
+}
+
+/* inicio grid ofertas */
+.caja-oferta-list,
 .caja-oferta-grid{
 	border: solid 1px lightgrey;
 	border-radius: 3px;
 	overflow: hidden;
+	margin-bottom: 10px;
 }
 
-.imagen-oferta{	
+.imagen-oferta-grid{
+	height: 160px;
+	position: relative;
+	overflow: hidden;
+}
+
+.imagen-oferta-grid img{
+	height: auto;
+	width:100%;
+	margin: 0 auto;
+}
+
+.descuento_tag_grid{
+	position: absolute;
+	vertical-align: bottom;
+	bottom: 60%;
+	left: 60%;
+	width: 45px;
+	height: 45px;
+	background-color: #388e3c;
+	border:solid 2px #959595;
+	border-radius: 50%;
+	box-shadow: 0 4px 2px 0 rgba(0,0,0,0.14),0 1px 10px 0 rgba(0,0,0,0.12),0 2px 4px -1px rgba(0,0,0,0.3);
+}
+.descuento_tag_list{
+position: absolute;
+	vertical-align: bottom;
+	bottom: 10%;
+	left: 10%;
+	width: 45px;
+	height: 45px;
+	background-color: #388e3c;
+	border:solid 2px #959595;
+	border-radius: 50%;
+	box-shadow: 0 4px 2px 0 rgba(0,0,0,0.14),0 1px 10px 0 rgba(0,0,0,0.12),0 2px 4px -1px rgba(0,0,0,0.3);
+
+}
+
+.porcentaje_descuento_grid{
+	font-size: .9em;
+	line-height: .8em;
+	text-align: center;
+	margin: 8px auto 0px;
+	font-weight: 700;
+	color: white;
+}
+
+.porcentaje_off_grid{
+	margin: 0 auto;
+	text-align: center;
+	font-size: .7em;
+	font-weight: 700;
+	color: white;
+}
+
+.data-oferta-grid{
+	height: 110px;
+	padding: 0 3px;
 	position: relative;
 }
 
+.data-oferta-list,
 .data-oferta{
 	padding: 3px;
 }
@@ -55,7 +135,6 @@
 	font-size: .9em;
 	text-decoration: line-through;
 	margin: 0 auto;
-	display: none;
 }
 .precio-oferta-grid{
 	color: black;
@@ -67,13 +146,195 @@
 	margin: 3px auto;
 	color: #606060;
 	line-height: 1.2em;
-	display: none;
 }
 
-.caja-oferta-grid:hover .precio-regular-grid,
-.caja-oferta-grid:hover .detalle-oferta-grid{
-	display: block;
+.caja-oferta-grid:hover{
+	border:solid 1px #959595;
 }
+
+.delivery{
+	position: absolute;
+	background-color:
+	white;
+	padding: 0 3px;
+	border: solid 1px
+	grey;
+	border-radius: 50%;
+	top: -17px;
+	right: 5px;
+	height: 25px;
+	width: 25px;
+}
+
+.delivery-list .envio,
+.delivery .envio{
+	color: grey;
+	vertical-align: middle;
+}
+
+
+
+/* ofertas listado una columna */
+.caja-oferta-list1col{
+
+}
+
+.titulo-oferta-list{
+	font-size: 1.4em;
+	line-height: 1em;
+	margin: 2px auto;	
+}
+
+.precio-regular-list{
+	color: gray;
+	font-size: .9em;
+	text-decoration: line-through;
+	margin: 0 auto;
+}
+.precio-oferta-list{
+	color: black;
+	font-size: 1.5em;
+	line-height: 1em;
+	margin: 0 auto;
+}
+.detalle-oferta-list{
+	margin: 3px auto;
+	color: #606060;
+	line-height: 1.2em;
+}
+
+.caja-oferta-list{
+	position: relative;
+}
+
+.delivery-list{
+	position: absolute;
+	background-color: white;
+	padding: 0 3px;
+	border: solid 1px grey;
+	border-radius: 50%;
+	bottom: 5px;
+	right: 5px;
+}
+
+.icono-detalle-oferta{
+	vertical-align: bottom;
+	font-size: 1.3em;
+}
+
+.item-lista{
+	margin-bottom: 5px;
+}
+
+/* ver mis ofertas */
+.estado-oferta{
+	margin-bottom: 5px;
+	margin-top: 10px;
+}
+
+.desactivada{
+	background-color: #e0e0e0;
+}
+
+.desactivada .data-oferta-grid,
+.desactivada .data-oferta-list{
+	opacity: .5;
+}
+
+.desactivada .imagen-oferta-grid img,
+.desactivada .imagen-oferta img{
+	filter:grayscale(100%);
+	opacity: .7;
+}
+
+.desactivada .titulo-oferta-grid{
+	color: grey;
+}
+
+.desactivada .imagen-oferta-grid .descuento_tag_grid{
+	background-color: grey;
+}
+
+
+/* inicio single oferta */
+.breadcru{
+	margin: 0 auto 5px;
+}
+
+.caja-oferta-single{
+	border: solid 1px lightgrey;
+	border-radius: 3px;
+	overflow: hidden;
+}
+
+.imagen-oferta{	
+	position: relative;
+	display: flex;
+}
+
+.imagen-oferta img{
+	width: 100%;
+}
+
+.descuento_tag_single{
+	position: absolute;
+	vertical-align: bottom;
+	bottom: 78%;
+	left: 78%;
+	width: 55px;
+	height: 55px;
+	background-color: #388e3c;
+	border:solid 2px #959595;
+	border-radius: 50%;
+	box-shadow: 0 4px 2px 0 rgba(0,0,0,0.14),0 1px 10px 0 rgba(0,0,0,0.12),0 2px 4px -1px rgba(0,0,0,0.3);
+}
+
+.porcentaje_descuento_single{
+	font-size: 1.1em;
+	line-height: 1em;
+	text-align: center;
+	margin: 10px auto 0px;
+	font-weight: 700;
+	color: white;
+}
+
+.porcentaje_off_single{
+	margin: 0 auto;
+	text-align: center;
+	font-size: .8em;
+	font-weight: 700;
+	color: white;
+}
+
+.data-oferta-list,
+.data-oferta{
+	padding: 3px;
+}
+
+.titulo-oferta-single{
+	font-size: 1.3em;
+	line-height: 1em;
+	margin: 2px auto;
+}
+.precio-regular-single{
+	color: gray;
+	font-size: .9em;
+	text-decoration: line-through;
+	margin: 0 auto;
+}
+.precio-oferta-single{
+	color: black;
+	font-size: 1.5em;
+	line-height: 1em;
+	margin: 0 auto;
+}
+.detalle-oferta-single{
+	margin: 3px auto;
+	color: #606060;
+	line-height: 1.2em;
+}
+
+
 
 .delivery{
 	position: absolute;
@@ -85,10 +346,13 @@
 	right: 5px;
 }
 
+.delivery-list .envio,
 .delivery .envio{
 	color: grey;
 	vertical-align: middle;
 }
+
+
 
 /* listado de rubros */
 .caja-rubro-grid{
@@ -96,6 +360,11 @@
 	overflow: hidden;
 	padding: 5%;
 }
+
+.caja-rubro-grid:hover{
+	background-color: #e1f5fe;
+}
+
 
 .caja-rubro-grid a{
 	line-height: 0;
@@ -113,6 +382,136 @@
 	text-align: center;
 }
 
-.titulo-rubro-grid{
+.imagen-rubro-avt {
+    max-width: 20px;
+    margin-left: 3px;
+    vertical-align: middle;
+}
 
+/* single rubro */
+.stiker{
+	width: 15%;
+}
+
+/* pagina de local */
+.columna-dias-hoy,
+.columna-dias{
+	width: 13.5%;
+	display: inline-block;
+	text-align: center;
+	border: solid 1px #959595;
+	border-radius: 3px;
+	vertical-align: top;
+}
+
+.columna-dias-hoy{
+	background-color: #388e3c;
+}
+
+.columna-dias-hoy p,
+.columna-dias p{
+	margin: 0;
+}
+
+.columna-dias-hoy p{
+	font-weight: 700;
+	color: #ffffff;
+}
+
+.imagen-local{
+	position: relative;
+	display: flex;
+}
+
+.sin-foto-local{
+	padding:2em;
+	opacity: .3;
+}
+
+.boton-add-sucursal{
+	margin-right: 10px
+}
+
+.ttl-sucursal{
+	margin: 0;
+	line-height: 2em;
+}
+
+
+.padding3px{
+	padding: 0 3px !important;
+}
+.sucursal{
+	border: solid 1px #999;
+	border-radius: 3px;
+	padding: 3px;
+}
+
+.sucursal .foto-sucursal{
+	padding: .5em 1.5em 0;
+	filter: grayscale(90);
+}
+
+.sucursal .data-suc{
+	font-size: .8em;
+	line-height: 1.2em;
+	margin: 0;
+	text-align: center;
+}
+
+/* login */
+.logo-login{
+	padding: 10px;
+}
+
+.titulo-login{
+	margin-bottom: 2px;
+}
+
+/* menu */
+.imagen-menu{
+	max-width: 27px;
+	height: 27px;
+	margin-right: 20px;
+	margin-left: 0px;
+	vertical-align: middle;
+}
+
+/* formulario horas de atención de locales */
+.tarde{
+	display: none;
+}
+#btn-less-lunes,
+#btn-less-martes,
+#btn-less-miercoles,
+#btn-less-jueves,
+#btn-less-viernes,
+#btn-less-sabado,
+#btn-less-domingo{
+	display: none
+}
+/* formularios con imagen */
+input#id_imagen{
+	display: none;
+}
+#image-preview-area img{
+	max-width: 100%;
+
+}
+.cajaimagenform{
+	position: relative;
+}
+.simil-btn-add-img{
+	display: block;
+	margin: auto;
+	text-align: center;
+	color:#000000!important;
+	background-color: #lightgrey;
+	border: solid 1px #222222;
+	border-radius: 3px;
+	cursor: pointer;
+	overflow: hidden;
+}
+.simil-btn-add-img i{
+	padding: 20px;
 }

@@ -1,0 +1,133 @@
+{% extends "esquema.html" %}
+
+{% block title %} {{pub.titulo}} {% endblock %}
+
+{% block content %}
+<div class="row breadcru">
+	<a href="/rubro/{{pub.rubro.id}}">{{ pub.rubro }}></a>
+	{% include 'rubro/interes_rubro.html' with rubro=pub.rubro  %}
+
+
+</div>
+
+	<div class="row">
+
+		<div class="caja-oferta-single z-depth-2">
+				
+			<div class="col s12 m6 l8 sin-padding">
+				<div class="imagen-oferta">
+					{% if pub.imagen %}
+						<img class="responsive-img" src="{{ pub.imagen.url }}">
+					{% else %}
+					{% endif %}
+					<div class="descuento_tag_single">
+						<p class="porcentaje_descuento_single">{{ pub.get_descuento }}%</p>
+						<p class="porcentaje_off_single">OFF</p>
+					</div>
+				</div>
+			</div>
+				<!-- <div class="divider"></div> -->
+			<div class="col s12 m6 l4">
+				<div class="data-oferta">
+					<p class="titulo-oferta-single" >{{ pub.titulo }} </p>
+					<p class="precio-regular-single">${{ pub.precio_regular }}</p>
+					<p class="precio-oferta-single"> ${{ pub.precio_oferta }}</p>
+					<p class="detalle-oferta-single"> {{ pub.detalle }}</p>
+
+					<div class="divider"></div>
+					<p class="detalle-oferta-single">
+						<i class="material-icons icono-detalle-oferta">store</i>
+					
+						{#<a href="/loc/{{ pub.local.id }}/"> {{ pub.local.nombre }} </a> #}
+
+						<a href="{% url 'app_ofertas:ver_local'  pub.local.id %}"> {{ pub.local.nombre }} </a> 
+						
+						{% include 'local/favorito_local.html' with local=pub.local  %}
+
+					</p>
+					{% if pub.local.telefono %}
+						<p class="detalle-oferta-single">
+							<i class="material-icons icono-detalle-oferta">phone</i>
+							<a href="tel:{{ pub.local.telefono }}">{{ pub.local.telefono }}</a>
+						</p>
+					{% endif %}
+					<p class="detalle-oferta-single">
+						<i class="material-icons icono-detalle-oferta">room</i> {{ pub.local.direccion }}
+					</p>
+					<p class="detalle-oferta-single">
+						<i class="material-icons icono-detalle-oferta">map</i> {{ pub.local.localidad }}
+					</p>
+
+					{% for medio in medios %}
+
+						{% if medio.medio_de_pago.id == 1 %}
+
+							<p class="detalle-oferta-single">
+								<i class="material-icons icono-detalle-oferta">attach_money</i> {{medio.medio_de_pago}}
+							</p>
+
+						{% else %}
+
+							<p class="detalle-oferta-single">
+								<i class="material-icons icono-detalle-oferta">credit_card</i> {{medio.medio_de_pago}}
+							</p>
+						
+						{% endif %}
+					
+					{% endfor %}
+
+					{% for horario in horarios %}
+
+						{% if hoy == horario.dia %}
+							<p class="detalle-oferta-single" ><i class="material-icons icono-detalle-oferta">watch_later</i> Hoy de {{horario.hora_d1}} a {{horario.hora_h1}} {% if horario.hora_d2 %} y de {{horario.hora_d2}} a {{horario.hora_h2}} {% endif %}</p>
+						{% endif %}
+					{% endfor %}
+
+					{% if pub.local.delivery %}
+					<p class="detalle-oferta-single">
+						<i class="material-icons icono-detalle-oferta">motorcycle</i> Entrega a domicilio
+					</p>
+					{% endif %}
+
+
+					{% if sucursales %}
+						<div class="divider"></div>
+						<p class="detalle-oferta-single center-align">
+							<strong>SUCURSALES</strong>
+						</p>
+						{% for sucursal in sucursales %}
+							<p class="detalle-oferta-single truncate tooltipped" data-position="top" data-tooltip="{{ sucursal.direccion }} - {{ sucursal.localidad }}">
+								<i class="material-icons icono-detalle-oferta">store</i> {{ sucursal.direccion }} - {{ sucursal.localidad }}
+							</p>					
+						{% endfor %}
+					{% endif %}
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="divider"></div>
+	</div>
+
+	{% if relacionados %}
+		<div>
+			<h6>Relacionados</h6>
+		</div>
+
+		{% include "publicacion/publicaciones_grid.html" with publicaciones=relacionados %}
+
+	{% endif %}
+{% endblock %}
+
+{% block script %} 
+
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.tooltipped');
+    var instances = M.Tooltip.init(elems);
+  });
+</script>
+
+{% endblock %}

@@ -6,10 +6,10 @@ from datetime import datetime
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', '_OfferTown.settings')
 
-#from django.core.wsgi import get_wsgi_application
-#application = get_wsgi_application()
+from django.core.wsgi import get_wsgi_application
+application = get_wsgi_application()
 
-#from app_ofertas.models import *
+from app_ofertas.models import *
 
 QUANTITY = 250
 
@@ -24,7 +24,13 @@ def get_nick(name, lastname):
 def popular_usuarios(user_list):
     for user in user_list:
         nick = get_nick(user['nombre'], user['apellido'])
-        print(nick)
+        usuario = Usuario(username=nick,
+                          first_name = user['nombre'],
+                          last_name = user['apellido'],
+                          email = nick+'@offertown.com',
+                          is_superuser = False)
+        usuario.set_password("qwe123")
+        usuario.save()
 
 def read_values(filename):
     values = []

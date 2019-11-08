@@ -382,8 +382,11 @@ position: absolute;
 	text-align: center;
 }
 
+.avatar-rubro{
+	font-size: 30px;
+}
 .imagen-rubro-avt {
-    max-width: 20px;
+    max-width: 45px;
     margin-left: 3px;
     vertical-align: middle;
 }

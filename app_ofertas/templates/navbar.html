@@ -11,6 +11,15 @@
 
           <div class="row sin-margen">
             <div class="col s4">
+              <a href="/intereses" class="top-bar-button">
+                <div class=" icon-top-bar-button">
+                  <i class="material-icons">favorite</i>
+                </div>
+                <div class="txt-top-bar-button truncate">Intereses</div>
+              </a>
+            </div> 
+
+            <div class="col s4">
               <a href="/favoritos" class="top-bar-button">
                 <div class=" icon-top-bar-button">
                   <i class="material-icons">star</i>
@@ -18,7 +27,6 @@
                 <div class="txt-top-bar-button truncate">Favoritos</div>
               </a>
             </div>
-
 
             <div class="col s4">
               <a href="/tendencias" class="top-bar-button">
@@ -28,15 +36,6 @@
                 <div class="txt-top-bar-button truncate">Tendencias</div>
               </a>
             </div>
-
-            <div class="col s4">
-              <a href="/intereses" class="top-bar-button">
-                <div class=" icon-top-bar-button">
-                  <i class="material-icons">favorite</i>
-                </div>
-                <div class="txt-top-bar-button truncate">Intereses</div>
-              </a>
-            </div>              
 
           </div>
 
@@ -65,7 +64,7 @@
 
                     </a>
                   <a href="/usuario/perfil/">
-                    <span class="white-text name">{{ request.user.username.title }}</span>
+                    <span class="white-text name">{{ request.user.username.title }} (perfil)</span>
                   </a>
                   <a href="/usuario/perfil/">
                     <span class="white-text email">{{ request.user.usuario.email }}</span>
@@ -73,7 +72,8 @@
                 </div>
                   
               </li>
-              <li>
+              <!--
+               <li>
                 <a href="/favoritos" class="waves-effect">
                   <i class="material-icons">star</i>Mis Tiendas Favoritas
                 </a>
@@ -82,10 +82,17 @@
                 <a href="/tendencias" class="waves-effect">
                   <i class="material-icons">whatshot</i>Tendencias
                 </a>
-              </li>
+              </li> 
+              -->
               <li>
-                <a href="/intereses" class="waves-effect">
-                  <i class="material-icons">favorite</i>Mis Intereses
+                <a href="/set_intereses" class="waves-effect">
+                  <span class="ico-contenedor">
+                    <i class="material-icons">favorite</i>
+                    <span class="ico-contenido">
+                      <i class="material-icons tiny">build</i>
+                    </span>
+                  </span>
+                  Mis Intereses
                 </a>
               </li>            
 <!--               <li><div class="divider"></div></li>
@@ -152,7 +159,22 @@
 
           </ul>
           <!-- fin items menu deslizante -->
-          <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+          {% if user.is_authenticated %}
+
+            {% if request.user.usuario.imagen %}
+              <a href="#" data-target="slide-out" class="sidenav-trigger">
+                <div class="circulo-img-menu" style="background-image: url('{{request.user.usuario.imagen.url}}');">
+                </div>             
+              </a>
+            {% else %}
+              <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">person</i></a>              
+            {% endif %}
+          {% else %}
+            <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          {% endif %}
+
+
         </div>
       </div>  
 

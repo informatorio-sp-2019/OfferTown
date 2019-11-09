@@ -88,6 +88,22 @@
 	background-color: green;
 }
 
+/* set intereses */
+
+.caja-interes-set{
+	padding: 12px 7px;
+	border-radius: 3px;
+	border: solid 1px lightgray;
+	font-weight: 300;
+	margin-bottom: 8px;
+}
+
+.btn-interes-icon a:hover{
+	cursor: pointer;
+}
+
+
+
 /* inicio grid ofertas */
 .caja-oferta-list,
 .caja-oferta-grid{

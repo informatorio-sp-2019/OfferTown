@@ -5,19 +5,48 @@
 {% block content %}
 <form method="POST"  enctype="multipart/form-data">
     
+	<div class="card-panel teal lighten-2" style="border-radius: 5px;">
+		<h6 style="color: white;">Completa los datos para agregar tu sucursal</h6>
+	</div>
+
+	<div class="divider" style="margin-bottom: 10px;"></div>
+
     {% csrf_token %}
 
-	{% for field in form %}
-		<p>		
-			<label>
-			{{ field.errors }}
-			{{ field.label_tag }}
-			{{ field }}
-			</label>
-		</p>
-	{% endfor %}
+    <div class="col s12 m9 l12">
+		<div class="row">
+		    <div class="col s12 m6 l4">		
+				<label>
+					{{ form.localidad.errors }}
+					{{ form.localidad.label_tag }}
+					{{ form.localidad }}
+				</label>
+			</div>
 
-    <input type="submit" value="Guardar"/>
+		    <div class=" col s12 m6 l8">		
+				<label>
+					{{ form.telefono.errors }}
+					{{ form.telefono.label_tag }}
+					{{ form.telefono }}
+				</label>
+			</div>
+
+			<div class="col s12">		
+				<label>
+					{{ form.direccion.errors }}
+					{{ form.direccion.label_tag }}
+					{{ form.direccion }}
+				</label>
+			</div>
+
+ 		</div>	
+    </div>
+
+    <div class="row center-align">
+		 	<button class="btn-large waves-effect waves-light" type="submit" name="action" value="Guardar">Guardar
+				<i class="material-icons right">save</i>
+			</button>
+    </div>
 </form>
 
 {% endblock %}
@@ -28,5 +57,34 @@ document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('select');
     var instances = M.FormSelect.init(elems);
   });
+</script>
+<script type="text/javascript">
+	    function readFile(input) {
+	        if (input.files && input.files[0]) {
+	            var reader = new FileReader();
+	 
+	            reader.onload = function (e) {
+	                var imagePreview = document.createElement('img');
+	                imagePreview.id = 'image-preview';
+	                
+	                imagePreview.src = e.target.result;
+	 
+	                var previewArea = document.getElementById('image-preview-area');
+
+									while(previewArea.firstChild) {
+											previewArea.removeChild(previewArea.firstChild);
+										}                
+									imagePreview.style.width = "200px;"
+	                previewArea.appendChild(imagePreview);
+	            }
+	 
+	            reader.readAsDataURL(input.files[0]);
+	        }
+	    }
+	 
+	    var imageUpload = document.getElementById('id_imagen');
+	    imageUpload.onchange = function (e) {
+	        readFile(e.srcElement);
+	    }	
 </script>
 {% endblock %}

@@ -37,6 +37,54 @@ body{
 	opacity: .4;
 }
 
+.circulo-img-menu{
+	height: 44px;
+	width: 44px;
+	margin-top:10px;
+	background-position: center center;
+	background-size: cover;
+	border-radius:50%;
+}
+
+
+@media screen and (max-width:600px){
+	.circulo-img-menu {
+	    height: 40px;
+	    width: 40px;
+	    margin-left: -25px;
+	}
+}
+
+
+.ico-contenedor{
+	position: relative;
+	float: left;
+	height: 48px;
+	line-height: 48px;
+	margin: 0 32px 0 0;
+	width: 24px;
+	color:
+	rgba(0,0,0,0.54);
+}
+
+.ico-contenido{
+	position: absolute;
+	top: 64%;
+	right: -10px;
+	height: 16px;
+	width: 16px;
+	background-color: #fff0;
+	padding: 2px;
+	border: solid 2px grey;
+  border-radius: 50%;
+}
+
+.ico-contenido i{
+	font-size: 10px!important;
+	line-height: 10px!important;
+}
+
+
 /* helpers */
 .sin-margen{
 	margin: 0!important;
@@ -61,6 +109,22 @@ body{
 .fondo_verde{
 	background-color: green;
 }
+
+/* set intereses */
+
+.caja-interes-set{
+	padding: 12px 7px;
+	border-radius: 3px;
+	border: solid 1px lightgray;
+	font-weight: 300;
+	margin-bottom: 8px;
+}
+
+.btn-interes-icon a:hover{
+	cursor: pointer;
+}
+
+
 
 /* inicio grid ofertas */
 .caja-oferta-list,

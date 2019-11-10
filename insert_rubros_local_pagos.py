@@ -11,7 +11,7 @@ from app_ofertas.models import *
 def main():
 	try:
 			
-		r = open('rubros.txt','r')
+		r = open('rubros','r')
 		rubros = r.readlines()			
 		rubros.sort()	
 		for rubro in rubros:			
@@ -23,7 +23,7 @@ def main():
 		r.close()		
 
 
-		l = open ('localidades.txt','r')
+		l = open ('localidades','r')
 		localidades = l.readlines()		
 		localidades.sort()
 		for localidad in localidades:
@@ -33,7 +33,7 @@ def main():
 
 		l.close()
 
-		p = open ('pagos.txt','r')
+		p = open ('pagos','r')
 		pagos = p.readlines()	
 		pagos.sort()	
 		for pago in pagos:

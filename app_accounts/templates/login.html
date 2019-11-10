@@ -16,7 +16,14 @@
 			</ul>
 		{% endif %}
 	<div>
-		<h4 class="center titulo-login"><i class="material-icons circle red white-text logo-login">loyalty</i>OfferTown</h4>
+		<h4 class="center titulo-login">
+				{#<i class="material-icons circle red white-text logo-login">loyalty</i>OfferTown#}
+
+				<a href="{% url 'app_ofertas:index' %}">
+					<i class="material-icons circle red white-text logo-login">loyalty</i>OfferTown
+				</a>
+			
+		</h4>
 		<p class="slogan center sin-margen">Ofertas en tu ciudad</p>
 	</div>
 	<form method="POST">

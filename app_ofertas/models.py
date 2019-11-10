@@ -123,6 +123,9 @@ class Rubro(models.Model):
 	def __str__(self):
 		return self.nombre
 
+	class Meta:
+		ordering = ['nombre']	
+
 class Publicacion(models.Model):
 	local          = models.ForeignKey(Local, on_delete = models.CASCADE, related_name = 'publicaciones')
 	rubro   	   = models.ForeignKey(Rubro, on_delete = models.CASCADE, related_name = 'publicaciones')

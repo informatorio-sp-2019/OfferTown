@@ -34,6 +34,16 @@
 	border-radius:50%;
 }
 
+
+@media screen and (max-width:600px){
+	.circulo-img-menu {
+	    height: 40px;
+	    width: 40px;
+	    margin-left: -25px;
+	}
+}
+
+
 .ico-contenedor{
 	position: relative;
 	float: left;

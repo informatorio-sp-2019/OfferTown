@@ -9,8 +9,8 @@
 	<div class="row">
 	{% for r in rubros %}
 			<div onclick="clickCorazon(this)" class="col s12 m4 l3">
-				<div class="caja-interes-set hoverable">
-					<span class="btn-interes-list tooltipped" data-position="top" data-tooltip="Toca EL 🖤">{{r.nombre}}</span>
+				<div class="caja-interes-set hoverable tooltipped" data-position="top" data-tooltip="Toca el corazón">
+					<span class="btn-interes-list">{{r.nombre}}</span>
 					<span class="btn-interes-icon">{% include 'rubro/interes_rubro.html' with rubro=r  %}</span>
 				</div>
 			</div>		
@@ -27,7 +27,7 @@
 	<script type="text/javascript">
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.tooltipped');
-    var instances = M.Tooltip.init(elems, options);
+    var instances = M.Tooltip.init(elems);
   });
 	</script>
 {% endblock %}

@@ -22,6 +22,10 @@ def login_view(request):
 			# ipdb.set_trace()
 			login(request,user)
 
+			request.session['member_id'] = user.id			
+			request.session.set_expiry(21600) # 6hs
+			
+			
 			if 'next' in request.GET and request.GET.get('next') != '/logout/':
 				return redirect(request.GET.get('next'))
 			

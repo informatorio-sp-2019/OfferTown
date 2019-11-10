@@ -104,5 +104,6 @@ venv.bak/
 .mypy_cache/
 
 migrations
-media
+media !media/fotos_rubros/*
+
 

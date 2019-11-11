@@ -1,5 +1,7 @@
 {% extends "base_layout.html" %}
 
+{% load static from staticfiles %}
+
 {% block title %}	
 	LOGIN
 {% endblock %}
@@ -9,17 +11,22 @@
 
 {% block content %}
 
-	<div>
-		<h4 class="center titulo-login">
-				{#<i class="material-icons circle red white-text logo-login">loyalty</i>OfferTown#}
+		<div class"row">
+			<div class="col s12 m2 l3"></div>
+			<div class="col s12 m8 l6">
+				<div class="row">
+					<div class="col s12 headerlogo">
+						
+						<img src="{% static 'img/logooffer.png' %}">
+						<p class="slogan center sin-margen">Ofertas en tu ciudad</p>
 
-				<a href="{% url 'app_ofertas:index' %}">
-					<i class="material-icons circle red white-text logo-login">loyalty</i>OfferTown
-				</a>
-			
-		</h4>
-		<p class="slogan center sin-margen">Ofertas en tu ciudad</p>
-	</div>
+					</div>
+				</div>
+			</div>
+			<div class="col s12 m2 l3"></div>
+		</div>
+		<div class="divider"></div>
+
 
 	<div class="row">
 		{% if messages %}

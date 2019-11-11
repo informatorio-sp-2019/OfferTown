@@ -24,6 +24,8 @@ SECRET_KEY = 'wrbt%ijo-u5xs3#w=0-qi_tzmpp28%e^0x)&%c63m-zd6q@knx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+if 'DATABASE_URL' in os.environ:
+    DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 

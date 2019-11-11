@@ -118,6 +118,7 @@ body{
 	border: solid 1px lightgray;
 	font-weight: 300;
 	margin-bottom: 8px;
+	height: 70px;
 }
 
 .btn-interes-icon a:hover{

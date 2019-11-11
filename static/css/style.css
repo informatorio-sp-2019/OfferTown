@@ -601,3 +601,7 @@ input#id_imagen{
 .simil-btn-add-img i{
 	padding: 20px;
 }
+
+.cursor-pointer{
+	cursor: pointer;
+}

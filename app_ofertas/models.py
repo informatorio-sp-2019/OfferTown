@@ -104,7 +104,7 @@ class Horario(models.Model):
 			return "{0}, de {1} a {2}".format(self.dia, self.hora_d1, self.hora_h1)
 
 class Rubro(models.Model):
-	nombre = models.CharField(max_length = 25)
+	nombre = models.CharField(max_length = 30)
 	imagen = models.FileField(upload_to='fotos_rubros', null=True,blank=True)
 
 	def get_interesados(self):

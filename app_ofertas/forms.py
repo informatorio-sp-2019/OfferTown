@@ -1,5 +1,5 @@
 from django import forms
-from app_ofertas.models import Local, Publicacion, Localidad, MedioDePago, Sucursal
+from app_ofertas.models import Local, Publicacion, Localidad, MedioDePago, Sucursal, Horario
 import ipdb
 
 class LocalForm(forms.ModelForm):
@@ -121,3 +121,4 @@ class HorarioForm(forms.Form):
 	horamh7 = forms.CharField(max_length=5,required = False,widget=forms.TextInput(attrs={'placeholder': '00:00'}))
 	horatd7 = forms.CharField(max_length=5,required = False,widget=forms.TextInput(attrs={'placeholder': '00:00'}))
 	horath7 = forms.CharField(max_length=5,required = False,widget=forms.TextInput(attrs={'placeholder': '00:00'}))	
+

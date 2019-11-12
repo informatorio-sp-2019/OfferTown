@@ -22,7 +22,7 @@
 		<!-- input orden param_orden -->
 	  <div class="input-field col s12 m5">
 	    <select name="param_orden">
-	    		<option value="0">Seleccione</option>
+	    		<option value="0">Título</option>
 	      <optgroup label="Precio">
 	      	{% if param_orden == "1" %}
 	        	<option value="1" selected>Menor</option>
@@ -41,11 +41,27 @@
 
 		<!-- input formas de pago -->
 		<div class="input-field col s12 m5">
-	    <select>
-	      <option value="PAY_ALL" selected>Mostrar Todo</option>
-	      <option value="PAY_CASH">Efectivo</option>
-	      <option value="PAY_CREDIT">Crédito</option>
-	      <option value="PAY_DEBIT">Débito</option>
+	    <select name="param_payment">
+	    	{% if param_payment %}	      	
+	      	<option value="PAY_ALL">Mostrar Todo</option>
+	    	{% else %}
+	    		<option value="PAY_ALL" selected>Mostrar Todo</option>
+	    	{% endif %}
+	    	{% if param_payment == "PAY_CASH" %}
+	      	<option value="PAY_CASH" selected>Efectivo</option>
+	    	{% else %}
+	    		<option value="PAY_CASH">Efectivo</option>
+	    	{% endif %}
+	    	{% if param_payment == "PAY_CREDIT" %}
+	      	<option value="PAY_CREDIT" selected>Crédito</option>
+	    	{% else %}
+		      <option value="PAY_CREDIT">Crédito</option>
+	    	{% endif %}
+	    	{% if param_payment == "PAY_DEBIT" %}
+	      	<option value="PAY_DEBIT" selected>Débito</option>
+	    	{% else %}
+	    		<option value="PAY_DEBIT">Débito</option>
+	    	{% endif %}
 	    </select>
 	    <label>Método de Pago</label>
 

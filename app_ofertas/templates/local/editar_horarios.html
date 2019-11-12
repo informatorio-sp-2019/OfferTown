@@ -1,204 +1,179 @@
 {% extends "esquema.html" %}
 
-
-{% block title %} Horarios {% endblock %}
+{% block title %} Editar Horarios {% endblock %}
 
 {% block content %}
 <form action="" method="POST" ">
 	<br>
-<<<<<<< HEAD
-=======
 	<h5 class="center-align">HORARIOS DE ATENCIÓN</h5>
 	<br>
->>>>>>> 342752bfece5e2a5fd5b4ac9c75a1b6557473303
 	<div class="row">
 		{% csrf_token %}
-	 	{% for field in form %}	
-	 		<!-- acá empieza lunes -->
-	 		{% if field.name == 'dia1' %}	 		
+
+	 		<!-- acá empieza martes -->	 	
 				<div class="col s12 m3 l2">
 					<h6 class="nombre-dia">Lunes</h6>
 				</div>	 		
-			{% elif field.name == 'horamd1'%}	 		
+			
 				<div class=" col s12 m3 l2 ">		
-					<label>
-					{{ field.errors }}
+					<label>			
 					DESDE
-					{{ field }}
+						<input type="text" name="horamd1" id="id_horamd1" placeholder="00:00" maxlength="5" value={{form.horamd1}}>
 					</label>
 				</div>
-			{% elif field.name == 'horamh1'%}	 		
+			
 				<div class=" col s12 m3 l2 ">		
 					<label>
-					{{ field.errors }}
 					HASTA
-					{{ field }}
+						<input type="text" name="horamh1" id="id_horamh1" placeholder="00:00" maxlength="5" value={{form.horamh1}}>
 					</label>
 				</div>
 				<div class="col s2 m1" id="btn-add-lunes" onclick="mostrar_tarde_lunes()">
 						<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">add</i></a>
 				</div>			
 
-			{% elif field.name == 'horatd1'%}	 		
+
 				<div class="tarde" id="lunes-tarde">
 					<div class=" col s12 m3 l2 ">		
 						<label>
-						{{ field.errors }}
 						DESDE
-						{{ field }}
+						<input type="text" name="horatd1" id="id_horatd1" placeholder="00:00" maxlength="5" value={{form.horatd1}}>
 						</label>
 					</div>
-			{% elif field.name == 'horath1'%}	 		
 					<div class=" col s12 m3 l2 ">		
-						<label>
-						{{ field.errors }}
+						<label>						
 						HASTA
-						{{ field }}
+						<input type="text" name="horath1" id="id_horath1" placeholder="00:00" maxlength="5" value={{form.horath1}}>
 						</label>
 					</div>		
 					<div class="col s2 m1" id="btn-less-lunes" onclick="ocultar_tarde_lunes()">
 						<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">clear</i></a>
 					</div>
-				</div>				
-			<!-- finaliza lunes -->			
+				</div>			 		
+			<!-- finaliza lunes -->	
+
 			<br><br><br><br>
-	 		<!-- acá empieza martes -->
-	 		{% elif field.name == 'dia2' %}	 		
+	 		<!-- acá empieza martes -->	 	
 				<div class="col s12 m3 l2">
 					<h6 class="nombre-dia">Martes</h6>
 				</div>	 		
-			{% elif field.name == 'horamd2'%}	 		
+			
 				<div class=" col s12 m3 l2 ">		
-					<label>
-					{{ field.errors }}
+					<label>			
 					DESDE
-					{{ field }}
+						<input type="text" name="horamd2" id="id_horamd2" placeholder="00:00" maxlength="5" value={{form.horamd2}}>
 					</label>
 				</div>
-			{% elif field.name == 'horamh2'%}	 		
+			
 				<div class=" col s12 m3 l2 ">		
 					<label>
-					{{ field.errors }}
 					HASTA
-					{{ field }}
+						<input type="text" name="horamh2" id="id_horamh2" placeholder="00:00" maxlength="5" value={{form.horamh2}}>
 					</label>
 				</div>
 				<div class="col s2 m1" id="btn-add-martes" onclick="mostrar_tarde_martes()">
 						<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">add</i></a>
 				</div>			
 
-			{% elif field.name == 'horatd2'%}	 		
+
 				<div class="tarde" id="martes-tarde">
 					<div class=" col s12 m3 l2 ">		
 						<label>
-						{{ field.errors }}
 						DESDE
-						{{ field }}
+						<input type="text" name="horatd2" id="id_horatd2" placeholder="00:00" maxlength="5" value={{form.horatd2}}>
 						</label>
 					</div>
-			{% elif field.name == 'horath2'%}	 		
 					<div class=" col s12 m3 l2 ">		
-						<label>
-						{{ field.errors }}
+						<label>						
 						HASTA
-						{{ field }}
+						<input type="text" name="horath2" id="id_horath2" placeholder="00:00" maxlength="5" value={{form.horath2}}>
 						</label>
 					</div>		
 					<div class="col s2 m1" id="btn-less-martes" onclick="ocultar_tarde_martes()">
 						<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">clear</i></a>
 					</div>
 				</div>			 		
-			<!-- finaliza martes -->
+			<!-- finaliza martes -->	
+
 			<br><br><br><br>
-	 		<!-- acá empieza miercoles -->
-	 		{% elif field.name == 'dia3' %}	 		
+	 		<!-- acá empieza miercoles -->	 	
 				<div class="col s12 m3 l2">
 					<h6 class="nombre-dia">Miércoles</h6>
 				</div>	 		
-			{% elif field.name == 'horamd3'%}	 		
+			
 				<div class=" col s12 m3 l2 ">		
-					<label>
-					{{ field.errors }}
+					<label>			
 					DESDE
-					{{ field }}
+						<input type="text" name="horamd3" id="id_horamd3" placeholder="00:00" maxlength="5" value={{form.horamd3}}>
 					</label>
 				</div>
-			{% elif field.name == 'horamh3'%}	 		
+			
 				<div class=" col s12 m3 l2 ">		
 					<label>
-					{{ field.errors }}
 					HASTA
-					{{ field }}
+						<input type="text" name="horamh3" id="id_horamh3" placeholder="00:00" maxlength="5" value={{form.horamh3}}>
 					</label>
 				</div>
 				<div class="col s2 m1" id="btn-add-miercoles" onclick="mostrar_tarde_miercoles()">
 						<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">add</i></a>
 				</div>			
 
-			{% elif field.name == 'horatd3'%}	 		
+
 				<div class="tarde" id="miercoles-tarde">
 					<div class=" col s12 m3 l2 ">		
 						<label>
-						{{ field.errors }}
 						DESDE
-						{{ field }}
+						<input type="text" name="horatd3" id="id_horatd3" placeholder="00:00" maxlength="5" value={{form.horatd3}}>
 						</label>
 					</div>
-			{% elif field.name == 'horath3'%}	 		
 					<div class=" col s12 m3 l2 ">		
-						<label>
-						{{ field.errors }}
+						<label>						
 						HASTA
-						{{ field }}
+						<input type="text" name="horath3" id="id_horath3" placeholder="00:00" maxlength="5" value={{form.horath3}}>
 						</label>
 					</div>		
 					<div class="col s2 m1" id="btn-less-miercoles" onclick="ocultar_tarde_miercoles()">
 						<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">clear</i></a>
 					</div>
 				</div>			 		
-			<!-- finaliza miercoles -->		
+			<!-- finaliza miercoles -->	
+
 
 			<br><br><br><br>
-	 		<!-- acá empieza jueves -->
-	 		{% elif field.name == 'dia4' %}	 		
+	 		<!-- acá empieza jueves -->	 	
 				<div class="col s12 m3 l2">
 					<h6 class="nombre-dia">Jueves</h6>
 				</div>	 		
-			{% elif field.name == 'horamd4'%}	 		
+			
 				<div class=" col s12 m3 l2 ">		
-					<label>
-					{{ field.errors }}
+					<label>			
 					DESDE
-					{{ field }}
+						<input type="text" name="horamd4" id="id_horamd4" placeholder="00:00" maxlength="5" value={{form.horamd4}}>
 					</label>
 				</div>
-			{% elif field.name == 'horamh4'%}	 		
+			
 				<div class=" col s12 m3 l2 ">		
 					<label>
-					{{ field.errors }}
 					HASTA
-					{{ field }}
+						<input type="text" name="horamh4" id="id_horamh4" placeholder="00:00" maxlength="5" value={{form.horamh4}}>
 					</label>
 				</div>
 				<div class="col s2 m1" id="btn-add-jueves" onclick="mostrar_tarde_jueves()">
 						<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">add</i></a>
 				</div>			
 
-			{% elif field.name == 'horatd4'%}	 		
+
 				<div class="tarde" id="jueves-tarde">
 					<div class=" col s12 m3 l2 ">		
 						<label>
-						{{ field.errors }}
 						DESDE
-						{{ field }}
+						<input type="text" name="horatd4" id="id_horatd4" placeholder="00:00" maxlength="5" value={{form.horatd4}}>
 						</label>
 					</div>
-			{% elif field.name == 'horath4'%}	 		
 					<div class=" col s12 m3 l2 ">		
-						<label>
-						{{ field.errors }}
+						<label>						
 						HASTA
-						{{ field }}
+						<input type="text" name="horath4" id="id_horath4" placeholder="00:00" maxlength="5" value={{form.horath4}}>
 						</label>
 					</div>		
 					<div class="col s2 m1" id="btn-less-jueves" onclick="ocultar_tarde_jueves()">
@@ -209,45 +184,39 @@
 
 			<br><br><br><br>
 	 		<!-- acá empieza viernes -->
-	 		{% elif field.name == 'dia5' %}	 		
+
 				<div class="col s12 m3 l2">
 					<h6 class="nombre-dia">Viernes</h6>
 				</div>	 		
-			{% elif field.name == 'horamd5'%}	 		
 				<div class=" col s12 m3 l2 ">		
 					<label>
-					{{ field.errors }}
 					DESDE
-					{{ field }}
+						<input type="text" name="horamd5" id="id_horamd5" placeholder="00:00" maxlength="5" value={{form.horamd5}}>
 					</label>
 				</div>
-			{% elif field.name == 'horamh5'%}	 		
+
 				<div class=" col s12 m3 l2 ">		
 					<label>
-					{{ field.errors }}
 					HASTA
-					{{ field }}
+						<input type="text" name="horamh5" id="id_horamh5" placeholder="00:00" maxlength="5" value={{form.horamh5}}>
 					</label>
 				</div>
 				<div class="col s2 m1" id="btn-add-viernes" onclick="mostrar_tarde_viernes()">
 						<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">add</i></a>
 				</div>			
 
-			{% elif field.name == 'horatd5'%}	 		
 				<div class="tarde" id="viernes-tarde">
 					<div class=" col s12 m3 l2 ">		
 						<label>
-						{{ field.errors }}
 						DESDE
-						{{ field }}
+						<input type="text" name="horatd5" id="id_horatd5" placeholder="00:00" maxlength="5" value={{form.horatd5}}>
 						</label>
 					</div>
-			{% elif field.name == 'horath5'%}	 		
+
 					<div class=" col s12 m3 l2 ">		
 						<label>
-						{{ field.errors }}
 						HASTA
-						{{ field }}
+						<input type="text" name="horath5" id="id_horath5" placeholder="00:00" maxlength="5" value={{form.horath5}}>						
 						</label>
 					</div>		
 					<div class="col s2 m1" id="btn-less-viernes" onclick="ocultar_tarde_viernes()">
@@ -258,45 +227,38 @@
 
 			<br><br><br><br>
 	 		<!-- acá empieza sabado -->
-	 		{% elif field.name == 'dia6' %}	 		
+
 				<div class="col s12 m3 l2">
 					<h6 class="nombre-dia">Sábado</h6>
 				</div>	 		
-			{% elif field.name == 'horamd6'%}	 		
+
 				<div class=" col s12 m3 l2 ">		
 					<label>
-					{{ field.errors }}
 					DESDE
-					{{ field }}
+						<input type="text" name="horamd6" id="id_horamd6" placeholder="00:00" maxlength="5" value={{form.horamd6}}>
 					</label>
 				</div>
-			{% elif field.name == 'horamh6'%}	 		
 				<div class=" col s12 m3 l2 ">		
 					<label>
-					{{ field.errors }}
 					HASTA
-					{{ field }}
+						<input type="text" name="horamh6" id="id_horamh6" placeholder="00:00" maxlength="5" value={{form.horamh6}}>
 					</label>
 				</div>
 				<div class="col s2 m1" id="btn-add-sabado" onclick="mostrar_tarde_sabado()">
 						<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">add</i></a>
 				</div>			
 
-			{% elif field.name == 'horatd6'%}	 		
 				<div class="tarde" id="sabado-tarde">
 					<div class=" col s12 m3 l2 ">		
 						<label>
-						{{ field.errors }}
 						DESDE
-						{{ field }}
+						<input type="text" name="horatd6" id="id_horatd6" placeholder="00:00" maxlength="5" value={{form.horatd6}}>
 						</label>
 					</div>
-			{% elif field.name == 'horath6'%}	 		
 					<div class=" col s12 m3 l2 ">		
-						<label>
-						{{ field.errors }}
+						<label>					
 						HASTA
-						{{ field }}
+						<input type="text" name="horath6" id="id_horath6" placeholder="00:00" maxlength="5" value={{form.horath6}}>
 						</label>
 					</div>		
 					<div class="col s2 m1" id="btn-less-sabado" onclick="ocultar_tarde_sabado()">
@@ -307,45 +269,36 @@
 
 			<br><br><br><br>
 	 		<!-- acá empieza domingo -->
-	 		{% elif field.name == 'dia7' %}	 		
 				<div class="col s12 m3 l2">
 					<h6 class="nombre-dia">Domingo</h6>
 				</div>	 		
-			{% elif field.name == 'horamd7'%}	 		
 				<div class=" col s12 m3 l2 ">		
 					<label>
-					{{ field.errors }}
 					DESDE
-					{{ field }}
+						<input type="text" name="horamd7" id="id_horamd7" placeholder="00:00" maxlength="5" value={{form.horamd7}}>
 					</label>
 				</div>
-			{% elif field.name == 'horamh7'%}	 		
 				<div class=" col s12 m3 l2 ">		
 					<label>
-					{{ field.errors }}
 					HASTA
-					{{ field }}
+						<input type="text" name="horamh7" id="id_horamh7" placeholder="00:00" maxlength="5" value={{form.horamh7}}>
 					</label>
 				</div>
 				<div class="col s2 m1" id="btn-add-domingo" onclick="mostrar_tarde_domingo()">
 						<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">add</i></a>
 				</div>			
 
-			{% elif field.name == 'horatd7'%}	 		
 				<div class="tarde" id="domingo-tarde">
 					<div class=" col s12 m3 l2 ">		
 						<label>
-						{{ field.errors }}
 						DESDE
-						{{ field }}
+						<input type="text" name="horatd7" id="id_horatd7" placeholder="00:00" maxlength="5" value={{form.horatd7}}>
 						</label>
 					</div>
-			{% elif field.name == 'horath7'%}	 		
 					<div class=" col s12 m3 l2 ">		
 						<label>
-						{{ field.errors }}
 						HASTA
-						{{ field }}
+						<input type="text" name="horath7" id="id_horath7" placeholder="00:00" maxlength="5" value={{form.horath7}}>
 						</label>
 					</div>		
 					<div class="col s2 m1" id="btn-less-domingo" onclick="ocultar_tarde_domingo()">
@@ -353,9 +306,7 @@
 					</div>
 				</div>			 		
 			<!-- finaliza martes -->
-	 		{% endif %}
 
-		{% endfor %}
 		<br><br><br><br>
 		    <div class="row center-align">
 			 	<button class="btn-large waves-effect waves-light" type="submit" name="action" value="Guardar">Guardar Cambios

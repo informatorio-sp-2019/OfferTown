@@ -1,5 +1,5 @@
 from django import forms
-from app_ofertas.models import Local, Publicacion, Localidad, MedioDePago, Sucursal
+from app_ofertas.models import Local, Publicacion, Localidad, MedioDePago, Sucursal, Horario
 import ipdb
 
 class LocalForm(forms.ModelForm):

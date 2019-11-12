@@ -30,18 +30,18 @@
 
 					<a href="{% url 'app_accounts:update_perfil' %}" class="secondary-content btn-floating btn-small waves-effect waves-light tooltipped grey-text" data-position="top" data-tooltip="Editar datos de mi local"><i class="material-icons">edit</i>></a>
 
-					<p class="detalle-oferta-single">
+					<h6 class="detalle-oferta-single">
 						<i class="material-icons icono-detalle-oferta">face</i>
-						Nombre: {{ request.user.usuario.first_name }} {{ request.user.usuario.last_name }} 	
-					</p>
-					<p class="detalle-oferta-single">
+						{{ request.user.usuario.first_name }} {{ request.user.usuario.last_name }} 	
+					</h6>
+					<h6 class="detalle-oferta-single">
 						<i class="material-icons icono-detalle-oferta">account_box</i>
-						Username: {{ request.user.username.title }}	
-					</p>
-					<p class="detalle-oferta-single">
+						{{ request.user.username.title }}	
+					</h6>
+					<h6 class="detalle-oferta-single">
 						<i class="material-icons icono-detalle-oferta">email</i>
-						Email: {{ request.user.usuario.email }}
-					</p>
+						{{ request.user.usuario.email }}
+					</h6>
 				</div>
 			</div>
 
@@ -67,9 +67,11 @@
 							</div>
 							<div class="divider"></div>
 							<div class="data-oferta-grid">
-								<p class="detalle-oferta-single"><i class="material-icons icono-detalle-oferta">store</i>Nombre: {{ local.nombre }}
+								<p class="detalle-oferta-single"><i class="material-icons icono-detalle-oferta">store</i> {{ local.nombre }}
 								</p>
-								<p class="detalle-oferta-single"><i class="material-icons icono-detalle-oferta">location_on</i>Direccion: {{ local.direccion }}
+								<p class="detalle-oferta-single"><i class="material-icons icono-detalle-oferta">location_on</i>{{ local.direccion }}
+								</p>
+								<p class="detalle-oferta-single"><i class="material-icons icono-detalle-oferta">map</i>{{ local.localidad }}
 								</p>
 							</div>
 						</a>

@@ -1,16 +1,12 @@
 {% extends "esquema.html" %}
 
-
-{% block title %} Horarios {% endblock %}
+{% block title %} Editar Horarios {% endblock %}
 
 {% block content %}
 <form action="" method="POST" ">
 	<br>
-<<<<<<< HEAD
-=======
 	<h5 class="center-align">HORARIOS DE ATENCIÓN</h5>
 	<br>
->>>>>>> 342752bfece5e2a5fd5b4ac9c75a1b6557473303
 	<div class="row">
 		{% csrf_token %}
 	 	{% for field in form %}	
@@ -23,8 +19,8 @@
 				<div class=" col s12 m3 l2 ">		
 					<label>
 					{{ field.errors }}
-					DESDE
-					{{ field }}
+					DESDE					
+					<input type="text" name="horamd1" id="id_horamd1" placeholder="00:00" maxlength="5" value={{hora.horamd1}}>
 					</label>
 				</div>
 			{% elif field.name == 'horamh1'%}	 		
@@ -32,7 +28,7 @@
 					<label>
 					{{ field.errors }}
 					HASTA
-					{{ field }}
+					<input type="text" name="horamh1" id="id_horamh1" placeholder="00:00" maxlength="5" value={{hora.horamh1}}>
 					</label>
 				</div>
 				<div class="col s2 m1" id="btn-add-lunes" onclick="mostrar_tarde_lunes()">
@@ -45,7 +41,8 @@
 						<label>
 						{{ field.errors }}
 						DESDE
-						{{ field }}
+						<input type="text" name="horatd1" id="id_horatd1" placeholder="00:00" maxlength="5" value={{hora.horatd1}}>
+						
 						</label>
 					</div>
 			{% elif field.name == 'horath1'%}	 		
@@ -53,7 +50,8 @@
 						<label>
 						{{ field.errors }}
 						HASTA
-						{{ field }}
+						<input type="text" name="horath1" id="id_horath1" placeholder="00:00" maxlength="5" value={{hora.horath1}}>
+
 						</label>
 					</div>		
 					<div class="col s2 m1" id="btn-less-lunes" onclick="ocultar_tarde_lunes()">
@@ -72,7 +70,7 @@
 					<label>
 					{{ field.errors }}
 					DESDE
-					{{ field }}
+					<input type="text" name="horamd2" id="id_horamd2" placeholder="00:00" maxlength="5" value={{hora.horamd2}}>
 					</label>
 				</div>
 			{% elif field.name == 'horamh2'%}	 		
@@ -80,7 +78,7 @@
 					<label>
 					{{ field.errors }}
 					HASTA
-					{{ field }}
+					<input type="text" name="horamh2" id="id_horamh2" placeholder="00:00" maxlength="5" value={{hora.horamh2}}>
 					</label>
 				</div>
 				<div class="col s2 m1" id="btn-add-martes" onclick="mostrar_tarde_martes()">
@@ -93,7 +91,7 @@
 						<label>
 						{{ field.errors }}
 						DESDE
-						{{ field }}
+						<input type="text" name="horatd2" id="id_horatd2" placeholder="00:00" maxlength="5" value={{hora.horatd2}}>
 						</label>
 					</div>
 			{% elif field.name == 'horath2'%}	 		
@@ -101,7 +99,7 @@
 						<label>
 						{{ field.errors }}
 						HASTA
-						{{ field }}
+						<input type="text" name="horath2" id="id_horath2" placeholder="00:00" maxlength="5" value={{hora.horath2}}>
 						</label>
 					</div>		
 					<div class="col s2 m1" id="btn-less-martes" onclick="ocultar_tarde_martes()">
@@ -120,7 +118,7 @@
 					<label>
 					{{ field.errors }}
 					DESDE
-					{{ field }}
+						<input type="text" name="horamd3" id="id_horamd3" placeholder="00:00" maxlength="5" value={{hora.horamd3}}>				
 					</label>
 				</div>
 			{% elif field.name == 'horamh3'%}	 		
@@ -128,7 +126,7 @@
 					<label>
 					{{ field.errors }}
 					HASTA
-					{{ field }}
+						<input type="text" name="horamh3" id="id_horamh3" placeholder="00:00" maxlength="5" value={{hora.horamh3}}>
 					</label>
 				</div>
 				<div class="col s2 m1" id="btn-add-miercoles" onclick="mostrar_tarde_miercoles()">
@@ -141,7 +139,7 @@
 						<label>
 						{{ field.errors }}
 						DESDE
-						{{ field }}
+						<input type="text" name="horatd3" id="id_horatd3" placeholder="00:00" maxlength="5" value={{hora.horatd3}}>
 						</label>
 					</div>
 			{% elif field.name == 'horath3'%}	 		
@@ -149,7 +147,7 @@
 						<label>
 						{{ field.errors }}
 						HASTA
-						{{ field }}
+						<input type="text" name="horath3" id="id_horath3" placeholder="00:00" maxlength="5" value={{hora.horath3}}>
 						</label>
 					</div>		
 					<div class="col s2 m1" id="btn-less-miercoles" onclick="ocultar_tarde_miercoles()">
@@ -169,7 +167,7 @@
 					<label>
 					{{ field.errors }}
 					DESDE
-					{{ field }}
+						<input type="text" name="horamd4" id="id_horamd4" placeholder="00:00" maxlength="5" value={{horamd4}}>
 					</label>
 				</div>
 			{% elif field.name == 'horamh4'%}	 		
@@ -177,7 +175,7 @@
 					<label>
 					{{ field.errors }}
 					HASTA
-					{{ field }}
+						<input type="text" name="horamh4" id="id_horamh4" placeholder="00:00" maxlength="5" value={{horamh4}}>
 					</label>
 				</div>
 				<div class="col s2 m1" id="btn-add-jueves" onclick="mostrar_tarde_jueves()">
@@ -190,7 +188,7 @@
 						<label>
 						{{ field.errors }}
 						DESDE
-						{{ field }}
+						<input type="text" name="horatd4" id="id_horatd4" placeholder="00:00" maxlength="5" value={{hora.horatd4}}>
 						</label>
 					</div>
 			{% elif field.name == 'horath4'%}	 		
@@ -198,7 +196,7 @@
 						<label>
 						{{ field.errors }}
 						HASTA
-						{{ field }}
+						<input type="text" name="horath4" id="id_horath4" placeholder="00:00" maxlength="5" value={{hora.horath4}}>
 						</label>
 					</div>		
 					<div class="col s2 m1" id="btn-less-jueves" onclick="ocultar_tarde_jueves()">
@@ -218,7 +216,8 @@
 					<label>
 					{{ field.errors }}
 					DESDE
-					{{ field }}
+
+						<input type="text" name="horamd5" id="id_horamd5" placeholder="00:00" maxlength="5" value={{horamd5}}>
 					</label>
 				</div>
 			{% elif field.name == 'horamh5'%}	 		
@@ -226,20 +225,19 @@
 					<label>
 					{{ field.errors }}
 					HASTA
-					{{ field }}
+					{{ field }}									
 					</label>
 				</div>
 				<div class="col s2 m1" id="btn-add-viernes" onclick="mostrar_tarde_viernes()">
 						<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">add</i></a>
 				</div>			
 
-			{% elif field.name == 'horatd5'%}	 		
 				<div class="tarde" id="viernes-tarde">
 					<div class=" col s12 m3 l2 ">		
 						<label>
 						{{ field.errors }}
 						DESDE
-						{{ field }}
+						<input type="text" name="horatd5" id="id_horatd5" placeholder="00:00" maxlength="5" value={{horatd5}}>
 						</label>
 					</div>
 			{% elif field.name == 'horath5'%}	 		
@@ -247,7 +245,7 @@
 						<label>
 						{{ field.errors }}
 						HASTA
-						{{ field }}
+						<input type="text" name="horatd5" id="id_horatd5" placeholder="00:00" maxlength="5" value={{hora.horatd5}}>						
 						</label>
 					</div>		
 					<div class="col s2 m1" id="btn-less-viernes" onclick="ocultar_tarde_viernes()">
@@ -267,7 +265,7 @@
 					<label>
 					{{ field.errors }}
 					DESDE
-					{{ field }}
+						<input type="text" name="horamd6" id="id_horamd6" placeholder="00:00" maxlength="5" value={{hora.horamd6}}>
 					</label>
 				</div>
 			{% elif field.name == 'horamh6'%}	 		
@@ -275,7 +273,7 @@
 					<label>
 					{{ field.errors }}
 					HASTA
-					{{ field }}
+						<input type="text" name="horamh6" id="id_horamh6" placeholder="00:00" maxlength="5" value={{hora.horamh6}}>
 					</label>
 				</div>
 				<div class="col s2 m1" id="btn-add-sabado" onclick="mostrar_tarde_sabado()">
@@ -288,7 +286,7 @@
 						<label>
 						{{ field.errors }}
 						DESDE
-						{{ field }}
+						<input type="text" name="horatd6" id="id_horatd6" placeholder="00:00" maxlength="5" value={{hora.horatd6}}>
 						</label>
 					</div>
 			{% elif field.name == 'horath6'%}	 		
@@ -296,7 +294,7 @@
 						<label>
 						{{ field.errors }}
 						HASTA
-						{{ field }}
+						<input type="text" name="horath6" id="id_horath6" placeholder="00:00" maxlength="5" value={{hora.horath6}}>
 						</label>
 					</div>		
 					<div class="col s2 m1" id="btn-less-sabado" onclick="ocultar_tarde_sabado()">
@@ -316,7 +314,7 @@
 					<label>
 					{{ field.errors }}
 					DESDE
-					{{ field }}
+						<input type="text" name="horamd7" id="id_horamd7" placeholder="00:00" maxlength="5" value={{hora.horamd7}}>
 					</label>
 				</div>
 			{% elif field.name == 'horamh7'%}	 		
@@ -324,7 +322,7 @@
 					<label>
 					{{ field.errors }}
 					HASTA
-					{{ field }}
+						<input type="text" name="horamh7" id="id_horamh7" placeholder="00:00" maxlength="5" value={{hora.horamh7}}>
 					</label>
 				</div>
 				<div class="col s2 m1" id="btn-add-domingo" onclick="mostrar_tarde_domingo()">
@@ -337,7 +335,7 @@
 						<label>
 						{{ field.errors }}
 						DESDE
-						{{ field }}
+						<input type="text" name="horatd7" id="id_horatd7" placeholder="00:00" maxlength="5" value={{hora.horatd7}}>
 						</label>
 					</div>
 			{% elif field.name == 'horath7'%}	 		
@@ -345,7 +343,7 @@
 						<label>
 						{{ field.errors }}
 						HASTA
-						{{ field }}
+						<input type="text" name="horath7" id="id_horath7" placeholder="00:00" maxlength="5" value={{hora.horath7}}>
 						</label>
 					</div>		
 					<div class="col s2 m1" id="btn-less-domingo" onclick="ocultar_tarde_domingo()">

@@ -1,16 +1,12 @@
 {% extends "esquema.html" %}
 
-
-{% block title %} Horarios {% endblock %}
+{% block title %} Editar Horarios {% endblock %}
 
 {% block content %}
 <form action="" method="POST" ">
 	<br>
-<<<<<<< HEAD
-=======
 	<h5 class="center-align">HORARIOS DE ATENCIÓN</h5>
 	<br>
->>>>>>> 342752bfece5e2a5fd5b4ac9c75a1b6557473303
 	<div class="row">
 		{% csrf_token %}
 	 	{% for field in form %}	

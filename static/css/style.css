@@ -638,6 +638,37 @@ input#id_imagen{
 	padding: 20px;
 }
 
+<<<<<<< HEAD
 .cursor-pointer{
 	cursor: pointer;
+=======
+.container .sin-op{
+	opacity: 1 !important; 
+}
+
+.separador{
+	height: 20px;
+}
+
+.center-align{
+	text-align: center;
+}
+
+.container .row{
+	margin-left: -.75rem;
+	margin-right: -.75rem;
+}
+
+.circle{
+	border-radius: 50%;
+}
+
+.image-container img{
+    max-width: 150px;
+    opacity: 1;
+}
+
+.titulo{
+	opacity: 1;
+>>>>>>> origin/eliancreditos
 }

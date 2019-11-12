@@ -1,0 +1,460 @@
+{% extends "esquema.html" %}
+
+{% block title %} Alta Local {% endblock %}
+
+{% block content %}
+<form action="" method="POST" ">
+	<br>
+	<div class="row">
+		{% csrf_token %}
+	 	{% for field in form %}	
+	 		<!-- acá empieza lunes -->
+	 		{% if field.name == 'dia1' %}	 		
+				<div class="col s12 m3 l2">
+					<h6 class="nombre-dia">Lunes</h6>
+				</div>	 		
+			{% elif field.name == 'horamd1'%}	 		
+				<div class=" col s12 m3 l2 ">		
+					<label>
+					{{ field.errors }}
+					DESDE
+					{{ field }}
+					</label>
+				</div>
+			{% elif field.name == 'horamh1'%}	 		
+				<div class=" col s12 m3 l2 ">		
+					<label>
+					{{ field.errors }}
+					HASTA
+					{{ field }}
+					</label>
+				</div>
+				<div class="col s2 m1" id="btn-add-lunes" onclick="mostrar_tarde_lunes()">
+						<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">add</i></a>
+				</div>			
+
+			{% elif field.name == 'horatd1'%}	 		
+				<div class="tarde" id="lunes-tarde">
+					<div class=" col s12 m3 l2 ">		
+						<label>
+						{{ field.errors }}
+						DESDE
+						{{ field }}
+						</label>
+					</div>
+			{% elif field.name == 'horath1'%}	 		
+					<div class=" col s12 m3 l2 ">		
+						<label>
+						{{ field.errors }}
+						HASTA
+						{{ field }}
+						</label>
+					</div>		
+					<div class="col s2 m1" id="btn-less-lunes" onclick="ocultar_tarde_lunes()">
+						<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">clear</i></a>
+					</div>
+				</div>				
+			<!-- finaliza lunes -->			
+			<br><br><br><br>
+	 		<!-- acá empieza martes -->
+	 		{% elif field.name == 'dia2' %}	 		
+				<div class="col s12 m3 l2">
+					<h6 class="nombre-dia">Martes</h6>
+				</div>	 		
+			{% elif field.name == 'horamd2'%}	 		
+				<div class=" col s12 m3 l2 ">		
+					<label>
+					{{ field.errors }}
+					DESDE
+					{{ field }}
+					</label>
+				</div>
+			{% elif field.name == 'horamh2'%}	 		
+				<div class=" col s12 m3 l2 ">		
+					<label>
+					{{ field.errors }}
+					HASTA
+					{{ field }}
+					</label>
+				</div>
+				<div class="col s2 m1" id="btn-add-martes" onclick="mostrar_tarde_martes()">
+						<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">add</i></a>
+				</div>			
+
+			{% elif field.name == 'horatd2'%}	 		
+				<div class="tarde" id="martes-tarde">
+					<div class=" col s12 m3 l2 ">		
+						<label>
+						{{ field.errors }}
+						DESDE
+						{{ field }}
+						</label>
+					</div>
+			{% elif field.name == 'horath2'%}	 		
+					<div class=" col s12 m3 l2 ">		
+						<label>
+						{{ field.errors }}
+						HASTA
+						{{ field }}
+						</label>
+					</div>		
+					<div class="col s2 m1" id="btn-less-martes" onclick="ocultar_tarde_martes()">
+						<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">clear</i></a>
+					</div>
+				</div>			 		
+			<!-- finaliza martes -->
+			<br><br><br><br>
+	 		<!-- acá empieza miercoles -->
+	 		{% elif field.name == 'dia3' %}	 		
+				<div class="col s12 m3 l2">
+					<h6 class="nombre-dia">Miércoles</h6>
+				</div>	 		
+			{% elif field.name == 'horamd3'%}	 		
+				<div class=" col s12 m3 l2 ">		
+					<label>
+					{{ field.errors }}
+					DESDE
+					{{ field }}
+					</label>
+				</div>
+			{% elif field.name == 'horamh3'%}	 		
+				<div class=" col s12 m3 l2 ">		
+					<label>
+					{{ field.errors }}
+					HASTA
+					{{ field }}
+					</label>
+				</div>
+				<div class="col s2 m1" id="btn-add-miercoles" onclick="mostrar_tarde_miercoles()">
+						<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">add</i></a>
+				</div>			
+
+			{% elif field.name == 'horatd3'%}	 		
+				<div class="tarde" id="miercoles-tarde">
+					<div class=" col s12 m3 l2 ">		
+						<label>
+						{{ field.errors }}
+						DESDE
+						{{ field }}
+						</label>
+					</div>
+			{% elif field.name == 'horath3'%}	 		
+					<div class=" col s12 m3 l2 ">		
+						<label>
+						{{ field.errors }}
+						HASTA
+						{{ field }}
+						</label>
+					</div>		
+					<div class="col s2 m1" id="btn-less-miercoles" onclick="ocultar_tarde_miercoles()">
+						<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">clear</i></a>
+					</div>
+				</div>			 		
+			<!-- finaliza miercoles -->		
+
+			<br><br><br><br>
+	 		<!-- acá empieza jueves -->
+	 		{% elif field.name == 'dia4' %}	 		
+				<div class="col s12 m3 l2">
+					<h6 class="nombre-dia">Jueves</h6>
+				</div>	 		
+			{% elif field.name == 'horamd4'%}	 		
+				<div class=" col s12 m3 l2 ">		
+					<label>
+					{{ field.errors }}
+					DESDE
+					{{ field }}
+					</label>
+				</div>
+			{% elif field.name == 'horamh4'%}	 		
+				<div class=" col s12 m3 l2 ">		
+					<label>
+					{{ field.errors }}
+					HASTA
+					{{ field }}
+					</label>
+				</div>
+				<div class="col s2 m1" id="btn-add-jueves" onclick="mostrar_tarde_jueves()">
+						<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">add</i></a>
+				</div>			
+
+			{% elif field.name == 'horatd4'%}	 		
+				<div class="tarde" id="jueves-tarde">
+					<div class=" col s12 m3 l2 ">		
+						<label>
+						{{ field.errors }}
+						DESDE
+						{{ field }}
+						</label>
+					</div>
+			{% elif field.name == 'horath4'%}	 		
+					<div class=" col s12 m3 l2 ">		
+						<label>
+						{{ field.errors }}
+						HASTA
+						{{ field }}
+						</label>
+					</div>		
+					<div class="col s2 m1" id="btn-less-jueves" onclick="ocultar_tarde_jueves()">
+						<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">clear</i></a>
+					</div>
+				</div>			 		
+			<!-- finaliza jueves -->	
+
+			<br><br><br><br>
+	 		<!-- acá empieza viernes -->
+	 		{% elif field.name == 'dia5' %}	 		
+				<div class="col s12 m3 l2">
+					<h6 class="nombre-dia">Viernes</h6>
+				</div>	 		
+			{% elif field.name == 'horamd5'%}	 		
+				<div class=" col s12 m3 l2 ">		
+					<label>
+					{{ field.errors }}
+					DESDE
+					{{ field }}
+					</label>
+				</div>
+			{% elif field.name == 'horamh5'%}	 		
+				<div class=" col s12 m3 l2 ">		
+					<label>
+					{{ field.errors }}
+					HASTA
+					{{ field }}
+					</label>
+				</div>
+				<div class="col s2 m1" id="btn-add-viernes" onclick="mostrar_tarde_viernes()">
+						<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">add</i></a>
+				</div>			
+
+			{% elif field.name == 'horatd5'%}	 		
+				<div class="tarde" id="viernes-tarde">
+					<div class=" col s12 m3 l2 ">		
+						<label>
+						{{ field.errors }}
+						DESDE
+						{{ field }}
+						</label>
+					</div>
+			{% elif field.name == 'horath5'%}	 		
+					<div class=" col s12 m3 l2 ">		
+						<label>
+						{{ field.errors }}
+						HASTA
+						{{ field }}
+						</label>
+					</div>		
+					<div class="col s2 m1" id="btn-less-viernes" onclick="ocultar_tarde_viernes()">
+						<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">clear</i></a>
+					</div>
+				</div>			 		
+			<!-- finaliza viernes -->					
+
+			<br><br><br><br>
+	 		<!-- acá empieza sabado -->
+	 		{% elif field.name == 'dia6' %}	 		
+				<div class="col s12 m3 l2">
+					<h6 class="nombre-dia">Sábado</h6>
+				</div>	 		
+			{% elif field.name == 'horamd6'%}	 		
+				<div class=" col s12 m3 l2 ">		
+					<label>
+					{{ field.errors }}
+					DESDE
+					{{ field }}
+					</label>
+				</div>
+			{% elif field.name == 'horamh6'%}	 		
+				<div class=" col s12 m3 l2 ">		
+					<label>
+					{{ field.errors }}
+					HASTA
+					{{ field }}
+					</label>
+				</div>
+				<div class="col s2 m1" id="btn-add-sabado" onclick="mostrar_tarde_sabado()">
+						<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">add</i></a>
+				</div>			
+
+			{% elif field.name == 'horatd6'%}	 		
+				<div class="tarde" id="sabado-tarde">
+					<div class=" col s12 m3 l2 ">		
+						<label>
+						{{ field.errors }}
+						DESDE
+						{{ field }}
+						</label>
+					</div>
+			{% elif field.name == 'horath6'%}	 		
+					<div class=" col s12 m3 l2 ">		
+						<label>
+						{{ field.errors }}
+						HASTA
+						{{ field }}
+						</label>
+					</div>		
+					<div class="col s2 m1" id="btn-less-sabado" onclick="ocultar_tarde_sabado()">
+						<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">clear</i></a>
+					</div>
+				</div>			 		
+			<!-- finaliza sabado -->			
+
+			<br><br><br><br>
+	 		<!-- acá empieza domingo -->
+	 		{% elif field.name == 'dia7' %}	 		
+				<div class="col s12 m3 l2">
+					<h6 class="nombre-dia">Domingo</h6>
+				</div>	 		
+			{% elif field.name == 'horamd7'%}	 		
+				<div class=" col s12 m3 l2 ">		
+					<label>
+					{{ field.errors }}
+					DESDE
+					{{ field }}
+					</label>
+				</div>
+			{% elif field.name == 'horamh7'%}	 		
+				<div class=" col s12 m3 l2 ">		
+					<label>
+					{{ field.errors }}
+					HASTA
+					{{ field }}
+					</label>
+				</div>
+				<div class="col s2 m1" id="btn-add-domingo" onclick="mostrar_tarde_domingo()">
+						<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">add</i></a>
+				</div>			
+
+			{% elif field.name == 'horatd7'%}	 		
+				<div class="tarde" id="domingo-tarde">
+					<div class=" col s12 m3 l2 ">		
+						<label>
+						{{ field.errors }}
+						DESDE
+						{{ field }}
+						</label>
+					</div>
+			{% elif field.name == 'horath7'%}	 		
+					<div class=" col s12 m3 l2 ">		
+						<label>
+						{{ field.errors }}
+						HASTA
+						{{ field }}
+						</label>
+					</div>		
+					<div class="col s2 m1" id="btn-less-domingo" onclick="ocultar_tarde_domingo()">
+						<a class="btn-floating btn-small waves-effect waves-light valign-wrapper"><i class="material-icons">clear</i></a>
+					</div>
+				</div>			 		
+			<!-- finaliza martes -->
+	 		{% endif %}
+
+		{% endfor %}
+		<br><br><br><br>
+		    <div class="row center-align">
+			 	<button class="btn-large waves-effect waves-light" type="submit" name="action" value="Guardar">Guardar Cambios
+					<i class="material-icons right">save</i>
+				</button>
+		    </div>	
+
+	</div>
+</form>
+
+
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+	function mostrar_tarde_lunes(){
+		document.getElementById("lunes-tarde").style.display = "block"
+		document.getElementById("btn-add-lunes").style.display = "none"
+		document.getElementById("btn-less-lunes").style.display = "block"
+	}
+
+	function ocultar_tarde_lunes(){
+		document.getElementById("lunes-tarde").style.display = "none"
+		document.getElementById("btn-add-lunes").style.display = "block"
+		document.getElementById("btn-less-lunes").style.display = "none"	
+	}
+
+	function mostrar_tarde_martes(){
+		document.getElementById("martes-tarde").style.display = "block"
+		document.getElementById("btn-add-martes").style.display = "none"
+		document.getElementById("btn-less-martes").style.display = "block"
+	}
+
+	function ocultar_tarde_martes(){
+		document.getElementById("martes-tarde").style.display = "none"
+		document.getElementById("btn-add-martes").style.display = "block"
+		document.getElementById("btn-less-martes").style.display = "none"	
+	}
+
+	function mostrar_tarde_miercoles(){
+		document.getElementById("miercoles-tarde").style.display = "block"
+		document.getElementById("btn-add-miercoles").style.display = "none"
+		document.getElementById("btn-less-miercoles").style.display = "block"
+	}
+
+	function ocultar_tarde_miercoles(){
+		document.getElementById("miercoles-tarde").style.display = "none"
+		document.getElementById("btn-add-miercoles").style.display = "block"
+		document.getElementById("btn-less-miercoles").style.display = "none"	
+	}
+
+	function mostrar_tarde_jueves(){
+		document.getElementById("jueves-tarde").style.display = "block"
+		document.getElementById("btn-add-jueves").style.display = "none"
+		document.getElementById("btn-less-jueves").style.display = "block"
+	}
+
+	function ocultar_tarde_jueves(){
+		document.getElementById("jueves-tarde").style.display = "none"
+		document.getElementById("btn-add-jueves").style.display = "block"
+		document.getElementById("btn-less-jueves").style.display = "none"	
+	}
+
+	function mostrar_tarde_viernes(){
+		document.getElementById("viernes-tarde").style.display = "block"
+		document.getElementById("btn-add-viernes").style.display = "none"
+		document.getElementById("btn-less-viernes").style.display = "block"
+	}
+
+	function ocultar_tarde_viernes(){
+		document.getElementById("viernes-tarde").style.display = "none"
+		document.getElementById("btn-add-viernes").style.display = "block"
+		document.getElementById("btn-less-viernes").style.display = "none"	
+	}
+
+	function mostrar_tarde_sabado(){
+		document.getElementById("sabado-tarde").style.display = "block"
+		document.getElementById("btn-add-sabado").style.display = "none"
+		document.getElementById("btn-less-sabado").style.display = "block"
+	}
+
+	function ocultar_tarde_sabado(){
+		document.getElementById("sabado-tarde").style.display = "none"
+		document.getElementById("btn-add-sabado").style.display = "block"
+		document.getElementById("btn-less-sabado").style.display = "none"	
+	}
+
+	function mostrar_tarde_domingo(){
+		document.getElementById("domingo-tarde").style.display = "block"
+		document.getElementById("btn-add-domingo").style.display = "none"
+		document.getElementById("btn-less-domingo").style.display = "block"
+	}
+
+	function ocultar_tarde_domingo(){
+		document.getElementById("domingo-tarde").style.display = "none"
+		document.getElementById("btn-add-domingo").style.display = "block"
+		document.getElementById("btn-less-domingo").style.display = "none"	
+	}
+
+</script>
+
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.timepicker');
+    var instances = M.Timepicker.init(elems, {twelveHour:false});
+  });
+</script>
+{% endblock %}

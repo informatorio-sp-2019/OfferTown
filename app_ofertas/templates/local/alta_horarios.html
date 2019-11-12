@@ -3,15 +3,18 @@
 {% block title %} Alta Local {% endblock %}
 
 {% block content %}
-<form action="/agregar_local/" method="POST"  enctype="multipart/form-data">
-
+<form action="" method="POST" ">
 	<div class="row">
 		<div class="col-s12">
 			<h6>Agregar horarios</h6>
 		</div>
-		
+			{% csrf_token %}
+
+			{{form.as_p}}
+			<button type="submit">Confirmar</button>
 		<!-- acá empieza lunes -->
 		<div class="row">
+
 			<div class="col s12 m3 l2">
 				<h6 class="nombre-dia">Lunes</h6>
 			</div>
@@ -250,9 +253,14 @@
 			</div>
 		</div>
 		<!-- acá termina domingo -->
-
-	</div>
 	
+	</div> 
+
+    <div class="row center-align">
+	 	<button class="btn-large waves-effect waves-light" type="submit" name="action" value="Guardar">Guardar
+			<i class="material-icons right">save</i>
+		</button>
+    </div>	
 
 </form>
 

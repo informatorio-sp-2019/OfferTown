@@ -78,3 +78,46 @@ class EditarOfertaForm(forms.ModelForm):
 			'imagen',
 			'detalle',
 			)
+
+class HorarioForm(forms.Form):
+	dia1 = forms.CharField(max_length=7)
+	horamd1 = forms.CharField(max_length=5,required = False,widget=forms.TextInput(attrs={'placeholder': '00:00'}))
+	horamh1 = forms.CharField(max_length=5,required = False,widget=forms.TextInput(attrs={'placeholder': '00:00'}))
+	horatd1 = forms.CharField(max_length=5,required = False,widget=forms.TextInput(attrs={'placeholder': '00:00'}))
+	horath1 = forms.CharField(max_length=5,required = False,widget=forms.TextInput(attrs={'placeholder': '00:00'}))	
+	
+	dia2 = forms.CharField(max_length=7)
+	horamd2 = forms.CharField(max_length=5,required = False,widget=forms.TextInput(attrs={'placeholder': '00:00'}))
+	horamh2 = forms.CharField(max_length=5,required = False,widget=forms.TextInput(attrs={'placeholder': '00:00'}))
+	horatd2 = forms.CharField(max_length=5,required = False,widget=forms.TextInput(attrs={'placeholder': '00:00'}))
+	horath2 = forms.CharField(max_length=5,required = False,widget=forms.TextInput(attrs={'placeholder': '00:00'}))	
+	
+	dia3 = forms.CharField(max_length=7)
+	horamd3 = forms.CharField(max_length=5,required = False,widget=forms.TextInput(attrs={'placeholder': '00:00'}))
+	horamh3 = forms.CharField(max_length=5,required = False,widget=forms.TextInput(attrs={'placeholder': '00:00'}))
+	horatd3 = forms.CharField(max_length=5,required = False,widget=forms.TextInput(attrs={'placeholder': '00:00'}))
+	horath3 = forms.CharField(max_length=5,required = False,widget=forms.TextInput(attrs={'placeholder': '00:00'}))	
+	
+	dia4 = forms.CharField(max_length=7)
+	horamd4 = forms.CharField(max_length=5,required = False,widget=forms.TextInput(attrs={'placeholder': '00:00'}))
+	horamh4 = forms.CharField(max_length=5,required = False,widget=forms.TextInput(attrs={'placeholder': '00:00'}))
+	horatd4 = forms.CharField(max_length=5,required = False,widget=forms.TextInput(attrs={'placeholder': '00:00'}))
+	horath4 = forms.CharField(max_length=5,required = False,widget=forms.TextInput(attrs={'placeholder': '00:00'}))	
+
+	dia5 = forms.CharField(max_length=7)
+	horamd5 = forms.CharField(max_length=5,required = False,widget=forms.TextInput(attrs={'placeholder': '00:00'}))
+	horamh5 = forms.CharField(max_length=5,required = False,widget=forms.TextInput(attrs={'placeholder': '00:00'}))
+	horatd5 = forms.CharField(max_length=5,required = False,widget=forms.TextInput(attrs={'placeholder': '00:00'}))
+	horath5 = forms.CharField(max_length=5,required = False,widget=forms.TextInput(attrs={'placeholder': '00:00'}))	
+
+	dia6 = forms.CharField(max_length=7)
+	horamd6 = forms.CharField(max_length=5,required = False,widget=forms.TextInput(attrs={'placeholder': '00:00'}))
+	horamh6 = forms.CharField(max_length=5,required = False,widget=forms.TextInput(attrs={'placeholder': '00:00'}))
+	horatd6 = forms.CharField(max_length=5,required = False,widget=forms.TextInput(attrs={'placeholder': '00:00'}))
+	horath6 = forms.CharField(max_length=5,required = False,widget=forms.TextInput(attrs={'placeholder': '00:00'}))	
+
+	dia7 = forms.CharField(max_length=7)
+	horamd7 = forms.CharField(max_length=5,required = False,widget=forms.TextInput(attrs={'placeholder': '00:00'}))
+	horamh7 = forms.CharField(max_length=5,required = False,widget=forms.TextInput(attrs={'placeholder': '00:00'}))
+	horatd7 = forms.CharField(max_length=5,required = False,widget=forms.TextInput(attrs={'placeholder': '00:00'}))
+	horath7 = forms.CharField(max_length=5,required = False,widget=forms.TextInput(attrs={'placeholder': '00:00'}))	

@@ -46,12 +46,12 @@ def search(request):
 			pass
 	elif (param_payment=="PAY_DEBIT"):
 		try:
-			id_pago = MedioDePago.objects.get(nombre="DEBITO").id
+			id_pago = MedioDePago.objects.get(nombre="DÉBITO").id
 		except:
 			pass		
 	elif (param_payment =="PAY_CREDIT"):
 		try:
-			id_pago = MedioDePago.objects.get(nombre="CREDITO").id
+			id_pago = MedioDePago.objects.get(nombre="CRÉDITO").id
 		except:
 			pass
 	else:

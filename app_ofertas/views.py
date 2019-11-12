@@ -545,3 +545,6 @@ def re_editar_oferta(request,usuario,id,id_oferta):
 	template = 'publicacion/re_editar_oferta.html'
 	context  = {'form':form}
 	return render(request,template,context)
+
+def creditos(request):
+	return render(request, 'creditos.html',{})

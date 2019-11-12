@@ -13,6 +13,7 @@ urlpatterns = [
     path('favoritos/', views.favoritos),
     path('tendencias/', views.tendencia),
     path('intereses/', views.intereses),
+    path('creditos/', views.creditos, name='creditos'),
 
     path('pub/<int:id>/',views.ver_publicacion,name='ver_publicacion'),
     path('loc/<int:id>/', views.ver_local,name='ver_local'),

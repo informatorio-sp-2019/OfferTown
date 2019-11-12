@@ -289,14 +289,14 @@ def editar_ofertas(request,usuario,id):
 
 
 def horarios(request,local,id_local):
-
+	# ipdb.set_trace()
 	horarios = Local.objects.get(pk=id_local).get_horarios()
 	if horarios:
 		return redirect('app_ofertas:editar_horarios', local = local, id_local=id_local)	
 
 	if request.method == 'POST':
 		local = Local.objects.get(pk=id_local)
-
+		# ipdb.set_trace()
 		horamd1 = request.POST['horamd1']
 		if horamd1:
 			horamh1 = request.POST['horamh1']
@@ -395,6 +395,7 @@ def horarios(request,local,id_local):
 			hora.local = local
 			hora.save()
 
+		# ipdb.set_trace()
 		return redirect('app_ofertas:ver_local_usuario', usuario = request.user.username, id=id_local)	
 		
 	form = HorarioForm()			
@@ -606,11 +607,7 @@ def editar_horarios(request,local,id_local):
 			hora.local = local
 			hora.save()
 
-	
-		template = 'local/editar_horarios.html'
-		context  = {'form':horario} 
-		
-		return render(request,template,context)
+		return redirect('app_ofertas:ver_local_usuario', usuario = request.user.username, id=id_local)	
 
 @login_required
 def nueva_sucursal(request,usuario,id):

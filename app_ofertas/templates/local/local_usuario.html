@@ -92,41 +92,49 @@
 		<div class="divider"></div>
 	</div>
 
+
 	<div class="row">
-
-		<a href="#!" class="secondary-content btn-floating btn-small waves-effect waves-light tooltipped grey-text" data-position="top" data-tooltip="Editar horarios"><i class="material-icons">edit</i></a>
-		<h6>Horarios de atención </h6>
-
-
-		{% for horario in horarios %}
-
-			{% if hoy == horario.dia %}
-				<div class="columna-dias-hoy">
-					<p class="truncate">{{horario.dia}}</p>
-					<p>{{horario.hora_d1}}</p>
-					<p>{{horario.hora_h1}}</p>
-					{% if horario.hora_d2 %}
-						<div class="divider"></div>
-						<p>{{horario.hora_d2}}</p>
-						<p>{{horario.hora_h2}}</p>
-					{% endif %}
-				</div>
-			{% else %}
-				<div class="columna-dias">
-					<p class="truncate">{{horario.dia}}</p>
-					<p>{{horario.hora_d1}}</p>
-					<p>{{horario.hora_h1}}</p>
-					{% if horario.hora_d2 %}
-						<div class="divider"></div>
-						<p>{{horario.hora_d2}}</p>
-						<p>{{horario.hora_h2}}</p>
-					{% endif %}
-				</div>
-			{% endif %}
-		{% endfor %}
-
+		<a href="{% url 'app_ofertas:editar_horarios' local.nombre local.id  %}" class="secondary-content btn-floating btn-small waves-effect waves-light tooltipped grey-text" data-position="top" data-tooltip="Editar horarios"><i class="material-icons">edit</i></a>
+		<h6>Horarios de atención </h6>	
 
 	</div>
+
+	<div class="row">
+		{% if mensaje_horario %}
+			<strong><p>{{mensaje_horario}}</p></strong>
+			
+		{% else %}
+			{% for horario in horarios %}
+
+				{% if hoy == horario.dia %}
+					<div class="columna-dias-hoy">
+						<p class="truncate">{{horario.dia}}</p>
+						<p>{{horario.hora_d1}}</p>
+						<p>{{horario.hora_h1}}</p>
+						{% if horario.hora_d2 %}
+							<div class="divider"></div>
+							<p>{{horario.hora_d2}}</p>
+							<p>{{horario.hora_h2}}</p>
+						{% endif %}
+					</div>
+				{% else %}
+					<div class="columna-dias">
+						<p class="truncate">{{horario.dia}}</p>
+						<p>{{horario.hora_d1}}</p>
+						<p>{{horario.hora_h1}}</p>
+						{% if horario.hora_d2 %}
+							<div class="divider"></div>
+							<p>{{horario.hora_d2}}</p>
+							<p>{{horario.hora_h2}}</p>
+						{% endif %}
+					</div>
+				{% endif %}
+			{% endfor %}
+
+		{% endif %}
+
+
+	</div>	
 
 
 

@@ -96,34 +96,38 @@
 	</div>
 
 	<div class="row">
+		{% if mensaje_horario %}
+			<strong><p>{{mensaje_horario}}</p></strong>
+			
+		{% else %}
+			{% for horario in horarios %}
 
-		{% for horario in horarios %}
+				{% if hoy == horario.dia %}
+					<div class="columna-dias-hoy">
+						<p class="truncate">{{horario.dia}}</p>
+						<p>{{horario.hora_d1}}</p>
+						<p>{{horario.hora_h1}}</p>
+						{% if horario.hora_d2 %}
+							<div class="divider"></div>
+							<p>{{horario.hora_d2}}</p>
+							<p>{{horario.hora_h2}}</p>
+						{% endif %}
+					</div>
+				{% else %}
+					<div class="columna-dias">
+						<p class="truncate">{{horario.dia}}</p>
+						<p>{{horario.hora_d1}}</p>
+						<p>{{horario.hora_h1}}</p>
+						{% if horario.hora_d2 %}
+							<div class="divider"></div>
+							<p>{{horario.hora_d2}}</p>
+							<p>{{horario.hora_h2}}</p>
+						{% endif %}
+					</div>
+				{% endif %}
+			{% endfor %}
 
-			{% if hoy == horario.dia %}
-				<div class="columna-dias-hoy">
-					<p class="truncate">{{horario.dia}}</p>
-					<p>{{horario.hora_d1}}</p>
-					<p>{{horario.hora_h1}}</p>
-					{% if horario.hora_d2 %}
-						<div class="divider"></div>
-						<p>{{horario.hora_d2}}</p>
-						<p>{{horario.hora_h2}}</p>
-					{% endif %}
-				</div>
-			{% else %}
-				<div class="columna-dias">
-					<p class="truncate">{{horario.dia}}</p>
-					<p>{{horario.hora_d1}}</p>
-					<p>{{horario.hora_h1}}</p>
-					{% if horario.hora_d2 %}
-						<div class="divider"></div>
-						<p>{{horario.hora_d2}}</p>
-						<p>{{horario.hora_h2}}</p>
-					{% endif %}
-				</div>
-			{% endif %}
-		{% endfor %}
-
+		{% endif %}
 
 
 	</div>

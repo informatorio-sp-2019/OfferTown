@@ -129,12 +129,13 @@ body{
 /* set intereses */
 
 .caja-interes-set{
-	padding: 12px 7px;
-	border-radius: 3px;
-	border: solid 1px lightgray;
-	font-weight: 300;
-	margin-bottom: 8px;
-	height: 70px;
+padding: 24px 7px 10px;
+border-radius: 3px;
+border: solid 1px lightgray;
+font-weight: 300;
+margin-bottom: 8px;
+height: 70px;
+background-color: white;
 }
 
 .btn-interes-icon a:hover{

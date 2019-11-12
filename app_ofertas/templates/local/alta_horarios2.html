@@ -5,8 +5,10 @@
 {% block content %}
 <form action="" method="POST" ">
 	<br>
+
 	<h5 class="center-align">HORARIOS DE ATENCIÓN</h5>
 	<br>
+
 	<div class="row">
 		{% csrf_token %}
 	 	{% for field in form %}	

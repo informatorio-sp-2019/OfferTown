@@ -120,5 +120,4 @@ class HorarioForm(forms.Form):
 	horamd7 = forms.CharField(max_length=5,required = False,widget=forms.TextInput(attrs={'placeholder': '00:00'}))
 	horamh7 = forms.CharField(max_length=5,required = False,widget=forms.TextInput(attrs={'placeholder': '00:00'}))
 	horatd7 = forms.CharField(max_length=5,required = False,widget=forms.TextInput(attrs={'placeholder': '00:00'}))
-	horath7 = forms.CharField(max_length=5,required = False,widget=forms.TextInput(attrs={'placeholder': '00:00'}))	
-
+	horath7 = forms.CharField(max_length=5,required = False,widget=forms.TextInput(attrs={'placeholder': '00:00'}))

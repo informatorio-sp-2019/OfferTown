@@ -2,9 +2,9 @@
 		
 
 		{% if request.user.usuario in local.get_interesados %}
-			<a onclick="toggleFavorito(this)" data-id="{{local.id}}" class="cursor-pointer secondary-content"><i class="material-icons tooltipped grey-text" data-position="top" data-tooltip="Agregar {{ local.nombre }} a mis favoritos">star</i></a> 
+			<a onclick="toggleFavorito(this)" data-id="{{local.id}}" class="cursor-pointer secondary-content"><i class="material-icons grey-text" >star</i></a> 
 		{% else %}
-			<a onclick="toggleFavorito(this)" data-id="{{local.id}}" class="cursor-pointer secondary-content"><i class="material-icons tooltipped grey-text" data-position="top" data-tooltip="Agregar {{ local.nombre }} a mis favoritos">star_border</i></a> 
+			<a onclick="toggleFavorito(this)" data-id="{{local.id}}" class="cursor-pointer secondary-content"><i class="material-icons grey-text" >star_border</i></a> 
 		{% endif %}
 	
 

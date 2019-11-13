@@ -638,10 +638,10 @@ input#id_imagen{
 	padding: 20px;
 }
 
-<<<<<<< HEAD
+
 .cursor-pointer{
-	cursor: pointer;
-=======
+	cursor: pointer;}
+
 .container .sin-op{
 	opacity: 1 !important; 
 }
@@ -654,10 +654,7 @@ input#id_imagen{
 	text-align: center;
 }
 
-.container .row{
-	margin-left: -.75rem;
-	margin-right: -.75rem;
-}
+
 
 .circle{
 	border-radius: 50%;
@@ -670,5 +667,5 @@ input#id_imagen{
 
 .titulo{
 	opacity: 1;
->>>>>>> origin/eliancreditos
+
 }

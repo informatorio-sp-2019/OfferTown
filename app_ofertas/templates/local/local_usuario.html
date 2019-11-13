@@ -94,7 +94,10 @@
 
 
 	<div class="row">
-		<a href="{% url 'app_ofertas:editar_horarios' local.nombre local.id  %}" class="secondary-content btn-floating btn-small waves-effect waves-light tooltipped grey-text" data-position="top" data-tooltip="Editar horarios"><i class="material-icons">edit</i></a>
+		{% if local.horario == 'sh' %}
+			<a href="{% url 'app_ofertas:editar_horarios' local.nombre local.id  %}" class="secondary-content btn-floating btn-small waves-effect waves-light tooltipped grey-text" data-position="top" data-tooltip="Editar horarios"><i class="material-icons">edit</i></a>
+		{% endif %}
+
 		<h6>Horarios de atención </h6>	
 
 	</div>
@@ -135,7 +138,6 @@
 
 
 	</div>	
-
 
 
 	<div class="row">

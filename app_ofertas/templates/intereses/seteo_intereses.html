@@ -15,6 +15,17 @@
 				</div>
 			</div>		
 	{% endfor %}
+
+	<div class="fixed-action-btn">
+	  <a class="btn-floating btn-large green tooltipped" data-position="top" data-tooltip="Siguiente" href="{% url 'app_ofertas:index'  %}">
+	    <i class="large material-icons">arrow_forward</i>
+	  </a>
+	</div>
+
+<!--     <div class="row center-align">
+    	<a href="{% url 'app_ofertas:index'  %}" class="btn-large waves-effect waves-light">Siguiente</a>
+    </div>	
+ -->
 	</div>
 	<script type="text/javascript">
 		function clickCorazon(div_hover){
